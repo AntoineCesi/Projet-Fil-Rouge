@@ -4,6 +4,8 @@
  */
 package projetrf;
 
+import projetrf.vue.VueCouleur;
+
 /**
  *
  * @author ademarly

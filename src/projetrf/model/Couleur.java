@@ -1,4 +1,4 @@
-package projetrf;
+package projetrf.model;
 
 /**
  *
