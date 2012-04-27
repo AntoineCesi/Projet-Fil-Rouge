@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetrf;
+package projetrf.data;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -35,7 +35,7 @@ public class RequetesInterlocuteur {
         try {
             Statement statement = ConnectionBDD.getInstance().getStatement();
             
-            query = "INSERT INTO INTERLOCUTEUR (ID_VILLE,INTNOM,INTPRENOM,INTEMAIL) VALUES ("+cri1+", '"+cri2+"','"+cri3+"','"+cri4+"') "; 
+            query = "INSERT INTO INTERLOCUTEUR (ID_VILLE,NOM,PRENOM,EMAIL) VALUES ('"+cri1+"', '"+cri2+"','"+cri3+"','"+cri4+"') "; 
             
             statement.executeUpdate(query);
             result = 0;
