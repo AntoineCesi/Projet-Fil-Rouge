@@ -18,7 +18,7 @@ public class RequetesCouleur {
         try 
         {
             Statement statement = ConnectionBDD.getInstance().getStatement();
-            query = "INSERT INTO ";
+            query = "INSERT INTO COULEUR(COULIBELLE) VALUES(\"" + libelle + "\");";
             statement.executeUpdate(query);
             result = 0;
         } 

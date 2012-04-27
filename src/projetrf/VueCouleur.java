@@ -27,68 +27,74 @@ public class VueCouleur extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelTitre = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jButtonCouleurValider = new javax.swing.JButton();
+        jLabelCouleurLibelle = new javax.swing.JLabel();
+        jTextFieldCouleurLibelle = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabelTitre.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelTitre.setText("Couleur");
 
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonCouleurValider.setText("Valider");
+        jButtonCouleurValider.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton1MousePressed(evt);
+                jButtonCouleurValiderMousePressed(evt);
+            }
+        });
+        jButtonCouleurValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCouleurValiderActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("jLabel1");
-
-        jTextField1.setText("jTextField1");
+        jLabelCouleurLibelle.setText("Entrez le libelle de la couleur : ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(264, Short.MAX_VALUE)
+                .addComponent(jButtonCouleurValider)
+                .addGap(71, 71, 71))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabelTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(161, 161, 161))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jButton1)
-                            .addGap(71, 71, 71)))))
+                        .addContainerGap()
+                        .addComponent(jLabelCouleurLibelle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldCouleurLibelle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(jLabelTitre)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addComponent(jLabelTitre)
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(57, 57, 57))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCouleurLibelle)
+                    .addComponent(jTextFieldCouleurLibelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(jButtonCouleurValider)
+                .addGap(57, 57, 57))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
-        RequetesCouleur.insertCouleur(jTextField1.getText());
-    }//GEN-LAST:event_jButton1MousePressed
+    private void jButtonCouleurValiderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCouleurValiderMousePressed
+        RequetesCouleur.insertCouleur(jTextFieldCouleurLibelle.getText());
+    }//GEN-LAST:event_jButtonCouleurValiderMousePressed
+
+    private void jButtonCouleurValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCouleurValiderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCouleurValiderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,9 +138,9 @@ public class VueCouleur extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonCouleurValider;
+    private javax.swing.JLabel jLabelCouleurLibelle;
     private javax.swing.JLabel jLabelTitre;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldCouleurLibelle;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,14 +20,16 @@ public class ConnectionBDD {
     
     private Statement st;
     Connection conn=null;
-    String url="jdbc:mysql://localhost:3306/LaBaseDePatrick";
+    String url="jdbc:mysql://localhost:3306/Market";
+    String login="root";
+    String passwd="";
 
     public static ConnectionBDD instance;
     
     private ConnectionBDD() {
         try
         {
-            conn= (Connection) DriverManager.getConnection(url); 
+            conn= (Connection) DriverManager.getConnection(url,login,passwd); 
             st= (Statement) conn.createStatement(); 
         }
         catch(SQLException ex)
