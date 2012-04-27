@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author Windows XP
  */
-public class RequettesInterlocuteur {
+public class RequetesInterlocuteur {
     
     public int idInter;
     public int idVille;
@@ -41,7 +41,7 @@ public class RequettesInterlocuteur {
             result = 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(RequettesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
             result = -1;
         }
 

@@ -26,21 +26,108 @@ public class VueInterlocuteur extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelClient = new javax.swing.JLabel();
+        jLabelClientNom = new javax.swing.JLabel();
+        jTextFieldClientNom = new javax.swing.JTextField();
+        jButtonClientAjouter = new javax.swing.JButton();
+        jLabelClientPrenom = new javax.swing.JLabel();
+        jLabelClientEmail = new javax.swing.JLabel();
+        jLabelClientCP = new javax.swing.JLabel();
+        jTextFieldClientPrenom = new javax.swing.JTextField();
+        jTextFieldClientEmail = new javax.swing.JTextField();
+        jTextFieldClientCP = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabelClient.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabelClient.setText("Client");
+
+        jLabelClientNom.setText("Entrez un Nom : ");
+
+        jButtonClientAjouter.setText("Ajouter");
+        jButtonClientAjouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClientAjouterActionPerformed(evt);
+            }
+        });
+
+        jLabelClientPrenom.setText("Entrez un prenom : ");
+
+        jLabelClientEmail.setText("Entrez un Email : ");
+
+        jLabelClientCP.setText("Entrez un CP : ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonClientAjouter))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(jLabelClient)
+                        .addGap(0, 170, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelClientNom)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldClientNom))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelClientPrenom)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldClientPrenom))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelClientEmail)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldClientEmail))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelClientCP)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldClientCP)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabelClient)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientNom)
+                    .addComponent(jTextFieldClientNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientPrenom)
+                    .addComponent(jTextFieldClientPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientEmail)
+                    .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 70, Short.MAX_VALUE)
+                        .addComponent(jButtonClientAjouter))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelClientCP)
+                            .addComponent(jTextFieldClientCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonClientAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClientAjouterActionPerformed
+        
+    }//GEN-LAST:event_jButtonClientAjouterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -84,5 +171,15 @@ public class VueInterlocuteur extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonClientAjouter;
+    private javax.swing.JLabel jLabelClient;
+    private javax.swing.JLabel jLabelClientCP;
+    private javax.swing.JLabel jLabelClientEmail;
+    private javax.swing.JLabel jLabelClientNom;
+    private javax.swing.JLabel jLabelClientPrenom;
+    private javax.swing.JTextField jTextFieldClientCP;
+    private javax.swing.JTextField jTextFieldClientEmail;
+    private javax.swing.JTextField jTextFieldClientNom;
+    private javax.swing.JTextField jTextFieldClientPrenom;
     // End of variables declaration//GEN-END:variables
 }

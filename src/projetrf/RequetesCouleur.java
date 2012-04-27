@@ -30,14 +30,14 @@ public class RequetesCouleur {
         return result;
     }
     
-    public static int updateCouleur(int id,String lib)
+    public static int updateCouleur(int id,String libelle)
     {
         int result;
         String query;
         try 
         {
             Statement statement = ConnectionBDD.getInstance().getStatement();
-            query = "";
+            query = "UPDATE COULEUR set COULIBELLE = " + libelle + " WHERE ID_COULEUR";
             statement.executeUpdate(query);
             result = 0;
         } 

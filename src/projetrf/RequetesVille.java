@@ -8,6 +8,6 @@ package projetrf;
  *
  * @author plepelletier
  */
-public class RequettesVille {
+public class RequetesVille {
     
 }
