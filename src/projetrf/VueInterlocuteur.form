@@ -84,20 +84,13 @@
                   <Component id="jLabelClientEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldClientEmail" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="70" max="32767" attributes="0"/>
-                      <Component id="jButtonClientAjouter" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelClientCP" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldClientCP" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelClientCP" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldClientCP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <Component id="jButtonClientAjouter" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -124,6 +117,7 @@
         <Property name="text" type="java.lang.String" value="Ajouter"/>
       </Properties>
       <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonClientAjouterMousePressed"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClientAjouterActionPerformed"/>
       </Events>
     </Component>

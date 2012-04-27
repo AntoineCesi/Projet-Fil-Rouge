@@ -45,6 +45,11 @@ public class VueInterlocuteur extends javax.swing.JFrame {
         jLabelClientNom.setText("Entrez un Nom : ");
 
         jButtonClientAjouter.setText("Ajouter");
+        jButtonClientAjouter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButtonClientAjouterMousePressed(evt);
+            }
+        });
         jButtonClientAjouter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonClientAjouterActionPerformed(evt);
@@ -109,16 +114,12 @@ public class VueInterlocuteur extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelClientEmail)
                     .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 70, Short.MAX_VALUE)
-                        .addComponent(jButtonClientAjouter))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelClientCP)
-                            .addComponent(jTextFieldClientCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientCP)
+                    .addComponent(jTextFieldClientCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(jButtonClientAjouter)
                 .addContainerGap())
         );
 
@@ -128,6 +129,10 @@ public class VueInterlocuteur extends javax.swing.JFrame {
     private void jButtonClientAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClientAjouterActionPerformed
         
     }//GEN-LAST:event_jButtonClientAjouterActionPerformed
+
+    private void jButtonClientAjouterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonClientAjouterMousePressed
+        RequetesInterlocuteur.ecrireInterlocuteur(1,jTextFieldClientNom.getText(),jTextFieldClientPrenom.getText(),jTextFieldClientEmail.getText());
+    }//GEN-LAST:event_jButtonClientAjouterMousePressed
 
     /**
      * @param args the command line arguments
