@@ -4,8 +4,10 @@
  */
 package projetrf.data;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,6 +48,37 @@ public class RequetesVille {
 
 
         return 0;
+
+        
+    }
+    
+     public static List villecp( String cp)
+    {
+        int result;
+        String query=null;
+        String cri1 = cp;        
+        List ville = null;
+        ResultSet resultat; 
+        
+       
+        try {
+            Statement statement = ConnectionBDD.getInstance().getStatement();
+
+            query = "SELECT ID_VILLE, ID_PAYS, VINOM where VICP='" + cri1 + "' ";
+
+            resultat = statement.executeQuery(query);
+            while (resultat.next()) {
+                System.out.println(resultat.getString("VINOM"));              
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+            result = -1;
+        }
+
+
+        return ville;
 
         
     }

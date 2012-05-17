@@ -4,6 +4,9 @@
  */
 package projetrf;
 
+import java.util.List;
+import projetrf.data.RequetesVille;
+import projetrf.model.Ville;
 import projetrf.vue.VueInterlocuteur;
 
 /**
@@ -19,8 +22,18 @@ public class ProjetRF {
         //VueCouleur vTest = new VueCouleur();
         //vTest.setVisible(true);
         
-     VueInterlocuteur vInter= new VueInterlocuteur();
-     vInter.setVisible(true);
-      
+   //  VueInterlocuteur vInter= new VueInterlocuteur();
+    // vInter.setVisible(true);
+     
+       
+       String cp ="76000";
+       List rqville;
+        RequetesVille rq1= new RequetesVille();
+       // rqville = rq1.villecp(cp);
+                
+        
+        
+        Ville vi2 =new Ville(null,1,"oissel","76350");
+        
     }
 }
