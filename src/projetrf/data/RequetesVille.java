@@ -7,6 +7,7 @@ package projetrf.data;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +43,7 @@ public class RequetesVille {
             result = 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
             result = -1;
         }
 
@@ -52,33 +53,36 @@ public class RequetesVille {
         
     }
     
-     public static List villecp( String cp)
+     public static List<String> villecp( String cp)
     {
         int result;
         String query=null;
         String cri1 = cp;        
-        List ville = null;
+        List<String> ville1 = new ArrayList<String>();
         ResultSet resultat; 
         
        
         try {
             Statement statement = ConnectionBDD.getInstance().getStatement();
 
-            query = "SELECT ID_VILLE, ID_PAYS, VINOM where VICP='" + cri1 + "' ";
-
+            query = "SELECT ID_VILLE, ID_PAYS, VINOM from VILLE where VICP='" + cri1 + "' ";
             resultat = statement.executeQuery(query);
+            int i=0;
             while (resultat.next()) {
-                System.out.println(resultat.getString("VINOM"));              
-
+               System.out.println(resultat.getString("VINOM"));    
+               ville1.add(resultat.getString("ID_VILLE")) ;
+               ville1.add(resultat.getString("ID_PAYS")) ;
+               ville1.add(resultat.getString("VINOM")) ;
             }
-
+            
+           
         } catch (SQLException ex) {
             Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
             result = -1;
         }
 
 
-        return ville;
+        return ville1;
 
         
     }

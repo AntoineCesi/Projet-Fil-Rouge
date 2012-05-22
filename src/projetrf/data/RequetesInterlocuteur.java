@@ -4,8 +4,10 @@
  */
 package projetrf.data;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,6 +51,37 @@ public class RequetesInterlocuteur {
         return 0;
 
 
+    }
+      public static List interlocuteurId( int id)
+    {
+        int result;
+        String query=null;
+        int cri1 = id;        
+        List interlocuteur = null;
+        ResultSet resultat; 
+        
+       
+        try {
+            Statement statement = ConnectionBDD.getInstance().getStatement();
+
+            query = "SELECT PAYS from INTERLOCUTEUR where ID_INTERLOCUTEUR='" + cri1 + "' ";
+            resultat = statement.executeQuery(query);
+            
+            while (resultat.next()) {
+               System.out.println(resultat.getString("INTNOM")); 
+               
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+            result = -1;
+        }
+
+
+        return interlocuteur;
+
+        
     }
     
 }

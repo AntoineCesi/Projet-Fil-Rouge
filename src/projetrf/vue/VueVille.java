@@ -4,6 +4,13 @@
  */
 package projetrf.vue;
 
+import java.awt.Component;
+import java.util.Iterator;
+import java.util.List;
+import javax.swing.JComboBox;
+import projetrf.data.RequetesPays;
+import projetrf.model.Pays;
+
 /**
  *
  * @author plepelletier
@@ -26,21 +33,101 @@ public class VueVille extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelTitre = new javax.swing.JLabel();
+        jLabelVille = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabelPays = new javax.swing.JLabel();
+        jComboBoxPays = new javax.swing.JComboBox();
+        jButtonVilleValider = new javax.swing.JButton();
+        jTextFieldCpCreationVille = new javax.swing.JTextField();
+        jLabelCp = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabelTitre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelTitre.setText("Création d'une ville");
+
+        jLabelVille.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelVille.setText("Ville");
+
+        jLabelPays.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabelPays.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelPays.setText("Pays");
+
+        jComboBoxPays.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPays.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPaysActionPerformed(evt);
+            }
+        });
+
+        jButtonVilleValider.setText("Valider");
+        jButtonVilleValider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVilleValiderActionPerformed(evt);
+            }
+        });
+
+        jLabelCp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelCp.setText("Code Postal");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(jLabelPays, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelTitre)
+                    .addComponent(jComboBoxPays, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonVilleValider)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelCp, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldCpCreationVille, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelVille, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabelTitre)
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelVille)
+                    .addComponent(jTextFieldCpCreationVille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCp))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPays)
+                    .addComponent(jComboBoxPays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jButtonVilleValider)
+                .addGap(45, 45, 45))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxPaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPaysActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jComboBoxPaysActionPerformed
+
+    private void jButtonVilleValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVilleValiderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVilleValiderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,10 +166,20 @@ public class VueVille extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
+                  
+                   
                 new VueVille().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonVilleValider;
+    private javax.swing.JComboBox jComboBoxPays;
+    private javax.swing.JLabel jLabelCp;
+    private javax.swing.JLabel jLabelPays;
+    private javax.swing.JLabel jLabelTitre;
+    private javax.swing.JLabel jLabelVille;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldCpCreationVille;
     // End of variables declaration//GEN-END:variables
 }
