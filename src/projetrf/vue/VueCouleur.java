@@ -4,6 +4,10 @@
  */
 package projetrf.vue;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import projetrf.data.RequetesCouleur;
 
 /**
@@ -36,7 +40,7 @@ public class VueCouleur extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelTitre.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabelTitre.setText("Couleur");
+        jLabelTitre.setText("Ajout d'une couleur");
 
         jButtonCouleurValider.setText("Valider");
         jButtonCouleurValider.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -57,28 +61,28 @@ public class VueCouleur extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(264, Short.MAX_VALUE)
-                .addComponent(jButtonCouleurValider)
-                .addGap(71, 71, 71))
-            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabelCouleurLibelle)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldCouleurLibelle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jLabelTitre)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jTextFieldCouleurLibelle, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButtonCouleurValider)
+                                .addGap(71, 71, 71))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabelTitre)
+                                .addGap(85, 85, 85))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabelTitre)
-                .addGap(77, 77, 77)
+                .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCouleurLibelle)
                     .addComponent(jTextFieldCouleurLibelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -91,7 +95,21 @@ public class VueCouleur extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCouleurValiderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCouleurValiderMousePressed
-        RequetesCouleur.insertCouleur(jTextFieldCouleurLibelle.getText());
+        try 
+        {
+            RequetesCouleur.insertCouleur(jTextFieldCouleurLibelle.getText());
+        } 
+        catch (SQLException ex) 
+        {
+            if(ex.getErrorCode()== 1062)
+            {
+                JOptionPane.showMessageDialog(this, 
+                "Cette couleur existe déjà",
+                " Erreur ",
+                JOptionPane.ERROR_MESSAGE);
+            }
+            Logger.getLogger(VueCouleur.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonCouleurValiderMousePressed
 
     private void jButtonCouleurValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCouleurValiderActionPerformed
