@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.swing.JComboBox;
 import projetrf.data.RequetesPays;
+import projetrf.data.RequetesVille;
 import projetrf.model.Pays;
 
 /**
@@ -35,7 +36,7 @@ public class VueVille extends javax.swing.JFrame {
 
         jLabelTitre = new javax.swing.JLabel();
         jLabelVille = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldVilleCreationVille = new javax.swing.JTextField();
         jLabelPays = new javax.swing.JLabel();
         jComboBoxPays = new javax.swing.JComboBox();
         jButtonVilleValider = new javax.swing.JButton();
@@ -43,6 +44,11 @@ public class VueVille extends javax.swing.JFrame {
         jLabelCp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabelTitre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelTitre.setText("Création d'une ville");
@@ -54,7 +60,6 @@ public class VueVille extends javax.swing.JFrame {
         jLabelPays.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelPays.setText("Pays");
 
-        jComboBoxPays.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxPays.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxPaysActionPerformed(evt);
@@ -94,7 +99,7 @@ public class VueVille extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelVille, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldVilleCreationVille, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
@@ -104,7 +109,7 @@ public class VueVille extends javax.swing.JFrame {
                 .addComponent(jLabelTitre)
                 .addGap(67, 67, 67)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldVilleCreationVille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelVille)
                     .addComponent(jTextFieldCpCreationVille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelCp))
@@ -126,8 +131,19 @@ public class VueVille extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxPaysActionPerformed
 
     private void jButtonVilleValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVilleValiderActionPerformed
-        // TODO add your handling code here:
+       System.out.println("id_pays" + ((Pays)jComboBoxPays.getSelectedItem()).getIdPays());
+       System.out.println("cp " +jTextFieldCpCreationVille.getText());
+       System.out.println("vile"+jTextFieldVilleCreationVille.getText());
+       RequetesVille.ecrireVille(((Pays)jComboBoxPays.getSelectedItem()).getIdPays(), jTextFieldVilleCreationVille.getText().toUpperCase(),jTextFieldCpCreationVille.getText());
+         
     }//GEN-LAST:event_jButtonVilleValiderActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+         /*  List<Pays> pp1 = RequetesPays.listerPays();            
+            for (Pays pays : pp1) {
+                    jComboBoxPays.addItem(pays);
+                }*/
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -179,7 +195,7 @@ public class VueVille extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPays;
     private javax.swing.JLabel jLabelTitre;
     private javax.swing.JLabel jLabelVille;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldCpCreationVille;
+    private javax.swing.JTextField jTextFieldVilleCreationVille;
     // End of variables declaration//GEN-END:variables
 }
