@@ -4,7 +4,6 @@
  */
 package projetrf.data;
 
-import projetrf.data.RequetesCouleur;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,7 +22,7 @@ public class ConnectionBDD {
     Connection conn=null;
     String url="jdbc:mysql://localhost/MARKET";
     String login="root";
-    String passwd="silmm97";
+    String passwd="";
 
     public static ConnectionBDD instance;
     
