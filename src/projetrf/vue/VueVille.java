@@ -5,8 +5,11 @@
 package projetrf.vue;
 
 import java.awt.Component;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import projetrf.data.RequetesPays;
 import projetrf.data.RequetesVille;
@@ -131,18 +134,23 @@ public class VueVille extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxPaysActionPerformed
 
     private void jButtonVilleValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVilleValiderActionPerformed
-       System.out.println("id_pays" + ((Pays)jComboBoxPays.getSelectedItem()).getIdPays());
-       System.out.println("cp " +jTextFieldCpCreationVille.getText());
-       System.out.println("vile"+jTextFieldVilleCreationVille.getText());
+      // System.out.println("id_pays" + ((Pays)jComboBoxPays.getSelectedItem()).getIdPays());
+      // System.out.println("cp " +jTextFieldCpCreationVille.getText());
+       //System.out.println("vile"+jTextFieldVilleCreationVille.getText());
        RequetesVille.ecrireVille(((Pays)jComboBoxPays.getSelectedItem()).getIdPays(), jTextFieldVilleCreationVille.getText().toUpperCase(),jTextFieldCpCreationVille.getText());
-         
+         this.dispose();
     }//GEN-LAST:event_jButtonVilleValiderActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-         /*  List<Pays> pp1 = RequetesPays.listerPays();            
+        try {
+            List<Pays> pp1 = RequetesPays.listerPays();
             for (Pays pays : pp1) {
-                    jComboBoxPays.addItem(pays);
-                }*/
+                jComboBoxPays.addItem(pays);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VueVille.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_formWindowOpened
 
     /**

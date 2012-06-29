@@ -27,4 +27,8 @@ public class Couleur {
     public int getid() {
         return id;
     }
+    @Override
+    public String toString() {
+        return getLibelle();
+    }
 }

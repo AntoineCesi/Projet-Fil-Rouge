@@ -40,6 +40,11 @@ public class Pays {
         this.pays = pays;
     }
 
+    
+    @Override
+    public String toString() {
+        return getPays();
+    }
   
 
     

@@ -4,6 +4,11 @@
  */
 package projetrf.vue;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import projetrf.data.RequetesCouleur;
 import projetrf.data.RequetesPays;
 
 /**
@@ -88,8 +93,21 @@ public class VuePays extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonPaysValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPaysValiderActionPerformed
-       
-         RequetesPays.ecrirePays(jTextFieldPays.getText().toUpperCase());
+               
+            try 
+        {
+             RequetesPays.ecrirePays(jTextFieldPays.getText().toUpperCase());
+        } 
+        catch (SQLException ex) 
+        {
+            if(ex.getErrorCode()== 1062)
+            {
+                JOptionPane.showMessageDialog(this,  "Ce Pays existe déjà",
+                " Erreur ",
+                JOptionPane.ERROR_MESSAGE);
+            }
+            Logger.getLogger(VuePays.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonPaysValiderActionPerformed
 
     /**

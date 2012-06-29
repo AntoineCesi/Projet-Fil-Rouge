@@ -97,7 +97,7 @@ public class VueCouleur extends javax.swing.JFrame {
     private void jButtonCouleurValiderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCouleurValiderMousePressed
         try 
         {
-            RequetesCouleur.insertCouleur(jTextFieldCouleurLibelle.getText());
+            RequetesCouleur.insertCouleur(jTextFieldCouleurLibelle.getText().toUpperCase());
         } 
         catch (SQLException ex) 
         {
@@ -108,7 +108,7 @@ public class VueCouleur extends javax.swing.JFrame {
                 " Erreur ",
                 JOptionPane.ERROR_MESSAGE);
             }
-            Logger.getLogger(VueCouleur.class.getName()).log(Level.SEVERE, null, ex);
+                 Logger.getLogger(VueCouleur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCouleurValiderMousePressed
 

@@ -20,16 +20,15 @@ import projetrf.model.Pays;
 public class RequetesPays {
     
     private int idPays;
-    private String pays ;
+    private String pays ;   
     
-    
-    public static int ecrirePays( String pays)
+    public static int ecrirePays( String pays) throws SQLException
     {
         int result;
         String query;
         String cri1= pays;
         
-        try {
+      
             Statement statement = ConnectionBDD.getInstance().getStatement();
             
             query = "INSERT INTO PAYS (PAYS) VALUES ('"+cri1+"') "; 
@@ -37,77 +36,57 @@ public class RequetesPays {
             statement.executeUpdate(query);
             result = 0;
 
-        } catch (SQLException ex) {
-            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
-            result = -1;
-        }
-
+      
 
         return 0;
 
         
     }
     
-     public static List paysId( int id)
-    {
-        int result;
-        String query=null;
-        int cri1 = id;        
-        List ville = null;
-        ResultSet resultat; 
-        
-       
+    public static Pays paysId(int id) {
+        String query = null;
+        int cri1 = id;
+        Pays pays1 = new Pays();
+        ResultSet resultat;
         try {
             Statement statement = ConnectionBDD.getInstance().getStatement();
-
-            query = "SELECT PAYS from PAYS where ID_PAYS='" + cri1 + "' ";
+            query = "SELECT * from PAYS where ID_PAYS='" + cri1 + "' ";
             resultat = statement.executeQuery(query);
             while (resultat.next()) {
-               System.out.println(resultat.getString("PAYS"));              
-
+                //System.out.println(resultat.getString("PAYS"));
+                pays1 = new Pays(resultat.getInt("ID_PAYS"), resultat.getString("PAYS"));
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
-            result = -1;
+
         }
+        return pays1;
 
-
-        return ville;
-
-        
     }
      
      
-    public static List<Pays> listerPays( )
-    {
-        int result;
-        String query=null;          
-       // List<String> pays1 = new ArrayList<String>();
-        List<Pays> pays1 =new ArrayList<Pays>();
-        ResultSet resultat; 
-        
-       
+    public static List<Pays> listerPays()  throws SQLException {
+      
+        String query = null;
+        List<Pays> pays1 = new ArrayList<Pays>();
+        ResultSet resultat;
         try {
             Statement statement = ConnectionBDD.getInstance().getStatement();
             query = "SELECT * from PAYS ";
             resultat = statement.executeQuery(query);
-           
+
             while (resultat.next()) {
-               System.out.println(resultat.getString("PAYS"));   
-               
-               Pays pp = new Pays(resultat.getInt("ID_PAYS"),resultat.getString("PAYS"));
-               pays1.add(pp);                               
-               
+               // System.out.println(resultat.getString("PAYS"));
+                Pays pp = new Pays(resultat.getInt("ID_PAYS"), resultat.getString("PAYS"));
+                pays1.add(pp);
             }
-            
-           
+
         } catch (SQLException ex) {
             Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
-            result = -1;
+
         }
-
-
+        
         return pays1;
 
         

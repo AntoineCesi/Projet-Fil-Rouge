@@ -22,7 +22,7 @@ public class ConnectionBDD {
     Connection conn=null;
     String url="jdbc:mysql://localhost/MARKET";
     String login="root";
-    String passwd="";
+    String passwd="silmm97";
 
     public static ConnectionBDD instance;
     

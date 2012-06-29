@@ -11,7 +11,9 @@ package projetrf.model;
 public class Interlocuteur {
     
    private int idInterlocuteur;
-   private int  idVille;
+   private int idUtilisateur;
+   private int idVille;
+   private int idservice;
    private String nom;
    private String prenom;
    private String email;
@@ -24,7 +26,6 @@ public class Interlocuteur {
         this.email = email;
     }
 
- 
     public int getIdInterlocuteur() {
         return idInterlocuteur;
     }
@@ -33,6 +34,13 @@ public class Interlocuteur {
         this.idInterlocuteur = idInterlocuteur;
     }
 
+    public int getIdUtilisateur() {
+        return idUtilisateur;
+    }
+
+    public void setIdUtilisateur(int idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
+    }
 
     public int getIdVille() {
         return idVille;
@@ -40,6 +48,14 @@ public class Interlocuteur {
 
     public void setIdVille(int idVille) {
         this.idVille = idVille;
+    }
+
+    public int getIdservice() {
+        return idservice;
+    }
+
+    public void setIdservice(int idservice) {
+        this.idservice = idservice;
     }
 
     public String getNom() {
@@ -61,14 +77,29 @@ public class Interlocuteur {
     public Interlocuteur() {
     }
 
-    public Interlocuteur(int idInterlocuteur, int idVille, int idService, String nom, String prenom, String email) {
+    public Interlocuteur(int idInterlocuteur, int idUtilisateur, int idVille, int idservice, String nom, String prenom, String email) {
         this.idInterlocuteur = idInterlocuteur;
+        this.idUtilisateur = idUtilisateur;
         this.idVille = idVille;
+        this.idservice = idservice;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
     }
-   
-    
+
+    public Interlocuteur(int idUtilisateur, int idVille, int idservice, String nom, String prenom, String email) {
+        this.idUtilisateur = idUtilisateur;
+        this.idVille = idVille;
+        this.idservice = idservice;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+    }
+
+      
+    @Override
+    public String toString() {
+        return getNom();
+    }
   
 }

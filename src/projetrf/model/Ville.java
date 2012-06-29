@@ -43,7 +43,7 @@ public class Ville {
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public void setNom(String nom) {
@@ -59,7 +59,17 @@ public class Ville {
         this.nom = nom;
         this.cp = cp;
     }
+
+    public Ville(int idpays, String nom, String cp) {
+        this.idpays = idpays;
+        this.nom = nom;
+        this.cp = cp;
+    }
     
     
+    @Override
+    public String toString() {
+        return this.getNom();
+    }
             
 }

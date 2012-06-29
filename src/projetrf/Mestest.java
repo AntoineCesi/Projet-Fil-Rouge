@@ -5,7 +5,11 @@
 package projetrf;
 
 import java.util.List;
+import projetrf.data.RequetesInterlocuteur;
 import projetrf.data.RequetesPays;
+import projetrf.model.Interlocuteur;
+import projetrf.model.Pays;
+import projetrf.vue.VueVille;
 
 
 /**
@@ -16,6 +20,12 @@ public class Mestest {
     
     public static void main(String[] args) {
         
+             
+        //RequetesPays pp= new RequetesPays();  pays ok
+       // RequetesPays.ecrirePays("ALLEMAGNE");
+      // VuePays vtest= new VuePays();
+       // vtest.setVisible(true);
+         //Pays ll= RequetesPays.paysId(2);
      
         // VueCouleur vTest = new VueCouleur();
       // vTest.setVisible(true);
@@ -29,13 +39,9 @@ public class Mestest {
        //  RequetesVille vv= new RequetesVille();          
        //  RequetesVille.ecrireVille(1, "OISSEL","76350");
        // RequetesVille.villecp("76000");
-        
-        //RequetesPays pp= new RequetesPays();
-       // RequetesPays.ecrirePays("ALLEMAGNE");
        
-        
-      // VuePays vtest= new VuePays();
-       // vtest.setVisible(true);
+       
+    
         
         //   RequetesVille vv= new RequetesVille();         
          //  RequetesVille vv1=  RequetesVille.villecp("76000");
@@ -43,9 +49,48 @@ public class Mestest {
      
           //     System.out.println(vv1.toString());              
 
-           RequetesPays pp= new RequetesPays();    
-            List pp1=RequetesPays.listerPays();
-             System.out.println(pp1.toString());   
+           
+        /*          
+        VueVille v2 = new VueVille();
+        v2.setVisible(true);
+
+        List<Pays> pp1 = RequetesPays.listerPays();
+        System.out.println(pp1.size());
+        for (int i = 0; i < pp1.size(); i++) {
+            System.out.println("Élément à l'index " + i + " = " + pp1.get(i).getIdPays() + " = " + pp1.get(i).getPays());
+        }
+
+        for (Pays pays : pp1) {
+            pays.getIdPays();
+        }
+        */
+       // Interlocuteur pp1 = RequetesInterlocuteur.selectId(2);
+       // System.out.println(pp1.toString());
+       // List <Interlocuteur> pp1= RequetesInterlocuteur.listerInterlocuteur();   
+         // RequetesUtilisateur.ecrireUtilisateur(1,1,"DUPONT","Marcel", "10 rue du pont","");        
         
+      //  RequetesInterlocuteur.ecrireInterlocuteur(1, 1, 1, "dupuis", "louis", "dupouisl@free.fr");
+      
+        /*List<Pays> pp1 = RequetesPays.listerPays();
+        System.out.println(pp1.size());
+        for (Pays pays : pp1) {
+            pays.getIdPays();
+        }
+                   
+
+          JFrame frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            JComboBox jComboBox1 = new JComboBox();
+             for(int i = 0; i < pp1.size(); i++)
+            jComboBox1.addItem(pp1.get(i).getPays());
+            
+            Object cmboitem = jComboBox1.getSelectedItem();
+            System.out.println(cmboitem);
+
+            frame.add(jComboBox1);
+
+            frame.setSize(300, 200);
+            frame.setVisible(true);*/
     }    
 }

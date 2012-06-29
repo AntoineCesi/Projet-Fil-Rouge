@@ -19,7 +19,7 @@ public class RequetesCouleur {
         statement.executeUpdate(query);
     }
     
-    public static int updateCouleur(int id,String libelle)
+    public static int updateCouleur(int id,String libelle) throws SQLException
     {
         int result;
         String query;
@@ -36,5 +36,6 @@ public class RequetesCouleur {
             result = -1;
         }
         return result;
+       
     }
 }
