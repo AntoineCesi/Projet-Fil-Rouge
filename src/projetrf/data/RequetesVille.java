@@ -4,6 +4,7 @@
  */
 package projetrf.data;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,120 +26,127 @@ public class RequetesVille {
     public String nom;
     public String cp;
     
-    
-    public static int ecrireVille( int idpays,String nom,String cp)
+     public static void insertVille(int idpays, String nom, String cp) throws SQLException {
+
+        String query;
+        try {
+            query = "INSERT INTO VILLE (ID_PAYS,VINOM,VICP) VALUES (?,?,?) ";
+
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setInt(1, idpays);
+            pStatement.setString(2, nom);
+            pStatement.setString(3, cp);
+            pStatement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    }
+      
+     
+        public static int updateVille(int id,int idpays, String nom, String cp)throws SQLException
     {
         int result;
         String query;
-        int cri1 = idpays;
-        String cri2 = nom;
-        String cri3 = cp;
-        
-        try {
-            Statement statement = ConnectionBDD.getInstance().getStatement();
+        try 
+        {
+            query = "UPDATE VILLE set ID_PAYS=?,VINOM=?,VICP=? WHERE ID_VILLE=? ";
+            PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setInt(4, id);
+            pStatement.setInt(1, idpays);
+            pStatement.setString(2, nom);
+            pStatement.setString(3, cp);
+            pStatement.executeUpdate();
             
-            query = "INSERT INTO VILLE (ID_PAYS,VINOM,VICP) VALUES ("+cri1+", '"+cri2+"','"+cri3+"') "; 
-            
-            statement.executeUpdate(query);
             result = 0;
-
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) 
+        {
             Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
             result = -1;
         }
-
-
-        return 0;
-
-        
+        return result;
     }
     
-     public static List<Ville> villecp( String cp) throws SQLException
-    {
         
-        String query=null;
-        String cri1 = cp;        
-        List<Ville> ville1 = new ArrayList<Ville>();
-        ResultSet resultat; 
-        
-       
-        try {
-            Statement statement = ConnectionBDD.getInstance().getStatement();
+    public static Ville selectVilleId(int id) throws SQLException {
 
-            query = "SELECT ID_VILLE, ID_PAYS, VINOM from VILLE where VICP='" + cri1 + "' ";
-            resultat = statement.executeQuery(query);
-           
-            while (resultat.next()) {
-               System.out.println(resultat.getString("VINOM"));   
-               Ville vv=new Ville(resultat.getInt("ID_VILLE"),"",resultat.getString("VINOM"));
-                ville1.add(vv); 
-            }
-           
-           
-        } catch (SQLException ex) {
-            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
-           
-        }
-
-        return ville1;
-    }
-     
-     
-       public static Ville selectVilleId( int id)
-    {       
-        String query=null;
-        int cri1 = id;        
+        String query = null;
         Ville ville1 = new Ville();
-        ResultSet resultat;     
-       
+        ResultSet resultat;
+
         try {
-            Statement statement = ConnectionBDD.getInstance().getStatement();
-            query = "SELECT * from VILLE where ID_VILLE="+cri1+" ";
-            resultat = statement.executeQuery(query);
-           
+            query = "SELECT * from VILLE where ID_VILLE =? ";
+
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setInt(1, id);
+            resultat = pStatement.executeQuery();
+
             while (resultat.next()) {
-               //System.out.println(resultat.getString("VINOM"));
-              ville1 = new Ville(resultat.getInt("ID_VILLE"),resultat.getInt("ID_PAYS"),resultat.getString("VINOM"),resultat.getString("VICP"));
-                
-            }         
-           
+                //System.out.println(resultat.getString("VINOM"));
+                ville1 = new Ville(resultat.getInt("ID_VILLE"), resultat.getInt("ID_PAYS"), resultat.getString("VINOM"), resultat.getString("VICP"));
+            }
+
         } catch (SQLException ex) {
-            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
-           
+            Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
+
         }
         return ville1;
-        
-    }
-       
-         
-     public static List<Ville> selectVilleByName( String name) throws SQLException
-    {
-        
-        String query=null;
-        String cri1 = name.toUpperCase();        
-        List<Ville> ville1 = new ArrayList<Ville>();
-        ResultSet resultat; 
-        
-       
-        try {
-            Statement statement = ConnectionBDD.getInstance().getStatement();
 
-            query = "SELECT  * from VILLE where VINOM like '" + cri1+"%" + "' ";
-            resultat = statement.executeQuery(query);
-           
-            
-            while (resultat.next()) { 
-                 System.out.println(resultat.getString("VINOM"));
-                  System.out.println(resultat.getInt("ID_PAYS"));
-               Ville vv=new Ville(resultat.getInt("ID_VILLE"),resultat.getInt("ID_PAYS"),resultat.getString("VINOM"),resultat.getString("VICP"));
-                ville1.add(vv); 
+    }
+
+        
+        
+        
+    public static List<Ville> villeCp(String cp) throws SQLException {
+
+        String query = null;
+        List<Ville> ville1 = new ArrayList<Ville>();
+        ResultSet resultat;
+        try {
+
+            query = "SELECT ID_VILLE, ID_PAYS, VINOM,VICP from VILLE where VICP like ? ";
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setString(1, cp);
+            resultat = pStatement.executeQuery();
+
+            while (resultat.next()) {
+
+                Ville v1 = new Ville(resultat.getInt("ID_VILLE"), resultat.getInt("ID_PAYS"), resultat.getString("VINOM"), resultat.getString("VICP"));
+                ville1.add(v1);
             }
-           
-            
-           
+
         } catch (SQLException ex) {
-            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
-           
+            Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return ville1;
+    }
+     
+     
+        
+         
+    public static List<Ville> selectVilleByName(String name) throws SQLException {
+
+        String query = null;
+        List<Ville> ville1 = new ArrayList<Ville>();
+        ResultSet resultat;
+
+        try {
+            query = "SELECT  * from VILLE where VINOM like ?";
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setString(1, name.toUpperCase() + "%");
+            resultat = pStatement.executeQuery();
+
+            while (resultat.next()) {
+                Ville vv = new Ville(resultat.getInt("ID_VILLE"), resultat.getInt("ID_PAYS"), resultat.getString("VINOM"), resultat.getString("VICP"));
+                ville1.add(vv);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
+
         }
 
         return ville1;

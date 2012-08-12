@@ -4,6 +4,8 @@
  */
 package projetrf.data;
 
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,52 +21,69 @@ import projetrf.model.Pays;
  */
 public class RequetesPays {
     
-    private int idPays;
-    private String pays ;   
+    public int idPays;
+    public String pays ;   
     
-    public static int ecrirePays( String pays) throws SQLException
-    {
-        int result;
+    public static void ecrirePays(String pays) throws SQLException {
+
         String query;
-        String cri1= pays;
-        
-      
-            Statement statement = ConnectionBDD.getInstance().getStatement();
-            
-            query = "INSERT INTO PAYS (PAYS) VALUES ('"+cri1+"') "; 
-            
-            statement.executeUpdate(query);
-            result = 0;
-
-      
-
-        return 0;
 
         
+        try {
+            query = "INSERT INTO PAYS (PAYS) VALUES VALUES(?);";
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setString(1, pays);
+            pStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
     }
     
-    public static Pays paysId(int id) {
+    public static Pays paysId(int id)  throws SQLException {
         String query = null;
-        int cri1 = id;
+      
         Pays pays1 = new Pays();
         ResultSet resultat;
+            
         try {
-            Statement statement = ConnectionBDD.getInstance().getStatement();
-            query = "SELECT * from PAYS where ID_PAYS='" + cri1 + "' ";
-            resultat = statement.executeQuery(query);
+            query = "SELECT * from PAYS where ID_PAYS=? ";
+
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setInt(1, id);
+            resultat = pStatement.executeQuery();
+          
             while (resultat.next()) {
                 //System.out.println(resultat.getString("PAYS"));
                 pays1 = new Pays(resultat.getInt("ID_PAYS"), resultat.getString("PAYS"));
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return pays1;
 
     }
-     
+    
+    
+    public static int updatePays(int id, String pays) throws SQLException {
+        int result;
+        String query;
+        try {
+            query = "UPDATE PAYS set PAYS=? WHERE ID_PAYS=?";
+            PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setString(1, pays);
+            pStatement.setInt(2, id);
+            pStatement.executeUpdate();
+            result = 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
+            result = -1;
+        }
+        return result;
+    }
      
     public static List<Pays> listerPays()  throws SQLException {
       
@@ -72,9 +91,10 @@ public class RequetesPays {
         List<Pays> pays1 = new ArrayList<Pays>();
         ResultSet resultat;
         try {
-            Statement statement = ConnectionBDD.getInstance().getStatement();
+           
             query = "SELECT * from PAYS ";
-            resultat = statement.executeQuery(query);
+            PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
+            resultat = pStatement.executeQuery(query);
 
             while (resultat.next()) {
                // System.out.println(resultat.getString("PAYS"));
@@ -83,7 +103,7 @@ public class RequetesPays {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         

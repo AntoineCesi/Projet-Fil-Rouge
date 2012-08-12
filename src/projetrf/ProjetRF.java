@@ -10,13 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import projetrf.data.RequetesInterlocuteur;
-import projetrf.data.RequetesPays;
-import projetrf.data.RequetesUtilisateur;
-import projetrf.data.RequetesVille;
-import projetrf.model.Interlocuteur;
-import projetrf.model.Pays;
-import projetrf.model.Ville;
+import projetrf.data.*;
+import projetrf.model.*;
 import projetrf.vue.*;
 
 /**
@@ -29,18 +24,34 @@ public class ProjetRF {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-     
-     /*        
-      VueVille vv= new VueVille();
-         vv.setVisible(true);*/
+        // VueVille vv= new VueVille();
+        // vv.setVisible(true);
+        // VueMenu vmenu =new VueMenu();
+        // vmenu.setVisible(true);
+        // VueVilleModifie vv= new VueVilleModifie();
+        //   vv.setVisible(true);
+        //   RequetesPays pp= new RequetesPays();     
+        // Pays py= RequetesPays.paysId(2);     
+       
+       /*
+         List<Pays> pp1 = RequetesPays.listerPays();
+         System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
+         { System.out.println("Élément à l'index " + i + " = " +
+         pp1.get(i).getIdPays() + " = " + pp1.get(i).getPays()); }
+              
+        */
+        Article ww = new Article();
+        RequetesArticle zz= new RequetesArticle();
+        ww =  RequetesArticle.ArticleId(1);
+        System.out.println(ww.getLibelle().toString());
+       
         
         
-     //   VueMenu vmenu =new VueMenu();
-      // vmenu.setVisible(true);
-           
-       VueVilleModifie vv= new VueVilleModifie();
-         vv.setVisible(true);
+        
+        
+        
+        
+        
+    }
     
-         
-        }
 }

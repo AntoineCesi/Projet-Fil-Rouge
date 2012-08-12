@@ -134,10 +134,14 @@ public class VueVille extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxPaysActionPerformed
 
     private void jButtonVilleValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVilleValiderActionPerformed
-      // System.out.println("id_pays" + ((Pays)jComboBoxPays.getSelectedItem()).getIdPays());
-      // System.out.println("cp " +jTextFieldCpCreationVille.getText());
-       //System.out.println("vile"+jTextFieldVilleCreationVille.getText());
-       RequetesVille.ecrireVille(((Pays)jComboBoxPays.getSelectedItem()).getIdPays(), jTextFieldVilleCreationVille.getText().toUpperCase(),jTextFieldCpCreationVille.getText());
+        try {
+            // System.out.println("id_pays" + ((Pays)jComboBoxPays.getSelectedItem()).getIdPays());
+            // System.out.println("cp " +jTextFieldCpCreationVille.getText());
+             //System.out.println("vile"+jTextFieldVilleCreationVille.getText());
+             RequetesVille.insertVille(((Pays)jComboBoxPays.getSelectedItem()).getIdPays(), jTextFieldVilleCreationVille.getText().toUpperCase(),jTextFieldCpCreationVille.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(VueVille.class.getName()).log(Level.SEVERE, null, ex);
+        }
          this.dispose();
     }//GEN-LAST:event_jButtonVilleValiderActionPerformed
 

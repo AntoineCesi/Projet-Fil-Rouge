@@ -4,6 +4,7 @@
  */
 package projetrf.data;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +20,7 @@ import projetrf.model.Pays;
  * @author Windows XP
  */
 public class RequetesInterlocuteur {
-    
+
     public int idInter;
     public int idUtilisateur;
     public int idVille;
@@ -27,96 +28,102 @@ public class RequetesInterlocuteur {
     public String nom;
     public String prenom;
     public String email;
-    
-    
-    public static int ecrireInterlocuteur(int idutilisateur,int idville,int idservice,String nom, String prenom,String email )
-    {
-        int result;
+
+    public static void insertInterlocuteur(int idutilisateur, int idville, int idservice, String nom, String prenom, String email) throws SQLException {
         String query;
-        int cri1 = idutilisateur;       
-        int cri2 = idville;
-        int cri3 = idservice;
-        String cri4 = nom;
-        String cri5 = prenom;
-        String cri6 = email;       
-        
+
         try {
-            Statement statement = ConnectionBDD.getInstance().getStatement();
-            
-            query = "INSERT INTO INTERLOCUTEUR (ID_UTILISATEUR,ID_VILLE,ID_SERVICE,INTNOM,INTPRENOM,INTEMAIL) VALUES ("+cri1+","+cri2+","+cri3+",'"+cri4+"','"+cri5+"','"+cri6+"') "; 
-            
-            statement.executeUpdate(query);
-            result = 0;
+
+            query = "INSERT INTO INTERLOCUTEUR (ID_UTILISATEUR,ID_VILLE,ID_SERVICE,INTNOM,INTPRENOM,INTEMAIL) VALUES (?,?,?,?,?,?) ";
+
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setInt(1, idutilisateur);
+            pStatement.setInt(2, idville);
+            pStatement.setInt(3, idservice);
+            pStatement.setString(4, nom);
+            pStatement.setString(5, prenom);
+            pStatement.setString(6, email);
+            pStatement.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
-            result = -1;
         }
-        return 0;
+
 
     }
-    
-    
-      public static Interlocuteur  selectId( int id)
-    {
-        String query=null;
-        int cri1 = 2;        
-        Interlocuteur  interlocuteur1 =new Interlocuteur();
-        ResultSet resultat;      
-       
-        try {
-            Statement statement = ConnectionBDD.getInstance().getStatement();
 
-            query = "SELECT * from INTERLOCUTEUR where ID_INTERLOCUTEUR='" + cri1 + "' ";
-            resultat = statement.executeQuery(query);
-            
+    public static Interlocuteur selectId(int id) throws SQLException {
+        String query = null;
+
+        Interlocuteur interlocuteur1 = new Interlocuteur();
+        ResultSet resultat;
+
+        try {
+
+            query = "SELECT * from INTERLOCUTEUR where ID_INTERLOCUTEUR=? ";
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setInt(1, id);
+            resultat = pStatement.executeQuery();
+
             while (resultat.next()) {
-               System.out.println(resultat.getString("INTNOM")); 
-               interlocuteur1 =new Interlocuteur(resultat.getInt("ID_INTERLOCUTEUR"),resultat.getInt("ID_VILLE"),resultat.getInt("ID_SERVICE"),resultat.getString("INTNOM"),resultat.getString("INTPRENOM"),resultat.getString("INTEMAIL"));
-               
-              /* interlocuteur1.setIdInterlocuteur(resultat.getInt("ID_INTERLOCUTEUR"));
-               interlocuteur1.setIdVille(resultat.getInt("ID_VILLE"));
-               interlocuteur1.setNom(resultat.getString("INTNOM"));
-               interlocuteur1.setPrenom(resultat.getString("INTPRENOM"));
-               interlocuteur1.setEmail(resultat.getString("INTEMAIL"));   */          
+               // System.out.println(resultat.getString("INTNOM"));
+                interlocuteur1 = new Interlocuteur(resultat.getInt("ID_INTERLOCUTEUR"), resultat.getInt("ID_VILLE"), resultat.getInt("ID_SERVICE"), resultat.getString("INTNOM"), resultat.getString("INTPRENOM"), resultat.getString("INTEMAIL"));
 
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
-           
+
         }
-        return interlocuteur1;        
+        return interlocuteur1;
     }
-    
-        public static List<Interlocuteur> listerInterlocuteur( )
-    {
-       String query=null;          
-        List<Interlocuteur> interlocuteur1 =new ArrayList<Interlocuteur>();
-        ResultSet resultat; 
-        
-       
+
+    public static List<Interlocuteur> selectInterlocuteur() {
+        String query = null;
+        List<Interlocuteur> interlocuteur1 = new ArrayList<Interlocuteur>();
+        ResultSet resultat;
         try {
-            Statement statement = ConnectionBDD.getInstance().getStatement();
             query = "SELECT * from INTERLOCUTEUR  ";
-            resultat = statement.executeQuery(query);
-           
-            while (resultat.next()) {
-               System.out.println(resultat.getString("INTNOM"));                
-               Interlocuteur ii = new Interlocuteur(resultat.getInt("ID_INTERLOCUTEUR"),resultat.getInt("ID_VILLE"),resultat.getInt("ID_SERVICE"),resultat.getString("INTNOM"),resultat.getString("INTPRENOM"),resultat.getString("INTEMAIL"));
-               interlocuteur1.add(ii);                               
-               
-            }
-            
-           
-        } catch (SQLException ex) {
-            Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
-           
-        }
+            PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
+            resultat = pStatement.executeQuery(query);
 
+            while (resultat.next()) {
+                System.out.println(resultat.getString("INTNOM"));
+                Interlocuteur ii = new Interlocuteur(resultat.getInt("ID_INTERLOCUTEUR"), resultat.getInt("ID_VILLE"), resultat.getInt("ID_SERVICE"), resultat.getString("INTNOM"), resultat.getString("INTPRENOM"), resultat.getString("INTEMAIL"));
+                interlocuteur1.add(ii);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
 
         return interlocuteur1;
 
-        
+
+    }
+    
+      public static void updateInterlocuteur(int id,int idutilisateur, int idville, int idservice, String nom, String prenom, String email) throws SQLException {
+       
+        String query;
+        try {
+            query = "UPDATE INTERLOCUTEUR set ID_UTILISATEUR=?,ID_VILLE=?,ID_SERVICE=?,INTNOM=?,INTPRENOM=?,INTEMAIL=?  WHERE ID_INTERLOCUTEUR=?";
+            PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setInt(7, id);
+            pStatement.setInt(1, idutilisateur);
+            pStatement.setInt(2, idville);
+            pStatement.setInt(3, idservice);
+            pStatement.setString(4, nom);
+            pStatement.setString(5, prenom);
+            pStatement.setString(6, email);
+
+            pStatement.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+           
+        }
+       
     }
 }
