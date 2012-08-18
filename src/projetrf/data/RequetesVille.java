@@ -44,7 +44,7 @@ public class RequetesVille {
     }
       
      
-        public static int updateVille(int id,int idpays, String nom, String cp)throws SQLException
+        public static void updateVille(int id,int idpays, String nom, String cp)throws SQLException
     {
         int result;
         String query;
@@ -58,18 +58,17 @@ public class RequetesVille {
             pStatement.setString(3, cp);
             pStatement.executeUpdate();
             
-            result = 0;
         } 
         catch (SQLException ex) 
         {
             Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
-            result = -1;
+            
         }
-        return result;
+       
     }
     
         
-    public static Ville selectVilleId(int id) throws SQLException {
+    public static Ville selectVilleById(int id) throws SQLException {
 
         String query = null;
         Ville ville1 = new Ville();
@@ -98,7 +97,7 @@ public class RequetesVille {
         
         
         
-    public static List<Ville> villeCp(String cp) throws SQLException {
+    public static List<Ville> selectVilleByCp(String cp) throws SQLException {
 
         String query = null;
         List<Ville> ville1 = new ArrayList<Ville>();

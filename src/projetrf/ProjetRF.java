@@ -40,18 +40,28 @@ public class ProjetRF {
          pp1.get(i).getIdPays() + " = " + pp1.get(i).getPays()); }
               
         */
-        Article ww = new Article();
+       /* Article ww = new Article();
         RequetesArticle zz= new RequetesArticle();
-        ww =  RequetesArticle.ArticleId(1);
-        System.out.println(ww.getLibelle().toString());
+        RequetesArticle.updateArticle(1, 1, 1, "serviette", "123456789", 15.00F, 1);
+      */
+        /*  List<Article> aa=  RequetesArticle.selectArticleByLibelle("cray");
+          System.out.println(aa.size());
+          for (Article article : aa) {
+           System.out.println( article.getLibelle());
+        }*/
+          
        
+        /* List<Tva> pp1 = RequetesTva.listerTva();
+         System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
+         { System.out.println("Élément à l'index " + i + " = " +
+         pp1.get(i).getLibelle() + " = " + pp1.get(i).getTaux()); }*/
         
+      /* List<Entreprise> pp1 = RequetesEntreprise.selectEntreprise();
+         System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
+         { System.out.println("Élément à l'index " + i + " = " +
+         pp1.get(i).getNom() + " = " + pp1.get(i).getAdresse1()); }*/
         
-        
-        
-        
-        
-        
+       
     }
     
 }

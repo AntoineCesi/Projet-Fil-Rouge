@@ -34,18 +34,18 @@ public class RequetesArticle {
             PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
             pStatement.setInt(1, idCouleur);
             pStatement.setInt(2, idtva);
-            pStatement.setString(3, libelle);
+            pStatement.setString(3, libelle.toUpperCase());
             pStatement.setString(4, reference);
             pStatement.setFloat(5, prixht);
             pStatement.setInt(6, photo);
             pStatement.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequetesArticle.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }
 
-      public static Article ArticleId(int id)  throws SQLException {
+      public static Article selectArticleById(int id)  throws SQLException {
         String query = null;
         Article article = new Article();
         ResultSet resultat;
@@ -63,11 +63,90 @@ public class RequetesArticle {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequetesArticle.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return article ;
 
     }
+      
+    public static List<Article> selectArtcile() {
+        String query = null;
+        List<Article> listearticle = new ArrayList<Article>();
+        ResultSet resultat;
+        try {
+            query = "SELECT * from ARTICLE  ";
+            PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
+            resultat = pStatement.executeQuery(query);
+
+            while (resultat.next()) {
+                System.out.println(resultat.getString("ARTLIBELLE"));
+
+                Article aa = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"), resultat.getInt("ARTPHOTO"));
+                listearticle.add(aa);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesArticle.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return listearticle;
+
+    }
     
+   
+     
+      public static void updateArticle(int id,int idCouleur,int idtva,String libelle,String reference,float prixht, int photo) throws SQLException {
+       
+        String query;
+        try {
+            query = "UPDATE ARTICLE set ID_COULEUR=?,ID_TVA=?,ARTLIBELLE=?,ARTREF=?,ARTPRXHT=?,ARTPHOTO=?  WHERE ID_ARTICLE=? ";
+            
+            PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setInt(7, id);
+            pStatement.setInt(1, idCouleur);
+            pStatement.setInt(2, idtva);
+            pStatement.setString(3, libelle.toUpperCase());
+            pStatement.setString(4, reference);
+            pStatement.setFloat(5, prixht);
+            pStatement.setInt(6, photo);
+
+            pStatement.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesArticle.class.getName()).log(Level.SEVERE, null, ex);
+           
+        }
+       
+    }
+    
+      
+              
+       public static List<Article> selectArticleByLibelle(String libelle) throws SQLException {
+
+        String query = null;
+        List<Article> listearticle = new ArrayList<Article>();
+        ResultSet resultat;
+
+        try {
+            query = "SELECT  * from ARTICLE where ARTLIBELLE like ?";
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setString(1, libelle.toUpperCase() + "%");
+            resultat = pStatement.executeQuery();
+
+            while (resultat.next()) {
+                Article aa = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"), resultat.getInt("ARTPHOTO"));
+                listearticle.add(aa);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesArticle.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return listearticle;
+    }
+
 }

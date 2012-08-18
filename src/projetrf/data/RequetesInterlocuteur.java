@@ -52,7 +52,7 @@ public class RequetesInterlocuteur {
 
     }
 
-    public static Interlocuteur selectId(int id) throws SQLException {
+    public static Interlocuteur selectById(int id) throws SQLException {
         String query = null;
 
         Interlocuteur interlocuteur1 = new Interlocuteur();

@@ -52,7 +52,7 @@ public class RequetesUtilisateur {
         }
     }
 
-    public static Utilisateur utilisateurId(int id) throws SQLException {
+    public static Utilisateur selectUtilisateurById(int id) throws SQLException {
         String query = null;
 
         Utilisateur Util = new Utilisateur();
@@ -147,7 +147,7 @@ public class RequetesUtilisateur {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequetesUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return util;

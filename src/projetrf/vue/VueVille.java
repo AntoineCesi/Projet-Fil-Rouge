@@ -147,7 +147,7 @@ public class VueVille extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            List<Pays> pp1 = RequetesPays.listerPays();
+            List<Pays> pp1 = RequetesPays.selectPays();
             for (Pays pays : pp1) {
                 jComboBoxPays.addItem(pays);
             }

@@ -24,13 +24,13 @@ public class RequetesPays {
     public int idPays;
     public String pays ;   
     
-    public static void ecrirePays(String pays) throws SQLException {
+    public static void insertPays(String pays) throws SQLException {
 
         String query;
 
         
         try {
-            query = "INSERT INTO PAYS (PAYS) VALUES VALUES(?);";
+            query = "INSERT INTO PAYS (PAYS) VALUES (?);";
             PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
             pStatement.setString(1, pays);
             pStatement.executeUpdate();
@@ -41,7 +41,7 @@ public class RequetesPays {
         }
     }
     
-    public static Pays paysId(int id)  throws SQLException {
+    public static Pays selectPaysById(int id)  throws SQLException {
         String query = null;
       
         Pays pays1 = new Pays();
@@ -85,7 +85,7 @@ public class RequetesPays {
         return result;
     }
      
-    public static List<Pays> listerPays()  throws SQLException {
+    public static List<Pays> selectPays()  throws SQLException {
       
         String query = null;
         List<Pays> pays1 = new ArrayList<Pays>();

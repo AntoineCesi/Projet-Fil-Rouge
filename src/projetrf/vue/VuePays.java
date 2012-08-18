@@ -96,7 +96,7 @@ public class VuePays extends javax.swing.JFrame {
                
             try 
         {
-             RequetesPays.ecrirePays(jTextFieldPays.getText().toUpperCase());
+             RequetesPays.insertPays(jTextFieldPays.getText().toUpperCase());
         } 
         catch (SQLException ex) 
         {
