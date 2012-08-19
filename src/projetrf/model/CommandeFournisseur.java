@@ -71,7 +71,7 @@ public class CommandeFournisseur {
 
     @Override
     public String toString() {
-        return "CommandeFournisseur{" + "referencefournisseur=" + referencefournisseur + '}';
+        return "referencefournisseur=" + referencefournisseur + "";
     }
     
     

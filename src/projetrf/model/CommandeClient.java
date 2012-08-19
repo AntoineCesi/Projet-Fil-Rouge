@@ -81,7 +81,7 @@ public class CommandeClient {
 
     @Override
     public String toString() {
-        return "CommandeClient{" + "referencecommandeclient=" + referencecommandeclient + '}';
+        return "+ referencecommandeclient=" + referencecommandeclient + '}';
     }
 
     

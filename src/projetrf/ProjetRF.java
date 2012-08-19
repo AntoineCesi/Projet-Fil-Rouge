@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -67,7 +68,7 @@ public class ProjetRF {
       
         /* manipulliationde de date*/
        
-      /*  Date  madate=new Date();
+     /*  Date  madate=new Date();
     
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         Date date = null;
@@ -76,22 +77,22 @@ public class ProjetRF {
             date = df.parse("20-03-2011");
              System.out.println(date);
              
-             RequetesActionCom.updateActionCom(5,1, 1, date, "test5");
+           
         } catch (ParseException e) {
             System.out.println(e);
-        }*/
-      
+        }
+      */
+       
+        
+       
          
-     List<ActionType> pp1 = RequetesActionType.selectActionType();
+     /* List< LigneCommandeClient> pp1 = RequetesLigneCommandeClient.selectLigneCommandeClient();
          System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
          { System.out.println("Élément à l'index " + i + " = " +
-         pp1.get(i).getIdactiontype() + " = " + pp1.get(i).getTypelibelle()); }
-        
-      
-        
+         pp1.get(i).getIdcommande() + " = " + pp1.get(i).toString()+"-"+pp1.get(i).getQuantite()); }*/
      
-        
-        
+  
+        RequetesLigneCommandeFournisseur.updateLigneCommandeFournisseur(1,1, 1,3, 10.00F, 10.00F, 0.00F);
         
         
     }     

@@ -13,7 +13,7 @@ public class LigneCommandeFournisseur {
     private int idlignefournisseur;
     private int idcommandefournisseur;
     private int idarticle;
-    private Float quantite;
+    private int quantite;
     private Float prixht;
     private Float prixttc;
     private Float remise;
@@ -58,11 +58,11 @@ public class LigneCommandeFournisseur {
         this.prixttc = prixttc;
     }
 
-    public Float getQuantite() {
+    public int getQuantite() {
         return quantite;
     }
 
-    public void setQuantite(Float quantite) {
+    public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
 
@@ -77,7 +77,7 @@ public class LigneCommandeFournisseur {
     public LigneCommandeFournisseur() {
     }
 
-    public LigneCommandeFournisseur(int idlignefournisseur, int idcommandefournisseur, int idarticle, Float quantite, Float prixht, Float prixttc, Float remise) {
+    public LigneCommandeFournisseur(int idlignefournisseur, int idcommandefournisseur, int idarticle, int quantite, Float prixht, Float prixttc, Float remise) {
         this.idlignefournisseur = idlignefournisseur;
         this.idcommandefournisseur = idcommandefournisseur;
         this.idarticle = idarticle;
@@ -86,7 +86,13 @@ public class LigneCommandeFournisseur {
         this.prixttc = prixttc;
         this.remise = remise;
     }
-    
+
+    @Override
+    public String toString() {
+        return "LigneCommandeFournisseur{" + "idlignefournisseur=" + idlignefournisseur + ", idcommandefournisseur=" + idcommandefournisseur + ", idarticle=" + idarticle + ", quantite=" + quantite + ", prixht=" + prixht + ", prixttc=" + prixttc + ", remise=" + remise + '}';
+    }
+
+  
     
     
 }

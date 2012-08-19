@@ -86,6 +86,11 @@ public class LigneCommandeClient {
         this.prixttc = prixttc;
         this.remise = remise;
     }
+
+    @Override
+    public String toString() {
+        return "LigneCommandeClient{" + "idlignecommandeclient=" + idlignecommandeclient + ", idarticle=" + idarticle + ", idcommande=" + idcommande + ", quantite=" + quantite + ", prixht=" + prixht + ", prixttc=" + prixttc + ", remise=" + remise + '}';
+    }
     
    
 }
