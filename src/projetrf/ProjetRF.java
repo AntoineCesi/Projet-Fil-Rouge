@@ -5,6 +5,10 @@
 package projetrf;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,8 +64,36 @@ public class ProjetRF {
          System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
          { System.out.println("Élément à l'index " + i + " = " +
          pp1.get(i).getNom() + " = " + pp1.get(i).getAdresse1()); }*/
-        
+      
+        /* manipulliationde de date*/
        
-    }
+      /*  Date  madate=new Date();
+    
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = null;
+        
+        try {
+            date = df.parse("20-03-2011");
+             System.out.println(date);
+             
+             RequetesActionCom.updateActionCom(5,1, 1, date, "test5");
+        } catch (ParseException e) {
+            System.out.println(e);
+        }*/
+      
+         
+     List<ActionType> pp1 = RequetesActionType.selectActionType();
+         System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
+         { System.out.println("Élément à l'index " + i + " = " +
+         pp1.get(i).getIdactiontype() + " = " + pp1.get(i).getTypelibelle()); }
+        
+      
+        
+     
+        
+        
+        
+        
+    }     
     
 }

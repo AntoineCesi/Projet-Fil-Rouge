@@ -9,9 +9,9 @@ package projetrf.model;
  * @author Travail
  */
 public class ActionType {
-    
+
     private int idactiontype;
-    private int typelibelle;
+    private String typelibelle;
 
     public int getIdactiontype() {
         return idactiontype;
@@ -21,26 +21,26 @@ public class ActionType {
         this.idactiontype = idactiontype;
     }
 
-    public int getTypelibelle() {
+    public String getTypelibelle() {
         return typelibelle;
     }
 
-    public void setTypelibelle(int typelibelle) {
+    public void setTypelibelle(String typelibelle) {
         this.typelibelle = typelibelle;
     }
 
     public ActionType() {
     }
 
-    public ActionType(int idactiontype, int typelibelle) {
+    public ActionType(int idactiontype, String typelibelle) {
         this.idactiontype = idactiontype;
         this.typelibelle = typelibelle;
     }
+
+  
 
     @Override
     public String toString() {
         return "ActionType{" + "typelibelle=" + typelibelle + '}';
     }
-   
-    
 }

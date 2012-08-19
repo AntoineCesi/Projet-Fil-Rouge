@@ -92,5 +92,24 @@ public class Mestest {
 
             frame.setSize(300, 200);
             frame.setVisible(true);*/
+        
+        
+          /* manipulliationde de date*/
+        /*
+        Date  madate=new Date();
+    
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = null;
+        
+        try {
+            date = df.parse("25-12-2010");
+             System.out.println(date);
+             
+             RequetesActionCom.insertActionCom(1, 1, date, "test");
+        } catch (ParseException e) {
+            System.out.println(e);
+        }
+      */
+        
     }    
 }

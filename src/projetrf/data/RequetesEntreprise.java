@@ -106,7 +106,7 @@ public class RequetesEntreprise {
             }
 
         } catch (SQLException ex) {
-           Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(RequetesEntreprise.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         
