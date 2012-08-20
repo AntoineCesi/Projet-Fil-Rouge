@@ -16,7 +16,7 @@ public class Article {
     private String libelle;
     private String reference;
     private float prixht;    
-    private int photo;
+    private String photo;
     
     public int getId() {
         return id;
@@ -50,11 +50,11 @@ public class Article {
         this.libelle = libelle;
     }
 
-    public int getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(int photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
@@ -77,7 +77,7 @@ public class Article {
     public Article() {
     }
 
-    public Article(int id, int idCouleur, int idtva, String libelle, String reference, float prixht, int photo) {
+    public Article(int id, int idCouleur, int idtva, String libelle, String reference, float prixht, String photo) {
         this.id = id;
         this.idCouleur = idCouleur;
         this.idtva = idtva;

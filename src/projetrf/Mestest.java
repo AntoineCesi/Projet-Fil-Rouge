@@ -4,11 +4,14 @@
  */
 package projetrf;
 
+import java.sql.SQLException;
 import java.util.List;
 import projetrf.data.RequetesInterlocuteur;
 import projetrf.data.RequetesPays;
+import projetrf.data.RequetesStock;
 import projetrf.model.Interlocuteur;
 import projetrf.model.Pays;
+import projetrf.model.Stock;
 import projetrf.vue.VueVille;
 
 
@@ -18,7 +21,7 @@ import projetrf.vue.VueVille;
  */
 public class Mestest {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         
              
         //RequetesPays pp= new RequetesPays();  pays ok
@@ -110,6 +113,14 @@ public class Mestest {
             System.out.println(e);
         }
       */
-        
+           
+         
+     List< Stock> pp1 = RequetesStock.selectStock();
+         System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
+         { System.out.println("Élément à l'index " + i + " = " +
+         pp1.get(i).getIdstock() + " = " +"-"+pp1.get(i).getDatemaj()); }
+         
+         
+         
     }    
 }

@@ -83,17 +83,9 @@ public class ProjetRF {
         }
       */
        
-        
-       
-         
-     List< Stock> pp1 = RequetesStock.selectStock();
-         System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
-         { System.out.println("Élément à l'index " + i + " = " +
-         pp1.get(i).getIdstock() + " = " +"-"+pp1.get(i).getDatemaj()); }
-         
-         
-     Date  madate=new Date();
-  
+      
+    
+     
      
         
         /*VueCouleur vv =new VueCouleur();

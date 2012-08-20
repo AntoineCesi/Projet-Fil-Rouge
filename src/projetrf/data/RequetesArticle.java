@@ -25,7 +25,7 @@ public class RequetesArticle {
     public float prixht;    
     public int photo;
     
-     public static void insertArticle(int idCouleur, int idtva, String libelle, String reference, float prixht, int photo) throws SQLException {
+     public static void insertArticle(int idCouleur, int idtva, String libelle, String reference, float prixht, String photo) throws SQLException {
 
         String query;
         try {
@@ -37,7 +37,7 @@ public class RequetesArticle {
             pStatement.setString(3, libelle.toUpperCase());
             pStatement.setString(4, reference);
             pStatement.setFloat(5, prixht);
-            pStatement.setInt(6, photo);
+            pStatement.setString(6, photo);
             pStatement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(RequetesArticle.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,7 +59,7 @@ public class RequetesArticle {
           
             while (resultat.next()) {
              //System.out.println(resultat.getString("ARTLIBELLE"));
-             article = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"),resultat.getInt("ARTPHOTO"));
+             article = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"),resultat.getString("ARTPHOTO"));
             }
 
         } catch (SQLException ex) {
@@ -82,7 +82,7 @@ public class RequetesArticle {
             while (resultat.next()) {
                 System.out.println(resultat.getString("ARTLIBELLE"));
 
-                Article aa = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"), resultat.getInt("ARTPHOTO"));
+                Article aa = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"), resultat.getString("ARTPHOTO"));
                 listearticle.add(aa);
 
             }
@@ -137,7 +137,7 @@ public class RequetesArticle {
             resultat = pStatement.executeQuery();
 
             while (resultat.next()) {
-                Article aa = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"), resultat.getInt("ARTPHOTO"));
+                Article aa = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"), resultat.getString("ARTPHOTO"));
                 listearticle.add(aa);
             }
 
