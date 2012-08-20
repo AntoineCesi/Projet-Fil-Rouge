@@ -31,10 +31,10 @@ public class ProjetRF {
     public static void main(String[] args) throws SQLException {
         // VueVille vv= new VueVille();
         // vv.setVisible(true);
-        // VueMenu vmenu =new VueMenu();
-        // vmenu.setVisible(true);
-        // VueVilleModifie vv= new VueVilleModifie();
-        //   vv.setVisible(true);
+      // VueMenu vmenu =new VueMenu();
+      //vmenu.setVisible(true);
+       //VueVilleModifie vv= new VueVilleModifie();
+       //  vv.setVisible(true);
         //   RequetesPays pp= new RequetesPays();     
         // Pays py= RequetesPays.paysId(2);     
        
@@ -86,15 +86,21 @@ public class ProjetRF {
         
        
          
-     /* List< LigneCommandeClient> pp1 = RequetesLigneCommandeClient.selectLigneCommandeClient();
+     List< Stock> pp1 = RequetesStock.selectStock();
          System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
          { System.out.println("Élément à l'index " + i + " = " +
-         pp1.get(i).getIdcommande() + " = " + pp1.get(i).toString()+"-"+pp1.get(i).getQuantite()); }*/
-     
+         pp1.get(i).getIdstock() + " = " +"-"+pp1.get(i).getDatemaj()); }
+         
+         
+     Date  madate=new Date();
   
-        RequetesLigneCommandeFournisseur.updateLigneCommandeFournisseur(1,1, 1,3, 10.00F, 10.00F, 0.00F);
+     
         
-        
-    }     
+        /*VueCouleur vv =new VueCouleur();
+        vv.setVisible(true);*/
+     
+    /* VueCouleur vv= new VueCouleur();
+       vv.setVisible(true);*/
+    }
     
 }
