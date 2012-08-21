@@ -56,11 +56,7 @@ public class ProjetRF {
         }*/
           
        
-        /* List<Tva> pp1 = RequetesTva.listerTva();
-         System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
-         { System.out.println("Élément à l'index " + i + " = " +
-         pp1.get(i).getLibelle() + " = " + pp1.get(i).getTaux()); }*/
-        
+              
       /* List<Entreprise> pp1 = RequetesEntreprise.selectEntreprise();
          System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
          { System.out.println("Élément à l'index " + i + " = " +
@@ -83,16 +79,22 @@ public class ProjetRF {
         }
       */
        
+      // VuePays vv= new VuePays();
+      // vv.setVisible(true);
       
-    
-     
-     
+       // VueVilleModifie vv= new VueVilleModifie();
+         //vv.setVisible(true);
+       
+       //  VueInterlocuteur vv= new VueInterlocuteur();
+        // vv.setVisible(true);
         
-        /*VueCouleur vv =new VueCouleur();
-        vv.setVisible(true);*/
-     
-    /* VueCouleur vv= new VueCouleur();
-       vv.setVisible(true);*/
+      
+        RequetesCommercial.updateCommercial(5,2, 2, "dupontel", "charlis", "", "");
+        
+    /* List<Commercial> pp1 = RequetesCommercial.selectCommercial();
+         System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
+         { System.out.println("Élément à l'index " + i + " = " +
+         pp1.get(i).getNom() + " = " + pp1.get(i).getPrenom()); }*/
     }
-    
+   
 }

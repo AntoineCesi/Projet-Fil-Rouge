@@ -10,9 +10,9 @@ package projetrf.model;
  */
 public class Interlocuteur {
     
-   private int idInterlocuteur;
-   private int idUtilisateur;
-   private int idVille;
+   private int idinterlocuteur;
+   private int idcommercial;
+   private int idville;
    private int idservice;
    private String nom;
    private String prenom;
@@ -26,28 +26,20 @@ public class Interlocuteur {
         this.email = email;
     }
 
-    public int getIdInterlocuteur() {
-        return idInterlocuteur;
+    public int getIdcommercial() {
+        return idcommercial;
     }
 
-    public void setIdInterlocuteur(int idInterlocuteur) {
-        this.idInterlocuteur = idInterlocuteur;
+    public void setIdcommercial(int idcommercial) {
+        this.idcommercial = idcommercial;
     }
 
-    public int getIdUtilisateur() {
-        return idUtilisateur;
+    public int getIdinterlocuteur() {
+        return idinterlocuteur;
     }
 
-    public void setIdUtilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
-    }
-
-    public int getIdVille() {
-        return idVille;
-    }
-
-    public void setIdVille(int idVille) {
-        this.idVille = idVille;
+    public void setIdinterlocuteur(int idinterlocuteur) {
+        this.idinterlocuteur = idinterlocuteur;
     }
 
     public int getIdservice() {
@@ -56,6 +48,14 @@ public class Interlocuteur {
 
     public void setIdservice(int idservice) {
         this.idservice = idservice;
+    }
+
+    public int getIdville() {
+        return idville;
+    }
+
+    public void setIdville(int idville) {
+        this.idville = idville;
     }
 
     public String getNom() {
@@ -77,19 +77,10 @@ public class Interlocuteur {
     public Interlocuteur() {
     }
 
-    public Interlocuteur(int idInterlocuteur, int idUtilisateur, int idVille, int idservice, String nom, String prenom, String email) {
-        this.idInterlocuteur = idInterlocuteur;
-        this.idUtilisateur = idUtilisateur;
-        this.idVille = idVille;
-        this.idservice = idservice;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-    }
-
-    public Interlocuteur(int idUtilisateur, int idVille, int idservice, String nom, String prenom, String email) {
-        this.idUtilisateur = idUtilisateur;
-        this.idVille = idVille;
+    public Interlocuteur(int idinterlocuteur, int idcommercial, int idville, int idservice, String nom, String prenom, String email) {
+        this.idinterlocuteur = idinterlocuteur;
+        this.idcommercial = idcommercial;
+        this.idville = idville;
         this.idservice = idservice;
         this.nom = nom;
         this.prenom = prenom;

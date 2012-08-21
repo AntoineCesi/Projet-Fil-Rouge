@@ -18,23 +18,23 @@ public class Utilisateur {
     private int idVille;
     private String nom;
     private String prenom;
-    private String adresse1;
-    private String adresse2;
+    private String identifiant;
+    private String password;
 
-    public String getAdresse1() {
-        return adresse1;
+    public String getidentifiant() {
+        return identifiant;
     }
 
-    public void setAdresse1(String adresse1) {
-        this.adresse1 = adresse1;
+    public void setidentifiant(String identifiant) {
+        this.identifiant = identifiant;
     }
 
-    public String getAdresse2() {
-        return adresse2;
+    public String getpassword() {
+        return password;
     }
 
-    public void setAdresse2(String adresse2) {
-        this.adresse2 = adresse2;
+    public void setpassword(String password) {
+        this.password = password;
     }
 
     public int getIdFonction() {
@@ -80,23 +80,23 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-    public Utilisateur(int idUtilisateur, int idFonction, int idVille, String nom, String prenom, String adresse1, String adresse2) {
+    public Utilisateur(int idUtilisateur, int idFonction, int idVille, String nom, String prenom, String identifiant, String password) {
         this.idUtilisateur = idUtilisateur;
         this.idFonction = idFonction;
         this.idVille = idVille;
         this.nom = nom;
         this.prenom = prenom;
-        this.adresse1 = adresse1;
-        this.adresse2 = adresse2;
+        this.identifiant = identifiant;
+        this.password = password;
     }
 
-    public Utilisateur(int idFonction, int idVille, String nom, String prenom, String adresse1, String adresse2) {
+    public Utilisateur(int idFonction, int idVille, String nom, String prenom, String identifiant, String password) {
         this.idFonction = idFonction;
         this.idVille = idVille;
         this.nom = nom;
         this.prenom = prenom;
-        this.adresse1 = adresse1;
-        this.adresse2 = adresse2;
+        this.identifiant = identifiant;
+        this.password = password;
     }
 
    

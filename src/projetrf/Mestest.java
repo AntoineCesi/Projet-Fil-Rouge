@@ -120,7 +120,8 @@ public class Mestest {
          { System.out.println("Élément à l'index " + i + " = " +
          pp1.get(i).getIdstock() + " = " +"-"+pp1.get(i).getDatemaj()); }
          
-         
+        
+        
          
     }    
 }

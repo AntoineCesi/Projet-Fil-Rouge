@@ -133,7 +133,7 @@ public class RequetesVille {
         ResultSet resultat;
 
         try {
-            query = "SELECT  * from VILLE where VINOM like ?";
+            query = "SELECT  * from VILLE   where VINOM like ? order by VINOM asc";
             PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
             pStatement.setString(1, name.toUpperCase() + "%");
             resultat = pStatement.executeQuery();

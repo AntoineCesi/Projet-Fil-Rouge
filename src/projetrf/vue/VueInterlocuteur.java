@@ -4,6 +4,20 @@
  */
 package projetrf.vue;
 
+import java.awt.event.ItemEvent;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import projetrf.data.RequetesInterlocuteur;
+import projetrf.data.RequetesUtilisateur;
+import projetrf.data.RequetesVille;
+import projetrf.model.Interlocuteur;
+import projetrf.model.Utilisateur;
+import projetrf.model.Ville;
+
 /**
  *
  * @author plepelletier
@@ -28,7 +42,7 @@ public class VueInterlocuteur extends javax.swing.JFrame {
 
         jLabelClient = new javax.swing.JLabel();
         jLabelClientNom = new javax.swing.JLabel();
-        jTextFieldClientNom = new javax.swing.JTextField();
+        jTextFieldClientNomSeach = new javax.swing.JTextField();
         jButtonClientAjouter = new javax.swing.JButton();
         jLabelClientPrenom = new javax.swing.JLabel();
         jLabelClientEmail = new javax.swing.JLabel();
@@ -38,15 +52,28 @@ public class VueInterlocuteur extends javax.swing.JFrame {
         jTextFieldClientCP = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
+        jLabelClientNom1 = new javax.swing.JLabel();
+        jTextFieldClientNomModifier = new javax.swing.JTextField();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldInterlocuteurCommercial = new javax.swing.JTextField();
+        jLabelClientEmail1 = new javax.swing.JLabel();
+        jTextFieldClientEmail1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabelClient.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelClient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelClient.setText("Client");
+        jLabelClient.setText("Interlocuteur");
 
-        jLabelClientNom.setText("Entrez un Nom : ");
+        jLabelClientNom.setText("Recherche");
+
+        jTextFieldClientNomSeach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldClientNomSeachKeyPressed(evt);
+            }
+        });
 
         jButtonClientAjouter.setText("Ajouter");
         jButtonClientAjouter.addActionListener(new java.awt.event.ActionListener() {
@@ -55,55 +82,93 @@ public class VueInterlocuteur extends javax.swing.JFrame {
             }
         });
 
-        jLabelClientPrenom.setText("Entrez un prenom : ");
+        jLabelClientPrenom.setText("Prénom");
 
-        jLabelClientEmail.setText("Entrez un Email : ");
+        jLabelClientEmail.setText("Email : ");
 
-        jLabelClientCP.setText("Entrez un CP : ");
+        jLabelClientCP.setText(" Code Postal");
 
         jLabel1.setText("Ville : ");
+
+        jLabelClientNom1.setText("Nom");
+
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
+
+        jLabel2.setText("Commercial");
+
+        jLabelClientEmail1.setText("Ville");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelClient, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonClientAjouter))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jLabelClientNom)
+                        .addGap(73, 73, 73)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox2, 0, 265, Short.MAX_VALUE)
+                            .addComponent(jTextFieldClientNomSeach))
+                        .addContainerGap(109, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelClientEmail)
-                                    .addComponent(jLabelClientCP)
-                                    .addComponent(jLabelClientPrenom)
-                                    .addComponent(jLabelClientNom))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelClientCP)
+                                .addGap(26, 26, 26)
+                                .addComponent(jTextFieldClientCP, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldClientNom)
-                                    .addComponent(jTextFieldClientPrenom)
+                                    .addComponent(jButtonClientAjouter)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextFieldClientCP, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox1, 0, 204, Short.MAX_VALUE))
-                                    .addComponent(jTextFieldClientEmail)))
-                            .addComponent(jLabelClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                                        .addComponent(jLabelClientEmail1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(jTextFieldClientEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelClientNom1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabelClientPrenom)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabelClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(36, 36, 36)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldClientPrenom, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jTextFieldClientNomModifier, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jTextFieldInterlocuteurCommercial)
+                                            .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(jLabelClient)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelClientNom)
-                    .addComponent(jTextFieldClientNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldClientNomSeach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldInterlocuteurCommercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientNom1)
+                    .addComponent(jTextFieldClientNomModifier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelClientPrenom)
@@ -114,13 +179,17 @@ public class VueInterlocuteur extends javax.swing.JFrame {
                     .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelClientEmail1)
+                    .addComponent(jTextFieldClientEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelClientCP)
                     .addComponent(jTextFieldClientCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(41, 41, 41)
                 .addComponent(jButtonClientAjouter)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(51, 51, 51))
         );
 
         pack();
@@ -129,6 +198,71 @@ public class VueInterlocuteur extends javax.swing.JFrame {
     private void jButtonClientAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClientAjouterActionPerformed
 
     }//GEN-LAST:event_jButtonClientAjouterActionPerformed
+
+    private void jTextFieldClientNomSeachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldClientNomSeachKeyPressed
+        try {
+
+            List<Interlocuteur> inter = RequetesInterlocuteur.selectInterlocuteurByName(jTextFieldClientNomSeach.getText());
+            //System.out.println(vv1.getNom()+""+vv1.getPrenom());
+            jComboBox2.removeAllItems();
+          
+            for (Interlocuteur interlocuteur : inter) {
+                jComboBox2.addItem(interlocuteur);
+                //System.out.println(interlocuteur.getIdInterlocuteur()+"+"+ interlocuteur.getEmail());
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VueInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jTextFieldClientNomSeachKeyPressed
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        
+        // mettre les infos dans les case
+         if (evt.getStateChange() == ItemEvent.SELECTED) {
+
+            Interlocuteur interlocuteur = ((Interlocuteur) this.jComboBox2.getSelectedItem());
+            String  nominter = interlocuteur.getNom();
+            String  prenominter = interlocuteur.getPrenom();
+            String  emailnter = interlocuteur.getEmail();
+            
+         /*   Utilisateur util = null;
+            try {
+                util = RequetesUtilisateur.selectById(interlocuteur.getIdUtilisateur());
+            } catch (SQLException ex) {
+                Logger.getLogger(VueInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            String  commercialinter  = util.getNom();
+            
+            Ville ville=null;
+            try {
+                ville =RequetesVille.selectVilleById(interlocuteur.getIdVille());
+            } catch (SQLException ex) {
+                Logger.getLogger(VueInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            */
+            
+            
+            this.jTextFieldClientNomModifier.setText(nominter);
+            this.jTextFieldClientPrenom.setText(prenominter);
+            this.jTextFieldClientEmail.setText(emailnter);
+            
+          //  this.jTextFieldInterlocuteurCommercial.setText(commercialinter);
+            
+            
+           /* if (this.jComboBoxCouleurs.getSelectedIndex()!=0){
+                this.jLabelCouleurLibelle.setText("Modifiez la couleur : ");
+                this.jButtonCouleurValider.setText("Modifier");
+            }
+            else{
+                this.jLabelCouleurLibelle.setText("Entrez le libelle d'une nouvelle couleur : ");
+                this.jButtonCouleurValider.setText("Valider");
+            }*/
+        }
+         
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -174,15 +308,22 @@ public class VueInterlocuteur extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClientAjouter;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelClient;
     private javax.swing.JLabel jLabelClientCP;
     private javax.swing.JLabel jLabelClientEmail;
+    private javax.swing.JLabel jLabelClientEmail1;
     private javax.swing.JLabel jLabelClientNom;
+    private javax.swing.JLabel jLabelClientNom1;
     private javax.swing.JLabel jLabelClientPrenom;
     private javax.swing.JTextField jTextFieldClientCP;
     private javax.swing.JTextField jTextFieldClientEmail;
-    private javax.swing.JTextField jTextFieldClientNom;
+    private javax.swing.JTextField jTextFieldClientEmail1;
+    private javax.swing.JTextField jTextFieldClientNomModifier;
+    private javax.swing.JTextField jTextFieldClientNomSeach;
     private javax.swing.JTextField jTextFieldClientPrenom;
+    private javax.swing.JTextField jTextFieldInterlocuteurCommercial;
     // End of variables declaration//GEN-END:variables
 }

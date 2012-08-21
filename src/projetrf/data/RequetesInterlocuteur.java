@@ -21,23 +21,17 @@ import projetrf.model.Pays;
  */
 public class RequetesInterlocuteur {
 
-    public int idInter;
-    public int idUtilisateur;
-    public int idVille;
-    public int idService;
-    public String nom;
-    public String prenom;
-    public String email;
+   
 
-    public static void insertInterlocuteur(int idutilisateur, int idville, int idservice, String nom, String prenom, String email) throws SQLException {
+    public static void insertInterlocuteur(int idcommercial, int idville, int idservice, String nom, String prenom, String email) throws SQLException {
         String query;
 
         try {
 
-            query = "INSERT INTO INTERLOCUTEUR (ID_UTILISATEUR,ID_VILLE,ID_SERVICE,INTNOM,INTPRENOM,INTEMAIL) VALUES (?,?,?,?,?,?) ";
+            query = "INSERT INTO INTERLOCUTEUR (ID_COMMERCIAL,ID_VILLE,ID_SERVICE,INTNOM,INTPRENOM,INTEMAIL) VALUES (?,?,?,?,?,?) ";
 
             PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
-            pStatement.setInt(1, idutilisateur);
+            pStatement.setInt(1, idcommercial);
             pStatement.setInt(2, idville);
             pStatement.setInt(3, idservice);
             pStatement.setString(4, nom);
@@ -67,7 +61,7 @@ public class RequetesInterlocuteur {
 
             while (resultat.next()) {
                // System.out.println(resultat.getString("INTNOM"));
-                interlocuteur1 = new Interlocuteur(resultat.getInt("ID_INTERLOCUTEUR"), resultat.getInt("ID_VILLE"), resultat.getInt("ID_SERVICE"), resultat.getString("INTNOM"), resultat.getString("INTPRENOM"), resultat.getString("INTEMAIL"));
+                interlocuteur1 = new Interlocuteur(resultat.getInt("ID_INTERLOCUTEUR"),resultat.getInt("ID_COMMERCIAL"), resultat.getInt("ID_VILLE"), resultat.getInt("ID_SERVICE"), resultat.getString("INTNOM"), resultat.getString("INTPRENOM"), resultat.getString("INTEMAIL"));
 
             }
 
@@ -77,8 +71,33 @@ public class RequetesInterlocuteur {
         }
         return interlocuteur1;
     }
+    
+    public static List<Interlocuteur> selectInterlocuteurByName(String name) throws SQLException {
+        String query = null;
+        List<Interlocuteur> interlocuteur1 = new ArrayList<Interlocuteur>();
+        ResultSet resultat;
+        try {
+            query = "SELECT * from INTERLOCUTEUR where INTNOM like ? order by INTNOM asc ";
+            PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setString(1, name.toUpperCase() + "%");
+            resultat = pStatement.executeQuery();
 
-    public static List<Interlocuteur> selectInterlocuteur() {
+            while (resultat.next()) {
+                //System.out.println(resultat.getString("INTNOM"));
+                Interlocuteur ii = new Interlocuteur(resultat.getInt("ID_INTERLOCUTEUR"),resultat.getInt("ID_COMMERCIAL"), resultat.getInt("ID_VILLE"), resultat.getInt("ID_SERVICE"), resultat.getString("INTNOM"), resultat.getString("INTPRENOM"), resultat.getString("INTEMAIL"));
+                interlocuteur1.add(ii);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return interlocuteur1;
+    }
+
+    public static List<Interlocuteur> selectInterlocuteur() throws SQLException  {
         String query = null;
         List<Interlocuteur> interlocuteur1 = new ArrayList<Interlocuteur>();
         ResultSet resultat;
@@ -89,7 +108,7 @@ public class RequetesInterlocuteur {
 
             while (resultat.next()) {
                 System.out.println(resultat.getString("INTNOM"));
-                Interlocuteur ii = new Interlocuteur(resultat.getInt("ID_INTERLOCUTEUR"), resultat.getInt("ID_VILLE"), resultat.getInt("ID_SERVICE"), resultat.getString("INTNOM"), resultat.getString("INTPRENOM"), resultat.getString("INTEMAIL"));
+                Interlocuteur ii = new Interlocuteur(resultat.getInt("ID_INTERLOCUTEUR"),resultat.getInt("ID_COMMERCIAL") ,resultat.getInt("ID_VILLE"), resultat.getInt("ID_SERVICE"), resultat.getString("INTNOM"), resultat.getString("INTPRENOM"), resultat.getString("INTEMAIL"));
                 interlocuteur1.add(ii);
 
             }
@@ -104,14 +123,14 @@ public class RequetesInterlocuteur {
 
     }
     
-      public static void updateInterlocuteur(int id,int idutilisateur, int idville, int idservice, String nom, String prenom, String email) throws SQLException {
+      public static void updateInterlocuteur(int id,int idcommercial, int idville, int idservice, String nom, String prenom, String email) throws SQLException {
        
         String query;
         try {
-            query = "UPDATE INTERLOCUTEUR set ID_UTILISATEUR=?,ID_VILLE=?,ID_SERVICE=?,INTNOM=?,INTPRENOM=?,INTEMAIL=?  WHERE ID_INTERLOCUTEUR=?";
+            query = "UPDATE INTERLOCUTEUR set ID_COMMERCIAL=?,ID_VILLE=?,ID_SERVICE=?,INTNOM=?,INTPRENOM=?,INTEMAIL=?  WHERE ID_INTERLOCUTEUR=?";
             PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
             pStatement.setInt(7, id);
-            pStatement.setInt(1, idutilisateur);
+            pStatement.setInt(1, idcommercial);
             pStatement.setInt(2, idville);
             pStatement.setInt(3, idservice);
             pStatement.setString(4, nom);

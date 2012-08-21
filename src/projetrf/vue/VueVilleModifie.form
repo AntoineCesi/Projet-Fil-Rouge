@@ -31,6 +31,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Modification"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -53,29 +54,40 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButtonModifieVilleValide" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelModifieVilleNom" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelModifieVilleCodePostal" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelModifieVillePays" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jTextFieldModiefieVilleNom" max="32767" attributes="0"/>
-                  <Component id="jLabelModifieVille" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                  <Component id="jComboBoxModifieVilleList" alignment="0" pref="140" max="32767" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="jTextFieldModifieVilleCodePostal" min="-2" pref="69" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="jComboBoxModifieVillePays" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
+                      <Component id="jButtonModifieVilleValide" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jTextFieldModiefieVilleNom" max="32767" attributes="0"/>
+                              <Component id="jComboBoxModifieVilleList" alignment="0" pref="140" max="32767" attributes="0"/>
+                              <Component id="jTextFieldModiefieNewVilleNom" max="32767" attributes="0"/>
+                              <Component id="jLabelModifieVille" min="-2" pref="120" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jTextFieldModifieVilleCodePostal" min="-2" pref="69" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jTextFieldModifieVilleNewPays" min="-2" pref="69" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="93" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,18 +103,34 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jComboBoxModifieVilleList" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelModifieVilleCodePostal" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldModifieVilleCodePostal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldModiefieNewVilleNom" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jComboBoxModifieVillePays" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelModifieVillePays" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelModifieVilleCodePostal" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldModifieVilleCodePostal" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Component id="jButtonModifieVilleValide" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelModifieVillePays" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldModifieVilleNewPays" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="jButtonModifieVilleValide" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jComboBoxModifieVillePays" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -119,7 +147,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelModifieVilleNom">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nom"/>
+        <Property name="text" type="java.lang.String" value="Ville"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelModifieVilleCodePostal">
@@ -136,15 +164,11 @@
     <Component class="javax.swing.JComboBox" name="jComboBoxModifieVillePays">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxModifieVillePaysItemStateChanged"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxModifieVillePaysActionPerformed"/>
       </Events>
     </Component>
@@ -152,7 +176,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelModifieVillePays">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ville"/>
+        <Property name="text" type="java.lang.String" value="Pays"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelModifieVille">
@@ -162,13 +186,30 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBoxModifieVilleList">
       <Properties>
+        <Property name="editable" type="boolean" value="true"/>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxModifieVilleListItemStateChanged"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxModifieVilleListActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jComboBoxModifieVilleListKeyPressed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldModiefieNewVilleNom">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modifier "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldModifieVilleNewPays">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modifier "/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

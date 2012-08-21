@@ -5,6 +5,7 @@
 package projetrf.vue;
 
 import java.awt.Component;
+import java.awt.event.ItemEvent;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
@@ -26,6 +27,9 @@ public class VueVilleModifie extends javax.swing.JFrame {
     /**
      * Creates new form VueVilleModifie
      */
+    
+    int paysid;
+    
     public VueVilleModifie() {
         initComponents();
     }
@@ -51,6 +55,10 @@ public class VueVilleModifie extends javax.swing.JFrame {
         jLabelModifieVillePays = new javax.swing.JLabel();
         jLabelModifieVille = new javax.swing.JLabel();
         jComboBoxModifieVilleList = new javax.swing.JComboBox();
+        jTextFieldModiefieNewVilleNom = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldModifieVilleNewPays = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -60,6 +68,7 @@ public class VueVilleModifie extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Modification");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -73,7 +82,7 @@ public class VueVilleModifie extends javax.swing.JFrame {
             }
         });
 
-        jLabelModifieVilleNom.setText("Nom");
+        jLabelModifieVilleNom.setText("Ville");
 
         jLabelModifieVilleCodePostal.setText("Code Postal");
 
@@ -88,46 +97,73 @@ public class VueVilleModifie extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxModifieVillePays.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxModifieVillePays.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxModifieVillePaysItemStateChanged(evt);
+            }
+        });
         jComboBoxModifieVillePays.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxModifieVillePaysActionPerformed(evt);
             }
         });
 
-        jLabelModifieVillePays.setText("Ville");
+        jLabelModifieVillePays.setText("Pays");
 
         jLabelModifieVille.setText("Modification Ville");
 
+        jComboBoxModifieVilleList.setEditable(true);
+        jComboBoxModifieVilleList.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxModifieVilleListItemStateChanged(evt);
+            }
+        });
         jComboBoxModifieVilleList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxModifieVilleListActionPerformed(evt);
             }
         });
+        jComboBoxModifieVilleList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxModifieVilleListKeyPressed(evt);
+            }
+        });
+
+        jLabel1.setText("Modifier ");
+
+        jLabel2.setText("Modifier ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonModifieVilleValide)
-                .addGap(59, 59, 59))
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelModifieVilleNom)
                     .addComponent(jLabelModifieVilleCodePostal)
-                    .addComponent(jLabelModifieVillePays))
+                    .addComponent(jLabelModifieVillePays)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldModiefieVilleNom)
-                    .addComponent(jLabelModifieVille, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxModifieVilleList, 0, 140, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextFieldModifieVilleCodePostal, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBoxModifieVillePays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 93, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jComboBoxModifieVillePays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                        .addComponent(jButtonModifieVilleValide)
+                        .addGap(59, 59, 59))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldModiefieVilleNom)
+                                .addComponent(jComboBoxModifieVilleList, 0, 140, Short.MAX_VALUE)
+                                .addComponent(jTextFieldModiefieNewVilleNom)
+                                .addComponent(jLabelModifieVille, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldModifieVilleCodePostal, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextFieldModifieVilleNewPays, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,16 +176,27 @@ public class VueVilleModifie extends javax.swing.JFrame {
                     .addComponent(jLabelModifieVilleNom))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxModifieVilleList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelModifieVilleCodePostal)
-                    .addComponent(jTextFieldModifieVilleCodePostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                    .addComponent(jTextFieldModiefieNewVilleNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBoxModifieVillePays, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelModifieVillePays, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(22, 22, 22)
-                .addComponent(jButtonModifieVilleValide)
+                    .addComponent(jLabelModifieVilleCodePostal)
+                    .addComponent(jTextFieldModifieVilleCodePostal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelModifieVillePays)
+                    .addComponent(jTextFieldModifieVilleNewPays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jButtonModifieVilleValide))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBoxModifieVillePays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
                 .addGap(23, 23, 23))
         );
 
@@ -157,15 +204,29 @@ public class VueVilleModifie extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxModifieVillePaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxModifieVillePaysActionPerformed
-        // TODO add your handling code here:
+      
+        
     }//GEN-LAST:event_jComboBoxModifieVillePaysActionPerformed
 
     private void jButtonModifieVilleValideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifieVilleValideActionPerformed
-        // TODO add your handling code here:
+       
+        Ville ville = (Ville)this.jComboBoxModifieVilleList.getSelectedItem();
+         paysid =ville.getIdpays();
+       
+        
+        try {
+            RequetesVille.updateVille(ville.getIdville(),paysid,jTextFieldModiefieNewVilleNom.getText() ,jTextFieldModifieVilleCodePostal.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(VueVilleModifie.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonModifieVilleValideActionPerformed
 
+ 
+            
+            
     private void jComboBoxModifieVilleListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxModifieVilleListActionPerformed
-        // TODO add your handling code here:
+       
+        
     }//GEN-LAST:event_jComboBoxModifieVilleListActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -186,18 +247,102 @@ public class VueVilleModifie extends javax.swing.JFrame {
         try {
           
             List<projetrf.model.Ville> vv1 = RequetesVille.selectVilleByName(jTextFieldModiefieVilleNom.getText());
-            System.out.println(vv1.toString());
+            /*System.out.println(vv1.toString());*/
             jComboBoxModifieVilleList.removeAllItems();
             for (Ville ville : vv1) {               
                 jComboBoxModifieVilleList.addItem(ville);
                
             }
-
+         
 
         } catch (SQLException ex) {
             Logger.getLogger(VueVille.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jTextFieldModiefieVilleNomKeyPressed
+
+    private void jComboBoxModifieVilleListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxModifieVilleListItemStateChanged
+        
+        
+        
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+
+            Ville ville = ((Ville) this.jComboBoxModifieVilleList.getSelectedItem());
+            String test = ville.getNom();
+            Pays pays1 = null;
+
+                    
+            jTextFieldModiefieNewVilleNom.setText(test);
+            //jTextFieldModifieVilleCodePostal.setText(((Ville) this.jComboBoxModifieVilleList.getSelectedItem()).getCp());
+
+            /*
+           try {
+                List<Pays> pp1 = RequetesPays.selectPays();
+                this.jComboBoxModifieVillePays.removeAllItems();
+                for (Pays pays : pp1) {
+                    this.jComboBoxModifieVillePays.addItem(pays);
+                }
+
+
+            } catch (SQLException ex) {
+                Logger.getLogger(VueVille.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
+           /*
+            try {
+                pays1 = RequetesPays.selectPaysById(ville.getIdpays());
+            } catch (SQLException ex) {
+                Logger.getLogger(VueVilleModifie.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println(pays1.toString());
+            this.jTextFieldModifieVilleNewPays.setText(pays1.getPays());*/
+        }
+    }//GEN-LAST:event_jComboBoxModifieVilleListItemStateChanged
+
+    private void jComboBoxModifieVillePaysItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxModifieVillePaysItemStateChanged
+        
+              
+         Ville ville = ((Ville) this.jComboBoxModifieVilleList.getSelectedItem());
+         Pays  paysmodif = (Pays)this.jComboBoxModifieVillePays.getSelectedItem();
+           Pays   pays1=null ;   
+            try {
+                List<Pays> pp1 = RequetesPays.selectPays();
+                this.jComboBoxModifieVillePays.removeAllItems();
+                for (Pays pays : pp1) {
+                    this.jComboBoxModifieVillePays.addItem(pays);
+                }
+
+
+            } catch (SQLException ex) {
+                Logger.getLogger(VueVille.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+              pays1 = RequetesPays.selectPaysById(ville.getIdpays());
+            } catch (SQLException ex) {
+                Logger.getLogger(VueVilleModifie.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.out.println(pays1.toString());
+            this.jTextFieldModifieVilleNewPays.setText(pays1.getPays());  
+        
+      
+    }//GEN-LAST:event_jComboBoxModifieVillePaysItemStateChanged
+
+    private void jComboBoxModifieVilleListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxModifieVilleListKeyPressed
+        /*try {
+
+            List<projetrf.model.Ville> vv1 = RequetesVille.selectVilleByName(jComboBoxModifieVilleList.getActionCommand().toLowerCase());
+           
+             System.out.println(vv1.toString());
+             
+            jComboBoxModifieVilleList.removeAllItems();
+            for (Ville ville : vv1) {
+                jComboBoxModifieVilleList.addItem(ville);
+
+            }
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VueVille.class.getName()).log(Level.SEVERE, null, ex);
+        }  */      // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxModifieVilleListKeyPressed
 
 
     public static void main(String args[]) {
@@ -214,13 +359,17 @@ public class VueVilleModifie extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxModifieVilleList;
     private javax.swing.JComboBox jComboBoxModifieVillePays;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelModifieVille;
     private javax.swing.JLabel jLabelModifieVilleCodePostal;
     private javax.swing.JLabel jLabelModifieVilleNom;
     private javax.swing.JLabel jLabelModifieVillePays;
     private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextFieldModiefieNewVilleNom;
     private javax.swing.JTextField jTextFieldModiefieVilleNom;
     private javax.swing.JTextField jTextFieldModifieVilleCodePostal;
+    private javax.swing.JTextField jTextFieldModifieVilleNewPays;
     // End of variables declaration//GEN-END:variables
 }

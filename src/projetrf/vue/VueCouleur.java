@@ -4,16 +4,13 @@
  */
 package projetrf.vue;
 
-import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.ListCellRenderer;
 import projetrf.data.RequetesCouleur;
 import projetrf.model.Couleur;
 
@@ -46,6 +43,7 @@ public class VueCouleur extends javax.swing.JFrame {
         jComboBoxCouleurs = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -56,12 +54,14 @@ public class VueCouleur extends javax.swing.JFrame {
         });
 
         jLabelTitreCouleur.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabelTitreCouleur.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitreCouleur.setText("Gestion des couleurs");
 
         jButtonCouleurValider.setBackground(new java.awt.Color(0, 0, 0));
         jButtonCouleurValider.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jButtonCouleurValider.setForeground(new java.awt.Color(153, 204, 255));
         jButtonCouleurValider.setText("Enregistrer");
+        jButtonCouleurValider.setEnabled(false);
         jButtonCouleurValider.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButtonCouleurValiderMousePressed(evt);
@@ -76,6 +76,11 @@ public class VueCouleur extends javax.swing.JFrame {
         jLabelCouleurLibelle.setText("Entrez le libelle d'une nouvelle couleur : ");
 
         jTextFieldCouleurLibelle.setFocusCycleRoot(true);
+        jTextFieldCouleurLibelle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldCouleurLibelleKeyPressed(evt);
+            }
+        });
 
         jComboBoxCouleurs.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jComboBoxCouleurs.setName(""); // NOI18N
@@ -87,6 +92,16 @@ public class VueCouleur extends javax.swing.JFrame {
         jComboBoxCouleurs.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBoxCouleursItemStateChanged(evt);
+            }
+        });
+        jComboBoxCouleurs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCouleursActionPerformed(evt);
+            }
+        });
+        jComboBoxCouleurs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxCouleursKeyPressed(evt);
             }
         });
 
@@ -103,13 +118,12 @@ public class VueCouleur extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldCouleurLibelle)
                             .addComponent(jButtonCouleurValider, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabelTitreCouleur)
-                            .addComponent(jComboBoxCouleurs, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jLabelTitreCouleur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jComboBoxCouleurs, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,6 +145,10 @@ public class VueCouleur extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCouleurValiderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCouleurValiderMousePressed
+       
+    }//GEN-LAST:event_jButtonCouleurValiderMousePressed
+
+    private void jButtonCouleurValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCouleurValiderActionPerformed
        if (this.jButtonCouleurValider.getText().equals("Modifier")){
             try {
                 RequetesCouleur.updateCouleur(((Couleur)this.jComboBoxCouleurs.getSelectedItem()).getid(),this.jTextFieldCouleurLibelle.getText());
@@ -146,10 +164,6 @@ public class VueCouleur extends javax.swing.JFrame {
             }
        }
        updateJComboBoxCouleur();
-    }//GEN-LAST:event_jButtonCouleurValiderMousePressed
-
-    private void jButtonCouleurValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCouleurValiderActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCouleurValiderActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -176,8 +190,35 @@ public class VueCouleur extends javax.swing.JFrame {
                 this.jLabelCouleurLibelle.setText("Entrez le libelle d'une nouvelle couleur : ");
                 this.jButtonCouleurValider.setText("Valider");
             }
+            if ((this.jTextFieldCouleurLibelle.getText().trim().equals("")))
+            {
+                this.jButtonCouleurValider.setEnabled(false);
+            }
+            else
+            {
+                this.jButtonCouleurValider.setEnabled(true);
+            }
         }
     }//GEN-LAST:event_jComboBoxCouleursItemStateChanged
+
+    private void jComboBoxCouleursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCouleursActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCouleursActionPerformed
+
+    private void jTextFieldCouleurLibelleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCouleurLibelleKeyPressed
+        if ((this.jTextFieldCouleurLibelle.getText().equals("")))
+        {
+            this.jButtonCouleurValider.setEnabled(false);
+        }
+        else
+        {
+            this.jButtonCouleurValider.setEnabled(true);
+        }
+    }//GEN-LAST:event_jTextFieldCouleurLibelleKeyPressed
+
+    private void jComboBoxCouleursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxCouleursKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCouleursKeyPressed
 
     public void updateJComboBoxCouleur(){
         this.jComboBoxCouleurs.removeAllItems();

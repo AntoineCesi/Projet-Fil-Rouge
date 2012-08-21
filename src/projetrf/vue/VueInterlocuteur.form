@@ -23,53 +23,86 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jLabelClient" alignment="1" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButtonClientAjouter" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabelClientNom" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jComboBox2" pref="265" max="32767" attributes="0"/>
+                          <Component id="jTextFieldClientNomSeach" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="109" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabelClientEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelClientCP" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelClientPrenom" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelClientNom" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelClientCP" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jTextFieldClientCP" min="-2" pref="84" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextFieldClientNom" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldClientPrenom" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jTextFieldClientCP" min="-2" pref="84" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBox1" pref="204" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="jTextFieldClientEmail" max="32767" attributes="0"/>
+                                  <Component id="jButtonClientAjouter" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox1" min="-2" pref="218" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jLabelClient" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabelClientEmail1" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldClientEmail1" min="-2" pref="264" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabelClientNom1" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <Component id="jLabelClientPrenom" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelClientEmail" alignment="0" min="-2" pref="63" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTextFieldClientPrenom" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldClientNomModifier" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldInterlocuteurCommercial" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldClientEmail" min="-2" pref="264" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="jLabelClient" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelClientNom" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldClientNom" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldClientNomSeach" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              <Component id="jComboBox2" min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel2" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                  <Component id="jTextFieldInterlocuteurCommercial" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelClientNom1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldClientNomModifier" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -83,14 +116,19 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelClientEmail1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldClientEmail1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelClientCP" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldClientCP" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Component id="jButtonClientAjouter" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -102,15 +140,18 @@
           <Font name="Tahoma" size="24" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Client"/>
+        <Property name="text" type="java.lang.String" value="Interlocuteur"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelClientNom">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Entrez un Nom : "/>
+        <Property name="text" type="java.lang.String" value="Recherche"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldClientNom">
+    <Component class="javax.swing.JTextField" name="jTextFieldClientNomSeach">
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldClientNomSeachKeyPressed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonClientAjouter">
       <Properties>
@@ -122,17 +163,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelClientPrenom">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Entrez un prenom : "/>
+        <Property name="text" type="java.lang.String" value="Pr&#xe9;nom"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelClientEmail">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Entrez un Email : "/>
+        <Property name="text" type="java.lang.String" value="Email : "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelClientCP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Entrez un CP : "/>
+        <Property name="text" type="java.lang.String" value=" Code Postal"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldClientPrenom">
@@ -152,6 +193,37 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelClientNom1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nom"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldClientNomModifier">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox2">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox2ItemStateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Commercial"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldInterlocuteurCommercial">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelClientEmail1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ville"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldClientEmail1">
     </Component>
   </SubComponents>
 </Form>

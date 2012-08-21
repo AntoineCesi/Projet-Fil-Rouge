@@ -25,24 +25,24 @@ public class RequetesUtilisateur {
     public int idVille;
     public String nom;
     public String prenom;
-    public String adresse1;
-    public String adresse2;
+    public String identifiant;
+    public String password;
 
-    public static void insertUtilisateur(int idfonction, int idville, String nom, String prenom, String adresse1, String adresse2) throws SQLException {
+    public static void insertUtilisateur(int idfonction, int idville, String nom, String prenom, String identifiant, String password) throws SQLException {
 
         String query;
 
         try {
 
-            query = "INSERT INTO UTILISATEUR (ID_FONCTION,ID_VILLE,UTILNOM,UTILPRENOM,UTILADRESSE1,UTILADRESSE2) VALUES (?,?,?,?,?,?) ";
+            query = "INSERT INTO UTILISATEUR (ID_FONCTION,ID_VILLE,UTILNOM,UTILPRENOM,IDENTIFIANT,PASSWORD) VALUES (?,?,?,?,?,?) ";
 
             PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
             pStatement.setInt(1, idfonction);
             pStatement.setInt(2, idville);
             pStatement.setString(3, nom);
             pStatement.setString(4, prenom);
-            pStatement.setString(5, adresse1);
-            pStatement.setString(6, adresse2);
+            pStatement.setString(5, identifiant);
+            pStatement.setString(6, password);
 
             pStatement.executeUpdate();
 
@@ -67,7 +67,7 @@ public class RequetesUtilisateur {
 
             while (resultat.next()) {
                 //System.out.println(resultat.getString("PAYS"));
-                Util = new Utilisateur(resultat.getInt("ID_UTILISATEUR"), resultat.getInt("ID_FONCTION"), resultat.getInt("ID_VILLE"), resultat.getString("UTILNOM"), resultat.getString("UTILPRENOM"), resultat.getString("UTILADRESSE1"), resultat.getString("UTILADRESSE2"));
+                Util = new Utilisateur(resultat.getInt("ID_UTILISATEUR"), resultat.getInt("ID_FONCTION"), resultat.getInt("ID_VILLE"), resultat.getString("UTILNOM"), resultat.getString("UTILPRENOM"), resultat.getString("IDENTIFIANT"), resultat.getString("PASSWORD"));
             }
 
         } catch (SQLException ex) {
@@ -77,12 +77,12 @@ public class RequetesUtilisateur {
         return Util;
 
     }
-//int idFonction, int idVille, String nom, String prenom, String adresse1, String adresse2
-    public static int updateUtilisateur(int id, int idfonction, int idville, String nom, String prenom, String adresse1, String adresse2) throws SQLException {
+//int idFonction, int idVille, String nom, String prenom, String identifiant, String password
+    public static int updateUtilisateur(int id, int idfonction, int idville, String nom, String prenom, String identifiant, String password) throws SQLException {
         int result;
         String query;
         try {
-            query = "UPDATE UTILISATEUR set ID_FONCTION=?,ID_VILLE=?,UTILNOM=?,UTILPRENOM=?,UTILADRESSE1=?,UTILADRESSE2=? where ID_UTILISATEUR=? ";
+            query = "UPDATE UTILISATEUR set ID_FONCTION=?,ID_VILLE=?,UTILNOM=?,UTILPRENOM=?,IDENTIFIANT=?,PASSWORD=? where ID_UTILISATEUR=? ";
 
             PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
 
@@ -91,8 +91,8 @@ public class RequetesUtilisateur {
             pStatement.setInt(2, idville);
             pStatement.setString(3, nom);
             pStatement.setString(4, prenom);
-            pStatement.setString(5, adresse1);
-            pStatement.setString(6, adresse2);
+            pStatement.setString(5, identifiant);
+            pStatement.setString(6, password);
             pStatement.executeUpdate();
             
             result = 0;
@@ -117,7 +117,7 @@ public class RequetesUtilisateur {
 
             while (resultat.next()) {
                 // System.out.println(resultat.getString("PAYS"));
-                Utilisateur uu = new Utilisateur(resultat.getInt("ID_UTILISATEUR"), resultat.getInt("ID_FONCTION"), resultat.getInt("ID_VILLE"), resultat.getString("UTILNOM"), resultat.getString("UTILPRENOM"), resultat.getString("UTILADRESSE1"), resultat.getString("UTILADRESSE2"));
+                Utilisateur uu = new Utilisateur(resultat.getInt("ID_UTILISATEUR"), resultat.getInt("ID_FONCTION"), resultat.getInt("ID_VILLE"), resultat.getString("UTILNOM"), resultat.getString("UTILPRENOM"), resultat.getString("IDENTIFIANT"), resultat.getString("PASSWORD"));
                 util.add(uu);
             }
 
@@ -143,7 +143,7 @@ public class RequetesUtilisateur {
 
             while (resultat.next()) {
 
-                util = new Utilisateur(resultat.getInt("ID_UTILISATEUR"), resultat.getInt("ID_FONCTION"), resultat.getInt("ID_VILLE"), resultat.getString("UTILNOM"), resultat.getString("UTILPRENOM"), resultat.getString("UTILADRESSE1"), resultat.getString("UTILADRESSE2"));
+                util = new Utilisateur(resultat.getInt("ID_UTILISATEUR"), resultat.getInt("ID_FONCTION"), resultat.getInt("ID_VILLE"), resultat.getString("UTILNOM"), resultat.getString("UTILPRENOM"), resultat.getString("IDENTIFIANT"), resultat.getString("PASSWORD"));
             }
 
         } catch (SQLException ex) {
