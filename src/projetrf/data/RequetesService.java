@@ -82,6 +82,29 @@ public class RequetesService {
         return service;
     }
       
+        public static Service SelectServiceByIdEntreprise(int id) throws SQLException {
+        String query = null;
+        Service service = new Service();
+        ResultSet resultat;
+
+        try {
+            query = "SELECT * from SERVICE  where ID_ENTREPRISE=? ";
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setInt(1, id);
+            resultat = pStatement.executeQuery();
+
+            while (resultat.next()) {
+               
+                service = new Service(resultat.getInt("ID_SERVICE"),resultat.getInt("ID_ENTREPRISE"),resultat.getString("SERLIBELLE"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesService.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return service;
+    }
+      
          public static List<Service> selectService() throws SQLException {
 
         String query = null;

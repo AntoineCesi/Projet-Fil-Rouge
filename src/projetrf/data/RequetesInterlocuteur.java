@@ -72,6 +72,32 @@ public class RequetesInterlocuteur {
         return interlocuteur1;
     }
     
+    public static Interlocuteur selectByIdService(int id) throws SQLException {
+        String query = null;
+
+        Interlocuteur interlocuteur1 = new Interlocuteur();
+        ResultSet resultat;
+
+        try {
+
+            query = "SELECT * from INTERLOCUTEUR where ID_SERVICE =? ";
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setInt(1, id);
+            resultat = pStatement.executeQuery();
+
+            while (resultat.next()) {
+               // System.out.println(resultat.getString("INTNOM"));
+                interlocuteur1 = new Interlocuteur(resultat.getInt("ID_INTERLOCUTEUR"),resultat.getInt("ID_COMMERCIAL"), resultat.getInt("ID_VILLE"), resultat.getInt("ID_SERVICE"), resultat.getString("INTNOM"), resultat.getString("INTPRENOM"), resultat.getString("INTEMAIL"));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return interlocuteur1;
+    }
+    
     public static List<Interlocuteur> selectInterlocuteurByName(String name) throws SQLException {
         String query = null;
         List<Interlocuteur> interlocuteur1 = new ArrayList<Interlocuteur>();

@@ -9,7 +9,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import projetrf.data.RequetesEntreprise;
+import projetrf.data.RequetesInterlocuteur;
+import projetrf.data.RequetesService;
 import projetrf.model.Entreprise;
+import projetrf.model.Interlocuteur;
+import projetrf.model.Service;
 
 /**
  *
@@ -131,20 +135,27 @@ public class VueCommandeClientDebut extends javax.swing.JFrame {
 
     private void jTextFieldCmdEntrepriseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCmdEntrepriseKeyPressed
         // interogation entreprise
-         if (jTextFieldCmdEntreprise.getText().trim().length()>1){
-             
-         List<projetrf.model.Entreprise> vv1 = null;
-        try {
-            vv1 = (List<projetrf.model.Entreprise>) RequetesEntreprise.selectEntrepriseByName(jTextFieldCmdEntreprise.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(VueCommandeClientDebut.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            /*System.out.println(vv1.toString());*/
-            this.jComboBoxCmdEntreprise.removeAllItems();
-            for (Entreprise entreprise : vv1) {               
-                this.jComboBoxCmdEntreprise.addItem(entreprise);
+        if (jTextFieldCmdEntreprise.getText().trim().length() > 1) {
+
+            List<projetrf.model.Entreprise> vv1 = null;
+            try {
+                vv1 = (List<projetrf.model.Entreprise>) RequetesEntreprise.selectEntrepriseByName(jTextFieldCmdEntreprise.getText());
+
+                this.jComboBoxCmdEntreprise.removeAllItems();
+                for (Entreprise entreprise : vv1) {
+                    this.jComboBoxCmdEntreprise.addItem(entreprise);
+                }
+                
+                 Entreprise entreprise = (Entreprise)this.jComboBoxCmdEntreprise.getSelectedItem();                
+                Service service=  RequetesService.SelectServiceByIdEntreprise(entreprise.getIdentreprise());
+                Interlocuteur interlocuteur =RequetesInterlocuteur.selectByIdService(service.getIdservice());
+                //Commercial commercial   =RequetesCommercial.
+                
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(VueCommandeClientDebut.class.getName()).log(Level.SEVERE, null, ex);
             }
-    }
+        }
     }//GEN-LAST:event_jTextFieldCmdEntrepriseKeyPressed
 
         private void jComboBoxCmdEntrepriseItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxCmdEntrepriseItemStateChanged
