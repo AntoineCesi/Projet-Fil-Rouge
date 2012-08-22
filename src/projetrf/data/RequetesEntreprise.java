@@ -88,6 +88,8 @@ public class RequetesEntreprise {
         return entreprise;
     }
     
+     
+    
        public static List<Entreprise> selectEntreprise()  throws SQLException {
       
         String query = null;
@@ -99,6 +101,34 @@ public class RequetesEntreprise {
             PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
             resultat = pStatement.executeQuery(query);
 
+            while (resultat.next()) {
+               // System.out.println(resultat.getString("PAYS"));
+                 Entreprise  ee = new Entreprise(resultat.getInt("ID_ENTREPRISE"), resultat.getString("ENTNOM"), resultat.getString("ENTADRESSE1"), resultat.getString("ENTADRESSE2"));
+                entreprise.add(ee);
+            }
+
+        } catch (SQLException ex) {
+           Logger.getLogger(RequetesEntreprise.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        
+        return entreprise;
+
+        
+    }
+       
+         public static List<Entreprise> selectEntrepriseByName(String name)  throws SQLException {
+      
+        String query = null;
+        List<Entreprise> entreprise = new ArrayList<Entreprise>();
+        ResultSet resultat;
+        try {
+           
+            query = "SELECT * from ENTREPRISE where ENTNOM like ? order by ENTNOM ";
+           
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setString(1, name.toUpperCase() + "%");
+            resultat = pStatement.executeQuery();
             while (resultat.next()) {
                // System.out.println(resultat.getString("PAYS"));
                  Entreprise  ee = new Entreprise(resultat.getInt("ID_ENTREPRISE"), resultat.getString("ENTNOM"), resultat.getString("ENTADRESSE1"), resultat.getString("ENTADRESSE2"));

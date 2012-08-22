@@ -89,12 +89,21 @@ public class ProjetRF {
         // vv.setVisible(true);
         
       
-        RequetesCommercial.updateCommercial(5,2, 2, "dupontel", "charlis", "", "");
+      //  RequetesCommercial.updateCommercial(5,2, 2, "dupontel", "charlis", "", "");
         
     /* List<Commercial> pp1 = RequetesCommercial.selectCommercial();
          System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
          { System.out.println("Élément à l'index " + i + " = " +
          pp1.get(i).getNom() + " = " + pp1.get(i).getPrenom()); }*/
+        
+      
+        // VueUtilisateur vv= new VueUtilisateur();
+       // vv.setVisible(true);
+       List<Entreprise> pp1 = RequetesEntreprise.selectEntrepriseByName("cal");
+         System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
+         { System.out.println("Élément à l'index " + i + " = " +
+         pp1.get(i).getNom() + " = " + pp1.get(i).getAdresse1()); }
+         
     }
    
 }

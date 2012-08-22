@@ -59,7 +59,7 @@ public class Entreprise {
 
     @Override
     public String toString() {
-        return "Entreprise{" + "nom=" + nom + '}';
+        return this.nom;
     }
     
     

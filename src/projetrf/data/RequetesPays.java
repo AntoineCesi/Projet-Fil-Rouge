@@ -57,7 +57,7 @@ public class RequetesPays {
             while (resultat.next()) {
                 //System.out.println(resultat.getString("PAYS"));
                 pays1 = new Pays(resultat.getInt("ID_PAYS"), resultat.getString("PAYS"));
-            }
+                }
 
         } catch (SQLException ex) {
             Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,7 +68,7 @@ public class RequetesPays {
     }
     
     
-    public static int updatePays(int id, String pays) throws SQLException {
+    public static void updatePays(int id, String pays) throws SQLException {
         int result;
         String query;
         try {
@@ -77,12 +77,12 @@ public class RequetesPays {
             pStatement.setString(1, pays);
             pStatement.setInt(2, id);
             pStatement.executeUpdate();
-            result = 0;
+           
         } catch (SQLException ex) {
             Logger.getLogger(RequetesPays.class.getName()).log(Level.SEVERE, null, ex);
-            result = -1;
+            
         }
-        return result;
+       
     }
      
     public static List<Pays> selectPays()  throws SQLException {

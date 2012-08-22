@@ -34,9 +34,9 @@ public class RequetesInterlocuteur {
             pStatement.setInt(1, idcommercial);
             pStatement.setInt(2, idville);
             pStatement.setInt(3, idservice);
-            pStatement.setString(4, nom);
-            pStatement.setString(5, prenom);
-            pStatement.setString(6, email);
+            pStatement.setString(4, nom.toUpperCase());
+            pStatement.setString(5, prenom.toLowerCase());
+            pStatement.setString(6, email.toUpperCase());
             pStatement.executeUpdate();
 
         } catch (SQLException ex) {
@@ -133,9 +133,9 @@ public class RequetesInterlocuteur {
             pStatement.setInt(1, idcommercial);
             pStatement.setInt(2, idville);
             pStatement.setInt(3, idservice);
-            pStatement.setString(4, nom);
-            pStatement.setString(5, prenom);
-            pStatement.setString(6, email);
+            pStatement.setString(4, nom.toUpperCase());
+            pStatement.setString(5, prenom.toLowerCase());
+            pStatement.setString(6, email.toUpperCase());
 
             pStatement.executeUpdate();
             

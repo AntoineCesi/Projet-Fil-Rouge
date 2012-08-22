@@ -125,24 +125,11 @@ public class VuePays extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonPaysValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPaysValiderActionPerformed
-               
-            try 
-        {
-             RequetesPays.insertPays(jTextFieldPays.getText().toUpperCase());
-        } 
-        catch (SQLException ex) 
-        {
-            if(ex.getErrorCode()== 1062)
-            {
-                JOptionPane.showMessageDialog(this,  "Ce Pays existe déjà",
-                " Erreur ",
-                JOptionPane.ERROR_MESSAGE);
-            }
-            Logger.getLogger(VuePays.class.getName()).log(Level.SEVERE, null, ex);
-        }
+     
     }//GEN-LAST:event_jButtonPaysValiderActionPerformed
 
     private void jButtonPaysValiderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonPaysValiderMousePressed
+        
         if (this.jButtonPaysValider.getText().equals("Valider")) {
             try {
                 RequetesPays.insertPays(jTextFieldPays.getText().toUpperCase());
@@ -154,7 +141,7 @@ public class VuePays extends javax.swing.JFrame {
             }
         }
 
-        if (this.jButtonPaysValider.getText().equals("Modifier")) {
+      else  {
             try {
                 RequetesPays.updatePays(((Pays) this.jComboBoxPays.getSelectedItem()).getIdPays(), jTextFieldPays.getText().toUpperCase());
             } catch (SQLException ex) {
@@ -187,8 +174,7 @@ public class VuePays extends javax.swing.JFrame {
     private void jComboBoxPaysItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxPaysItemStateChanged
         
          if (evt.getStateChange() == ItemEvent.SELECTED){
-            String test = ((Pays)this.jComboBoxPays.getSelectedItem()).getPays();
-            
+            String test = ((Pays)this.jComboBoxPays.getSelectedItem()).getPays();            
            
             this.jTextFieldPays.setText(test);
             if (this.jComboBoxPays.getSelectedIndex()!=0){
