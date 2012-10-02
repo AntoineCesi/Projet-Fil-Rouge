@@ -92,5 +92,46 @@ public class Interlocuteur {
     public String toString() {
         return getNom();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Interlocuteur other = (Interlocuteur) obj;
+        if (this.idinterlocuteur != other.idinterlocuteur) {
+            return false;
+        }
+        if (this.idcommercial != other.idcommercial) {
+            return false;
+        }
+        if (this.idville != other.idville) {
+            return false;
+        }
+        if (this.idservice != other.idservice) {
+            return false;
+        }
+        if ((this.nom == null) ? (other.nom != null) : !this.nom.equals(other.nom)) {
+            return false;
+        }
+        if ((this.prenom == null) ? (other.prenom != null) : !this.prenom.equals(other.prenom)) {
+            return false;
+        }
+        if ((this.email == null) ? (other.email != null) : !this.email.equals(other.email)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
   
+    
+    
 }

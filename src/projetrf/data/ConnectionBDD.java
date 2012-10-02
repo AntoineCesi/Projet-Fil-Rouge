@@ -20,9 +20,14 @@ public class ConnectionBDD {
     
     private Statement st;
     Connection conn=null;
-    String url="jdbc:mysql://localhost/MARKET";
+  /* String url="jdbc:mysql://localhost/MARKET";
     String login="root";
-    String passwd="silmm97";
+    String passwd="silmm97";*/
+    
+    String url="jdbc:mysql://192.168.2.65:3306/market";
+    String login="utilmarket";
+    String passwd="utilisateur";
+
 
     public static ConnectionBDD instance;
     

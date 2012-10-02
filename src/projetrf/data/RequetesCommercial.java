@@ -22,21 +22,20 @@ public class RequetesCommercial {
 
   
   
-    public static void insertCommercial(int idutilisateur, int idville, String nom, String prenom, String adresse1, String adresse2 ) throws SQLException {
+    public static void insertCommercial(int idservice,  String nom, String prenom, String adresse1, String adresse2 ) throws SQLException {
 
         String query;
 
         try {
 
-            query = "INSERT INTO COMMERCIAL (ID_UTILISATEUR,ID_VILLE,COMMNOM,COMMPRENOM,COMMADRESSE1,COMMADRESSE2) VALUES (?,?,?,?,?,?) ";
+            query = "INSERT INTO COMMERCIAL (ID_VILLE,COMMNOM,COMMPRENOM,COMMADRESSE1,COMMADRESSE2) VALUES (?,?,?,?,?) ";
 
             PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
-            pStatement.setInt(1, idutilisateur);
-            pStatement.setInt(2, idville);
-            pStatement.setString(3, nom);
-            pStatement.setString(4, prenom);
-            pStatement.setString(5, adresse1);
-            pStatement.setString(6, adresse2);
+            pStatement.setInt(1, idservice);
+            pStatement.setString(2, nom);
+            pStatement.setString(3, prenom);
+            pStatement.setString(4, adresse1);
+            pStatement.setString(5, adresse2);
 
             pStatement.executeUpdate();
 
@@ -61,7 +60,7 @@ public class RequetesCommercial {
 
             while (resultat.next()) {
                 //System.out.println(resultat.getString("PAYS"));
-                Util = new Commercial(resultat.getInt("ID_COMMERCIAL"), resultat.getInt("ID_UTILISATEUR"), resultat.getInt("ID_VILLE"), resultat.getString("COMMNOM"), resultat.getString("COMMPRENOM"), resultat.getString("COMMADRESSE1"), resultat.getString("COMMADRESSE2"));
+                Util = new Commercial(resultat.getInt("ID_COMMERCIAL"),  resultat.getInt("ID_VILLE"), resultat.getString("COMMNOM"), resultat.getString("COMMPRENOM"), resultat.getString("COMMADRESSE1"), resultat.getString("COMMADRESSE2"));
             }
 
         } catch (SQLException ex) {
@@ -72,30 +71,28 @@ public class RequetesCommercial {
 
     }
 //int idFonction, int idVille, String nom, String prenom, String adresse1, String adresse2
-    public static int updateCommercial(int id, int idutilisateur, int idville, String nom, String prenom, String adresse1, String adresse2) throws SQLException {
+    public static void updateCommercial(int id, int idservice, int idville, String nom, String prenom, String adresse1, String adresse2) throws SQLException {
         int result;
         String query;
         try {
-            query = "UPDATE COMMERCIAL set ID_UTILISATEUR=?,ID_VILLE=?,COMMNOM=?,COMMPRENOM=?,COMMADRESSE1=?,COMMADRESSE2=? where ID_COMMERCIAL=? ";
+            query = "UPDATE COMMERCIAL set ID_VILLE=?,COMMNOM=?,COMMPRENOM=?,COMMADRESSE1=?,COMMADRESSE2=? where ID_COMMERCIAL=? ";
 
             PreparedStatement pStatement = (PreparedStatement) ConnectionBDD.getInstance().getPreparedStatement(query);
 
-            pStatement.setInt(7, id);
-            pStatement.setInt(1, idutilisateur);
-            pStatement.setInt(2, idville);
-            pStatement.setString(3, nom);
-            pStatement.setString(4, prenom);
-            pStatement.setString(5, adresse1);
-            pStatement.setString(6, adresse2);
+            pStatement.setInt(6, id);
+            pStatement.setInt(1, idville);
+            pStatement.setString(2, nom);
+            pStatement.setString(3, prenom);
+            pStatement.setString(4, adresse1);
+            pStatement.setString(5, adresse2);
             pStatement.executeUpdate();
             
-            result = 0;
-
+           
         } catch (SQLException ex) {
             Logger.getLogger(RequetesCommercial.class.getName()).log(Level.SEVERE, null, ex);
-            result = -1;
+            
         }
-        return result;
+       
     }
    
     public static List<Commercial> selectCommercial() throws SQLException {
@@ -111,7 +108,7 @@ public class RequetesCommercial {
 
             while (resultat.next()) {
                 // System.out.println(resultat.getString("PAYS"));
-                Commercial uu = new Commercial(resultat.getInt("ID_COMMERCIAL"), resultat.getInt("ID_UTILISATEUR"), resultat.getInt("ID_VILLE"), resultat.getString("COMMNOM"), resultat.getString("COMMPRENOM"), resultat.getString("COMMADRESSE1"), resultat.getString("COMMADRESSE2"));
+                Commercial uu = new Commercial(resultat.getInt("ID_COMMERCIAL"), resultat.getInt("ID_VILLE"), resultat.getString("COMMNOM"), resultat.getString("COMMPRENOM"), resultat.getString("COMMADRESSE1"), resultat.getString("COMMADRESSE2"));
                 util.add(uu);
             }
 
@@ -137,7 +134,7 @@ public class RequetesCommercial {
 
             while (resultat.next()) {
 
-                util = new Commercial(resultat.getInt("ID_COMMERCIAL"), resultat.getInt("ID_UTILISATEUR"), resultat.getInt("ID_VILLE"), resultat.getString("COMMNOM"), resultat.getString("COMMPRENOM"), resultat.getString("COMMADRESSE1"), resultat.getString("COMMADRESSE2"));
+                util = new Commercial(resultat.getInt("ID_COMMERCIAL"),  resultat.getInt("ID_VILLE"), resultat.getString("COMMNOM"), resultat.getString("COMMPRENOM"), resultat.getString("COMMADRESSE1"), resultat.getString("COMMADRESSE2"));
             }
 
         } catch (SQLException ex) {
@@ -147,4 +144,5 @@ public class RequetesCommercial {
         return util;
 
     }
+   
 }

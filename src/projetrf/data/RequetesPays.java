@@ -26,9 +26,7 @@ public class RequetesPays {
     
     public static void insertPays(String pays) throws SQLException {
 
-        String query;
-
-        
+        String query;        
         try {
             query = "INSERT INTO PAYS (PAYS) VALUES (?);";
             PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
@@ -42,8 +40,8 @@ public class RequetesPays {
     }
     
     public static Pays selectPaysById(int id)  throws SQLException {
-        String query = null;
-      
+        
+        String query = null;      
         Pays pays1 = new Pays();
         ResultSet resultat;
             

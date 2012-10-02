@@ -37,6 +37,8 @@ public class VueInterlocuteur extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
         jLabelClient = new javax.swing.JLabel();
         jLabelClientNom = new javax.swing.JLabel();
         jButtonClientAjouter = new javax.swing.JButton();
@@ -45,20 +47,32 @@ public class VueInterlocuteur extends javax.swing.JFrame {
         jLabelClientCP = new javax.swing.JLabel();
         jTextFieldClientPrenom = new javax.swing.JTextField();
         jTextFieldClientEmail = new javax.swing.JTextField();
-        jTextFieldClientCP = new javax.swing.JTextField();
+        jTextFieldInterlocuteurCpRecherche = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jComboBoxInterlocuteurVille = new javax.swing.JComboBox();
         jLabelClientNom1 = new javax.swing.JLabel();
         jTextFieldClientNom = new javax.swing.JTextField();
         jLabelInterlocuteurcommrcial = new javax.swing.JLabel();
-        jLabelClientEmail1 = new javax.swing.JLabel();
-        jTextFieldVilleRecherche = new javax.swing.JTextField();
         jComboBoxInterlocuteurCommercial = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jComboBoxInterlocuteurService = new javax.swing.JComboBox();
+        jComboBoxInterlocuteurEntreprise = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        jButtonInterlocuteurCreationCom = new javax.swing.JButton();
+        jButtonInterlocuteurCreationEntr = new javax.swing.JButton();
+        jButtonInterlocuteurCreationService = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel4.setText("jLabel4");
+
+        jToggleButton1.setText("jToggleButton1");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabelClient.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelClient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -86,21 +100,37 @@ public class VueInterlocuteur extends javax.swing.JFrame {
 
         jLabelClientCP.setText(" Code Postal");
 
+        jTextFieldInterlocuteurCpRecherche.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldInterlocuteurCpRechercheKeyReleased(evt);
+            }
+        });
+
         jLabel1.setText("Ville : ");
+
+        jComboBoxInterlocuteurVille.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxInterlocuteurVilleItemStateChanged(evt);
+            }
+        });
 
         jLabelClientNom1.setText("Nom");
 
         jLabelInterlocuteurcommrcial.setText("Commercial");
 
-        jLabelClientEmail1.setText("Ville");
-
-        jTextFieldVilleRecherche.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldVilleRechercheKeyPressed(evt);
-            }
-        });
+        jComboBoxInterlocuteurCommercial.setPreferredSize(new java.awt.Dimension(28, 30));
 
         jLabel2.setText("Service");
+
+        jComboBoxInterlocuteurService.setPreferredSize(new java.awt.Dimension(28, 30));
+
+        jLabel3.setText("Entreprise");
+
+        jButtonInterlocuteurCreationCom.setText("Creation");
+
+        jButtonInterlocuteurCreationEntr.setText("Creation");
+
+        jButtonInterlocuteurCreationService.setText("Création");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,48 +138,52 @@ public class VueInterlocuteur extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabelClient, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBoxInterlocuteurCommercial, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonClientAjouter)
-                            .addComponent(jComboBoxInterlocuteurService, javax.swing.GroupLayout.Alignment.LEADING, 0, 162, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelClientEmail1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(jTextFieldVilleRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabelClientNom1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabelClientPrenom)
-                                            .addComponent(jLabelClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(36, 36, 36)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextFieldClientPrenom, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextFieldClientNom, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabelClientNom, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabelClientNom1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelClientPrenom)
+                            .addComponent(jLabelClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldClientPrenom, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldClientNom, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelClientNom, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabelInterlocuteurcommrcial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelInterlocuteurcommrcial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabelClientCP)
-                        .addGap(26, 26, 26)
-                        .addComponent(jTextFieldClientCP, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxInterlocuteurVille, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 37, Short.MAX_VALUE))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(68, 68, 68)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jComboBoxInterlocuteurEntreprise, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBoxInterlocuteurCommercial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBoxInterlocuteurService, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(75, 75, 75)
+                                    .addComponent(jButtonClientAjouter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGap(86, 86, 86)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButtonInterlocuteurCreationCom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonInterlocuteurCreationEntr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonInterlocuteurCreationService)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabelClientCP)
+                            .addGap(26, 26, 26)
+                            .addComponent(jTextFieldInterlocuteurCpRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(23, 23, 23)
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jComboBoxInterlocuteurVille, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(45, 45, 45))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBoxInterlocuteurCommercial, jComboBoxInterlocuteurEntreprise, jComboBoxInterlocuteurService});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -169,31 +203,33 @@ public class VueInterlocuteur extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelClientEmail)
                     .addComponent(jTextFieldClientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelClientEmail1)
-                    .addComponent(jTextFieldVilleRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelClientCP)
-                    .addComponent(jTextFieldClientCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldInterlocuteurCpRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jComboBoxInterlocuteurVille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxInterlocuteurCommercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelInterlocuteurcommrcial, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxInterlocuteurCommercial, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jButtonClientAjouter))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxInterlocuteurService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))))
-                .addGap(22, 22, 22))
+                    .addComponent(jButtonInterlocuteurCreationCom))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxInterlocuteurEntreprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jButtonInterlocuteurCreationEntr))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxInterlocuteurService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jButtonInterlocuteurCreationService))
+                .addGap(45, 45, 45)
+                .addComponent(jButtonClientAjouter)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBoxInterlocuteurCommercial, jComboBoxInterlocuteurEntreprise, jComboBoxInterlocuteurService});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -228,40 +264,63 @@ public class VueInterlocuteur extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonClientAjouterMouseClicked
 
-    private void jTextFieldVilleRechercheKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldVilleRechercheKeyPressed
+    private void jTextFieldInterlocuteurCpRechercheKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInterlocuteurCpRechercheKeyReleased
+        
+       
+        try {
+            List<projetrf.model.Ville> vv1 = RequetesVille.rechercheVilleByCp(jTextFieldInterlocuteurCpRecherche.getText().trim());
+
+                jComboBoxInterlocuteurVille.removeAllItems();
+                for (Ville ville : vv1) {
+                    jComboBoxInterlocuteurVille.addItem(ville);
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(VueInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+       
+        }
+    }//GEN-LAST:event_jTextFieldInterlocuteurCpRechercheKeyReleased
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         try {
-            List<projetrf.model.Ville> vv1 = RequetesVille.selectVilleByName(jTextFieldVilleRecherche.getText());
+                List<Commercial> pp1 = RequetesCommercial.selectCommercial();
+                for (Commercial commercial : pp1) {
 
-            jComboBoxInterlocuteurVille.removeAllItems();
-            for (Ville ville : vv1) {
-                jComboBoxInterlocuteurVille.addItem(ville);
-            }
-          
-             List<projetrf.model.Commercial> comm = RequetesCommercial.selectCommercial();   
-            
-            jComboBoxInterlocuteurCommercial.removeAllItems();
-            for (Commercial commercial : comm) {               
-                jComboBoxInterlocuteurCommercial.addItem(commercial);
-               
-            }
-              List<projetrf.model.Service> service = RequetesService.selectService();   
-            
-            jComboBoxInterlocuteurService.removeAllItems();
-            for (Service commercial : service) {               
-                jComboBoxInterlocuteurService.addItem(commercial);
-               
-            }
-           
-            
-            Ville ville = ((Ville) this.jComboBoxInterlocuteurVille.getSelectedItem());
-            jTextFieldClientCP.setText(ville.getCp());
-            
+                    jComboBoxInterlocuteurCommercial.addItem(commercial);
+                }
             } catch (SQLException ex) {
+                Logger.getLogger(VueInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        try {
+            
+
+            List< Entreprise> ee = RequetesEntreprise.selectEntreprise();
+            for (Entreprise entreprise : ee) {
+                jComboBoxInterlocuteurEntreprise.addItem(entreprise);
+            }
+        } catch (SQLException ex) {
             Logger.getLogger(VueInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jTextFieldVilleRechercheKeyPressed
+        
+        try {
+                List<Service> ss1 = RequetesService.selectService();
+                for (Service service : ss1) {
 
+                    jComboBoxInterlocuteurService.addItem(service);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(VueInterlocuteur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jComboBoxInterlocuteurVilleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxInterlocuteurVilleItemStateChanged
+        jComboBoxInterlocuteurVille.getSelectedItem();
+    }//GEN-LAST:event_jComboBoxInterlocuteurVilleItemStateChanged
+
+    
+   
     /**
      * @param args the command line arguments
      */
@@ -305,23 +364,28 @@ public class VueInterlocuteur extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonClientAjouter;
+    private javax.swing.JButton jButtonInterlocuteurCreationCom;
+    private javax.swing.JButton jButtonInterlocuteurCreationEntr;
+    private javax.swing.JButton jButtonInterlocuteurCreationService;
     private javax.swing.JComboBox jComboBoxInterlocuteurCommercial;
+    private javax.swing.JComboBox jComboBoxInterlocuteurEntreprise;
     private javax.swing.JComboBox jComboBoxInterlocuteurService;
     private javax.swing.JComboBox jComboBoxInterlocuteurVille;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelClient;
     private javax.swing.JLabel jLabelClientCP;
     private javax.swing.JLabel jLabelClientEmail;
-    private javax.swing.JLabel jLabelClientEmail1;
     private javax.swing.JLabel jLabelClientNom;
     private javax.swing.JLabel jLabelClientNom1;
     private javax.swing.JLabel jLabelClientPrenom;
     private javax.swing.JLabel jLabelInterlocuteurcommrcial;
-    private javax.swing.JTextField jTextFieldClientCP;
     private javax.swing.JTextField jTextFieldClientEmail;
     private javax.swing.JTextField jTextFieldClientNom;
     private javax.swing.JTextField jTextFieldClientPrenom;
-    private javax.swing.JTextField jTextFieldVilleRecherche;
+    private javax.swing.JTextField jTextFieldInterlocuteurCpRecherche;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import projetrf.controleur.Main1;
 import projetrf.data.RequetesPays;
 import projetrf.data.RequetesVille;
 import projetrf.model.Pays;
@@ -24,6 +25,10 @@ public class VueVille extends javax.swing.JFrame {
     /**
      * Creates new form VueVille
      */
+    int idpays;
+    String nom;
+     String cp;
+    
     public VueVille() {
         initComponents();
     }
@@ -99,9 +104,9 @@ public class VueVille extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldVilleCreationVille, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelCp, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldCpCreationVille, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelCp, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldCpCreationVille, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonVilleValider))
                 .addGap(38, 38, 38))
         );
@@ -135,14 +140,22 @@ public class VueVille extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxPaysActionPerformed
 
     private void jButtonVilleValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVilleValiderActionPerformed
-        try {
+      /*  try {
             // System.out.println("id_pays" + ((Pays)jComboBoxPays.getSelectedItem()).getIdPays());
             // System.out.println("cp " +jTextFieldCpCreationVille.getText());
              //System.out.println("vile"+jTextFieldVilleCreationVille.getText());
              RequetesVille.insertVille(((Pays)jComboBoxPays.getSelectedItem()).getIdPays(), jTextFieldVilleCreationVille.getText().toUpperCase(),jTextFieldCpCreationVille.getText());
         } catch (SQLException ex) {
             Logger.getLogger(VueVille.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
+        idpays = ((Pays) jComboBoxPays.getSelectedItem()).getIdPays();
+        nom = jTextFieldVilleCreationVille.getText().toUpperCase();
+        cp = jTextFieldCpCreationVille.getText();
+        Main1 mm = new Main1() { };
+
+        int error = mm.creationpays(idpays, nom, cp);
+        System.out.println(error);
+                
          this.dispose();
     }//GEN-LAST:event_jButtonVilleValiderActionPerformed
 

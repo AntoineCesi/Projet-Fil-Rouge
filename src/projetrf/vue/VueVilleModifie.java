@@ -4,8 +4,8 @@
  */
 package projetrf.vue;
 
-import java.awt.Component;
-import java.awt.event.ItemEvent;
+import java.awt.*;
+import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
@@ -22,7 +22,7 @@ import projetrf.model.Ville;
  *
  * @author Travail
  */
-public class VueVilleModifie extends javax.swing.JFrame {
+public class VueVilleModifie extends javax.swing.JFrame implements KeyListener{
 
     /**
      * Creates new form VueVilleModifie
@@ -92,8 +92,8 @@ public class VueVilleModifie extends javax.swing.JFrame {
             }
         });
         jTextFieldModiefieVilleNom.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldModiefieVilleNomKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldModiefieVilleNomKeyReleased(evt);
             }
         });
 
@@ -242,24 +242,7 @@ public class VueVilleModifie extends javax.swing.JFrame {
        
         
     }//GEN-LAST:event_jTextFieldModiefieVilleNomActionPerformed
-
-    private void jTextFieldModiefieVilleNomKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldModiefieVilleNomKeyPressed
-        try {
-          
-            List<projetrf.model.Ville> vv1 = RequetesVille.selectVilleByName(jTextFieldModiefieVilleNom.getText());
-            /*System.out.println(vv1.toString());*/
-            jComboBoxModifieVilleList.removeAllItems();
-            for (Ville ville : vv1) {               
-                jComboBoxModifieVilleList.addItem(ville);
-               
-            }
-         
-
-        } catch (SQLException ex) {
-            Logger.getLogger(VueVille.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jTextFieldModiefieVilleNomKeyPressed
-
+/**/
     private void jComboBoxModifieVilleListItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxModifieVilleListItemStateChanged
         
         
@@ -344,6 +327,25 @@ public class VueVilleModifie extends javax.swing.JFrame {
         }  */      // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxModifieVilleListKeyPressed
 
+    private void jTextFieldModiefieVilleNomKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldModiefieVilleNomKeyReleased
+        // TODO add your handling code here:
+         try {
+          
+            List<projetrf.model.Ville> vv1 = RequetesVille.selectVilleByName(jTextFieldModiefieVilleNom.getText());
+            System.out.println("taille " + jTextFieldModiefieVilleNom.getText().length() + " text "+jTextFieldModiefieVilleNom.getText());
+            /*System.out.println(vv1.toString());*/
+            jComboBoxModifieVilleList.removeAllItems();
+            for (Ville ville : vv1) {               
+                jComboBoxModifieVilleList.addItem(ville);
+               
+            }
+         
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VueVille.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jTextFieldModiefieVilleNomKeyReleased
+
 
     public static void main(String args[]) {
 
@@ -372,4 +374,19 @@ public class VueVilleModifie extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldModifieVilleCodePostal;
     private javax.swing.JTextField jTextFieldModifieVilleNewPays;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

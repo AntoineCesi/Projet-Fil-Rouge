@@ -17,6 +17,16 @@ public class Article {
     private String reference;
     private float prixht;    
     private String photo;
+    private int nombre;
+
+    public int getNombre() {
+        return nombre;
+    }
+
+    public int getNombreMin() {
+        return nombreMin;
+    }
+    private int nombreMin;
     
     public int getId() {
         return id;
@@ -86,10 +96,6 @@ public class Article {
         this.prixht = prixht;
         this.photo = photo;
     }
-
-   
-    
-    
     
     @Override
     public String toString() {

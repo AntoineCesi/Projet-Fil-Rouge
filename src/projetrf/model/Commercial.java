@@ -14,7 +14,7 @@ public class Commercial {
 
     
     private int idCommercial;
-    private int idUtilisateur;
+   
     private int idVille;
     private String nom;
     private String prenom;
@@ -44,14 +44,7 @@ public class Commercial {
     public void setIdCommercial(int idCommercial) {
         this.idCommercial = idCommercial;
     }
-
-    public int getIdUtilisateur() {
-        return idUtilisateur;
-    }
-
-    public void setIdUtilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
-    }
+   
 
     public int getIdVille() {
         return idVille;
@@ -80,9 +73,8 @@ public class Commercial {
     public Commercial() {
     }
 
-    public Commercial(int idCommercial, int idUtilisateur, int idVille, String nom, String prenom, String adresse1, String adresse2) {
+    public Commercial(int idCommercial, int idVille, String nom, String prenom, String adresse1, String adresse2) {
         this.idCommercial = idCommercial;
-        this.idUtilisateur = idUtilisateur;
         this.idVille = idVille;
         this.nom = nom;
         this.prenom = prenom;
@@ -91,9 +83,48 @@ public class Commercial {
     }
 
    
+
+   
+   
     @Override
     public String toString() {
         return this.getNom();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Commercial other = (Commercial) obj;
+        if (this.idCommercial != other.idCommercial) {
+            return false;
+        }
+        if (this.idVille != other.idVille) {
+            return false;
+        }
+        if ((this.nom == null) ? (other.nom != null) : !this.nom.equals(other.nom)) {
+            return false;
+        }
+        if ((this.prenom == null) ? (other.prenom != null) : !this.prenom.equals(other.prenom)) {
+            return false;
+        }
+        if ((this.adresse1 == null) ? (other.adresse1 != null) : !this.adresse1.equals(other.adresse1)) {
+            return false;
+        }
+        if ((this.adresse2 == null) ? (other.adresse2 != null) : !this.adresse2.equals(other.adresse2)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
     }
 
   

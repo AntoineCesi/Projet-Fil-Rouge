@@ -29,7 +29,7 @@ public class RequetesVille {
      public static void insertVille(int idpays, String nom, String cp) throws SQLException {
 
         String query;
-        try {
+       
             query = "INSERT INTO VILLE (ID_PAYS,VINOM,VICP) VALUES (?,?,?) ";
 
             PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
@@ -37,10 +37,7 @@ public class RequetesVille {
             pStatement.setString(2, nom);
             pStatement.setString(3, cp);
             pStatement.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
+        
     }
       
      
@@ -87,7 +84,7 @@ public class RequetesVille {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequetesCouleur.class.getName()).log(Level.SEVERE, null, ex);
 
         }
         return ville1;
@@ -97,7 +94,7 @@ public class RequetesVille {
         
         
         
-    public static List<Ville> selectVilleByCp(String cp) throws SQLException {
+    public static List<Ville> selectVilleByCpostal(String cp) throws SQLException {
 
         String query = null;
         List<Ville> ville1 = new ArrayList<Ville>();
@@ -136,6 +133,32 @@ public class RequetesVille {
             query = "SELECT  * from VILLE   where VINOM like ? order by VINOM asc";
             PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
             pStatement.setString(1, name.toUpperCase() + "%");
+            System.out.println(pStatement);
+            resultat = pStatement.executeQuery();
+
+            while (resultat.next()) {
+                Ville vv = new Ville(resultat.getInt("ID_VILLE"), resultat.getInt("ID_PAYS"), resultat.getString("VINOM"), resultat.getString("VICP"));
+                ville1.add(vv);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RequetesVille.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return ville1;
+    }
+      public static List<Ville> rechercheVilleByCp(String name) throws SQLException {
+
+        String query = null;
+        List<Ville> ville1 = new ArrayList<Ville>();
+        ResultSet resultat;
+
+        try {
+            query = "SELECT  * from VILLE   where VICP like ? order by VINOM asc";
+            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+            pStatement.setString(1, name.toUpperCase() + "%");
+            //System.out.println(pStatement);
             resultat = pStatement.executeQuery();
 
             while (resultat.next()) {

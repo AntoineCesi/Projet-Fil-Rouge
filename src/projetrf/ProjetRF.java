@@ -99,11 +99,23 @@ public class ProjetRF {
       
         // VueUtilisateur vv= new VueUtilisateur();
        // vv.setVisible(true);
-       List<Entreprise> pp1 = RequetesEntreprise.selectEntrepriseByName("cal");
+      /* List<Entreprise> pp1 = RequetesEntreprise.selectEntrepriseByName("cal");
          System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
          { System.out.println("Élément à l'index " + i + " = " +
-         pp1.get(i).getNom() + " = " + pp1.get(i).getAdresse1()); }
+         pp1.get(i).getNom() + " = " + pp1.get(i).getAdresse1()); }*/
+      
+         Date  date=new Date();
+    
+      /*  Article article= RequetesArticle.selectArticleByRef("456");
+             System.out.println(article.toString());*/
+       
+        new VueCommandeClientDebut().setVisible(true);
          
+      /*   List<Interlocuteur> pp1 = RequetesInterlocuteur.selectInterlocuteurByIdCommercial(10);
+         System.out.println(pp1.size()); for (int i = 0; i < pp1.size(); i++)
+         { System.out.println("Élément à l'index " + i + " = " +
+         pp1.get(i).getNom() + " = " + pp1.get(i).getPrenom()); }
+        */
     }
    
 }

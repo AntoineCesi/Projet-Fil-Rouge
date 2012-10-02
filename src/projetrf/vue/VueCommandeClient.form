@@ -38,10 +38,14 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Commande Client"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -59,145 +63,218 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jTextField10" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldCmdCliLg2" linkSize="3" pref="301" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jTextField16" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldCmdCliLg3" linkSize="3" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jTextField24" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldCmdCliLg4" linkSize="3" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jButtonCommandeClientValide" min="-2" pref="142" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jTextField28" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldCmdCliLg5" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jTextField38" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldCmdCliLg6" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jTextField42" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldCmdCliLg7" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jTextField50" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextFieldCmdCliLg8" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldCmdClTva2" linkSize="4" pref="77" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdClTva3" linkSize="4" pref="77" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdClTva4" linkSize="4" pref="77" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdClTva5" pref="77" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdClTva6" pref="77" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdClTva7" pref="77" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdClTva8" pref="77" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldCmdCliQte2" pref="70" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliQte3" pref="70" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliQte4" pref="70" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliQte5" pref="70" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliQte6" pref="70" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliQte7" pref="70" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliQte8" pref="70" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldCmdCliPxHt2" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxHt3" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxHt4" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxHt5" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxHt6" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxHt7" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxHt8" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldCmdCliPxTtc2" pref="109" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxTtc3" pref="109" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxTtc4" pref="109" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxTtc5" pref="109" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxTtc6" pref="109" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxTtc7" pref="109" max="32767" attributes="0"/>
-                          <Component id="jTextField51" pref="109" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jTextField4" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdCliLg1" linkSize="3" min="-2" pref="301" max="-2" attributes="0"/>
-                          <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdClTva1" linkSize="4" min="-2" pref="77" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdCliQte1" min="-2" pref="70" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxHt1" linkSize="1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCmdCliPxTtc1" min="-2" pref="109" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" pref="91" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="420" max="-2" attributes="0"/>
-                          <Component id="jLabel11" min="-2" pref="208" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel4" linkSize="2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" linkSize="3" min="-2" pref="301" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" linkSize="4" min="-2" pref="77" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField3" min="-2" pref="207" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jTextField1" min="-2" pref="64" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" min="-2" pref="73" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                      <Component id="jTextField2" min="-2" pref="117" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jTextField4" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldCmdCliLg1Prod1" linkSize="3" min="-2" pref="301" max="-2" attributes="0"/>
+                                      <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldCmdCliLg1Tva1" linkSize="4" min="-2" pref="77" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jTextField10" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldCmdCliLg2Prod2" linkSize="3" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jTextField16" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldCmdCliLg3Prod3" linkSize="3" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jTextField24" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldCmdCliLg4Prod4" linkSize="3" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jTextField28" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldCmdCliLg5Prod5" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jTextField38" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldCmdCliLg6Prod6" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jTextField42" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldCmdCliLg7Prod7" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jTextField50" linkSize="2" min="-2" pref="19" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jLabel13" min="-2" pref="59" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="jTextFieldCommandeTotalHT" min="-2" pref="65" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jTextFieldCmdCliLg8Prod8" min="-2" pref="301" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTextFieldCmdCliLg2Tva2" linkSize="4" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg4Tva4" linkSize="4" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg5Tva5" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg6Tva6" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg7Tva7" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg8Tva8" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg3Tva3" pref="77" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldComdClientTotalTva" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliQte1" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliPxHt1" linkSize="1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg1Totalht1" min="-2" pref="109" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel8" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel9" linkSize="1" min="-2" pref="90" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jLabel10" min="-2" pref="109" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jLabel17" min="-2" pref="83" max="-2" attributes="0"/>
+                                                      <Component id="jLabel2" min="-2" pref="73" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="jTextFieldCommandeClientCommercial" pref="117" max="32767" attributes="0"/>
+                                                      <Component id="jTextFieldCommandeClientEntrepriseInterlocuteur" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTextFieldCmdCliQte2" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliQte3" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliQte4" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliQte5" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliQte6" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliQte7" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliQte8" min="-2" pref="70" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jTextFieldCmdCliPxHt2" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliPxHt3" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliPxHt4" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliPxHt5" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliPxHt6" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliPxHt7" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliPxHt8" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTextFieldCmdCliLg2Totalht2" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg3Totalht3" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg4Totalht4" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg5Totalht5" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg6Totalht6" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg7Totalht7" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCmdCliLg8Totalht8" min="-2" pref="109" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jTextFieldCmdCliLg1TotalTva1" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCmdCliLg2TotalTva2" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCmdCliLg3TotalTva3" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCmdCliLg4TotalTva4" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCmdCliLg5TotalTva5" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCmdCliLg6TotalTva6" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCmdCliLg7TotalTva7" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCmdCliLg8TotalTva8" max="32767" attributes="0"/>
+                                  <Component id="jLabel12" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel8" min="-2" pref="70" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="jLabel9" linkSize="1" min="-2" pref="90" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel10" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTextFieldCommandeClientEntreprise" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldCommandeClentProduitRecherche" alignment="1" min="-2" pref="237" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jTextFieldCommandeClientDate" min="-2" pref="81" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="jLabel18" min="-2" pref="50" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel4" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jLabel5" linkSize="3" min="-2" pref="301" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jLabel1" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel7" linkSize="4" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <Component id="jButton1CommandeClientRecherche" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldCommandeClientNumeroRef" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
+                              <Component id="jLabel11" min="-2" pref="208" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="379" max="-2" attributes="0"/>
+                              <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel3" min="-2" pref="68" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="479" pref="596" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="103" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButtonCommandeClient" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="494" max="-2" attributes="0"/>
+              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="jTextFieldcmdClientTotalTtc" min="-2" pref="91" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -205,104 +282,188 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel11" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel11" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldCommandeClientEntrepriseInterlocuteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jTextFieldCommandeClientCommercial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel14" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCommandeClientDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCommandeClientNumeroRef" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jTextFieldCommandeClientEntreprise" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                              <Component id="jTextFieldCommandeClentProduitRecherche" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton1CommandeClientRecherche" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg1Prod1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg1Tva1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg2Prod2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg2Tva2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jTextField16" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldCmdCliLg3Prod3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jTextFieldCmdCliLg3Tva3" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextField24" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg4Prod4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg4Tva4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextField28" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg5Prod5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg5Tva5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextField38" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg6Prod6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg6Tva6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextField42" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg7Prod7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg7Tva7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextField50" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg8Prod8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg8Tva8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCmdCliQte1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliPxHt1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg1Totalht1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg1TotalTva1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCmdCliQte2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliPxHt2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg2Totalht2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg2TotalTva2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCmdCliQte3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliPxHt3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg3Totalht3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg3TotalTva3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCmdCliQte4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliPxHt4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg4Totalht4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg4TotalTva4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCmdCliQte5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliPxHt5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg5Totalht5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg5TotalTva5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCmdCliQte6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliPxHt6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg6Totalht6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg6TotalTva6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCmdCliQte7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliPxHt7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg7Totalht7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg7TotalTva7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCmdCliQte8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliPxHt8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg8Totalht8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCmdCliLg8TotalTva8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliLg1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdClTva1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliQte1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxHt1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxTtc1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonCommandeClientValide" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliLg2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdClTva2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliQte2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxHt2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxTtc2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldCommandeTotalHT" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel15" max="32767" attributes="0"/>
+                  <Component id="jTextFieldComdClientTotalTva" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldcmdClientTotalTtc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField16" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliLg3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdClTva3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliQte3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxHt3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxTtc3" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField24" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliLg4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdClTva4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliQte4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxHt4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxTtc4" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField28" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliLg5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdClTva5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliQte5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxHt5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxTtc5" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField38" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliLg6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdClTva6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliQte6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxHt6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxTtc6" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField42" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliLg7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdClTva7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliQte7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxHt7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxTtc7" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField50" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliLg8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdClTva8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliQte8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCmdCliPxHt8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField51" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="52" max="32767" attributes="0"/>
-              <Component id="jButtonCommandeClient" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -314,21 +475,21 @@
         <Property name="text" type="java.lang.String" value="Date Commande "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="jTextFieldCommandeClientDate">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Commercial"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="jTextFieldCommandeClientCommercial">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Entreprise "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="jTextFieldCommandeClientEntreprise">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -422,100 +583,100 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="1"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField4ActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg1">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg1Prod1">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdClTva1">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg1Tva1">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliQte1">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCmdCliQte1FocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxHt1">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxTtc1">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg1Totalht1">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField10">
       <Properties>
         <Property name="text" type="java.lang.String" value="2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg2">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg2Prod2">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdClTva2">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg2Tva2">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliQte2">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCmdCliQte2FocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxHt2">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxTtc2">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg2Totalht2">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField16">
       <Properties>
         <Property name="text" type="java.lang.String" value="3"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField16ActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg3">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdClTva3">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-      </AuxValues>
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg3Prod3">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliQte3">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCmdCliQte3FocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxHt3">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxTtc3">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg3Totalht3">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdClTva4">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg4Tva4">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg4">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg4Prod4">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField24">
       <Properties>
         <Property name="text" type="java.lang.String" value="4"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField24ActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxTtc4">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg4Totalht4">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliQte4">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCmdCliQte4FocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxHt4">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField28">
       <Properties>
         <Property name="text" type="java.lang.String" value="5"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg5">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg5Prod5">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdClTva5">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg5Tva5">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliQte5">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCmdCliQte5FocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxHt5">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxTtc5">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg5Totalht5">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg6">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg6Prod6">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdClTva6">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg6Tva6">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxTtc6">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg6Totalht6">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliQte6">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCmdCliQte6FocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField38">
       <Properties>
@@ -524,29 +685,32 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxHt6">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdClTva7">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg7Tva7">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliQte7">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCmdCliQte7FocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextField42">
       <Properties>
         <Property name="text" type="java.lang.String" value="7"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField42ActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxHt7">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg7">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg7Prod7">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxTtc7">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg7Totalht7">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg8">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg8Prod8">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliQte8">
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextFieldCmdCliQte8FocusLost"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldCmdClTva8">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg8Tva8">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCmdCliPxHt8">
     </Component>
@@ -555,13 +719,16 @@
         <Property name="text" type="java.lang.String" value="8"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField51">
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg8Totalht8">
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonCommandeClient">
+    <Component class="javax.swing.JButton" name="jButtonCommandeClientValide">
       <Properties>
         <Property name="text" type="java.lang.String" value="Valider"/>
         <Property name="actionCommand" type="java.lang.String" value="jTextFieldCmdCliPxTtc1"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonCommandeClientValideMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
@@ -570,6 +737,94 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Commande Client"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCommandeClentProduitRecherche">
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1CommandeClientRecherche">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Recherche"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1CommandeClientRechercheMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg3Tva3">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tva"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="ff" green="ff" red="66" type="rgb"/>
+            </LineBorder>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg1TotalTva1">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg2TotalTva2">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg3TotalTva3">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg4TotalTva4">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg5TotalTva5">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg6TotalTva6">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg7TotalTva7">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCmdCliLg8TotalTva8">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel14">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Saisie produit"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=" Total  HT:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCommandeTotalHT">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldComdClientTotalTva">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel15">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=" TVA:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel16">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="TTC:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldcmdClientTotalTtc">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Les Totaux sont donn&#xe9;s pour information"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCommandeClientEntrepriseInterlocuteur">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel17">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Interlocuteur"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel18">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Num&#xe9;ro"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCommandeClientNumeroRef">
     </Component>
   </SubComponents>
 </Form>

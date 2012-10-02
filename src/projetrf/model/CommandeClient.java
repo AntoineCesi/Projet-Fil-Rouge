@@ -14,9 +14,11 @@ public class CommandeClient {
  
     private int idcommandeclient;
     private int identreprise;
-    private int idutilisateur;
-    private String referencecommandeclient;
+    private int idinterlocuteur;
     private Date datecommandeclient;
+    private String referencecommandeclient;   
+    private Float totalhtcommandeclient;
+    private Float totalttccommandeclient;
     private Float remisecommandeclient;
 
     public Date getDatecommandeclient() {
@@ -43,12 +45,12 @@ public class CommandeClient {
         this.identreprise = identreprise;
     }
 
-    public int getIdutilisateur() {
-        return idutilisateur;
+    public int getIdinterlocuteur() {
+        return idinterlocuteur;
     }
 
-    public void setIdutilisateur(int idutilisateur) {
-        this.idutilisateur = idutilisateur;
+    public void setIdinterlocuteur(int idinterlocuteur) {
+        this.idinterlocuteur = idinterlocuteur;
     }
 
     public String getReferencecommandeclient() {
@@ -67,23 +69,42 @@ public class CommandeClient {
         this.remisecommandeclient = remisecommandeclient;
     }
 
+    public Float getTotalhtcommandeclient() {
+        return totalhtcommandeclient;
+    }
+
+    public void setTotalhtcommandeclient(Float totalhtcommandeclient) {
+        this.totalhtcommandeclient = totalhtcommandeclient;
+    }
+
+    public Float getTotalttccommandeclient() {
+        return totalttccommandeclient;
+    }
+
+    public void setTotalttccommandeclient(Float totalttccommandeclient) {
+        this.totalttccommandeclient = totalttccommandeclient;
+    }
+
     public CommandeClient() {
     }
 
-    public CommandeClient(int idcommandeclient, int identreprise, int idutilisateur, String referencecommandeclient, Date datecommandeclient, Float remisecommandeclient) {
+    public CommandeClient(int idcommandeclient, int identreprise, int idinterlocuteur, Date datecommandeclient, String referencecommandeclient, Float totalhtcommandeclient, Float totalttccommandeclient, Float remisecommandeclient) {
         this.idcommandeclient = idcommandeclient;
         this.identreprise = identreprise;
-        this.idutilisateur = idutilisateur;
-        this.referencecommandeclient = referencecommandeclient;
+        this.idinterlocuteur = idinterlocuteur;
         this.datecommandeclient = datecommandeclient;
+        this.referencecommandeclient = referencecommandeclient;
+        this.totalhtcommandeclient = totalhtcommandeclient;
+        this.totalttccommandeclient = totalttccommandeclient;
         this.remisecommandeclient = remisecommandeclient;
     }
 
     @Override
     public String toString() {
-        return "+ referencecommandeclient=" + referencecommandeclient + '}';
+        return "CommandeClient{" + "referencecommandeclient=" + referencecommandeclient + '}';
     }
 
+  
     
     
 }

@@ -7,9 +7,9 @@ package projetrf.data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import projetrf.model.Article;
@@ -25,7 +25,7 @@ public class RequetesArticle {
     public float prixht;    
     public int photo;
     
-     public static void insertArticle(int idCouleur, int idtva, String libelle, String reference, float prixht, String photo) throws SQLException {
+     public static void insertArticle(int idCouleur, int idtva, String libelle, String reference, float prixht, int photo) throws SQLException {
 
         String query;
         try {
@@ -37,7 +37,7 @@ public class RequetesArticle {
             pStatement.setString(3, libelle.toUpperCase());
             pStatement.setString(4, reference);
             pStatement.setFloat(5, prixht);
-            pStatement.setString(6, photo);
+            pStatement.setInt(6, photo);
             pStatement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(RequetesArticle.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,25 +46,19 @@ public class RequetesArticle {
     }
 
       public static Article selectArticleById(int id)  throws SQLException {
-        String query = null;
+        String query;
         Article article = new Article();
         ResultSet resultat;
-            
-        try {
-            query = "SELECT * from ARTICLE where ID_ARTICLE=? ";
+        
+        query = "SELECT * from ARTICLE where ID_ARTICLE=? ";
 
-            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
-            pStatement.setInt(1, id);
-            resultat = pStatement.executeQuery();
-          
-            while (resultat.next()) {
-             //System.out.println(resultat.getString("ARTLIBELLE"));
-             article = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"),resultat.getString("ARTPHOTO"));
-            }
+        PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+        pStatement.setInt(1, id);
+        resultat = pStatement.executeQuery();
 
-        } catch (SQLException ex) {
-            Logger.getLogger(RequetesArticle.class.getName()).log(Level.SEVERE, null, ex);
-
+        while (resultat.next()) 
+        {
+         article = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"),resultat.getString("ARTPHOTO"));
         }
         return article ;
 
@@ -122,31 +116,40 @@ public class RequetesArticle {
        
     }
     
-      
-              
        public static List<Article> selectArticleByLibelle(String libelle) throws SQLException {
 
         String query = null;
-        List<Article> listearticle = new ArrayList<Article>();
+        List<Article> listearticle = new Vector<Article>();
         ResultSet resultat;
 
-        try {
-            query = "SELECT  * from ARTICLE where ARTLIBELLE like ?";
-            PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
-            pStatement.setString(1, libelle.toUpperCase() + "%");
-            resultat = pStatement.executeQuery();
+        query = "SELECT  * from ARTICLE where ARTLIBELLE like ?";
+        PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+        pStatement.setString(1, libelle.toUpperCase() + "%");
+        resultat = pStatement.executeQuery();
 
-            while (resultat.next()) {
-                Article aa = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"), resultat.getString("ARTPHOTO"));
-                listearticle.add(aa);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(RequetesArticle.class.getName()).log(Level.SEVERE, null, ex);
-
+        while (resultat.next()) {
+            Article aa = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"), resultat.getString("ARTPHOTO"));
+            listearticle.add(aa);
         }
 
         return listearticle;
     }
+     
+    public static Article selectArticleByRef(String ref)  throws SQLException {
+        String query;
+        Article article = new Article();
+        ResultSet resultat;
+        
+        query = "SELECT * from ARTICLE where ARTREF =? ";
 
+        PreparedStatement pStatement = ConnectionBDD.getInstance().getPreparedStatement(query);
+        pStatement.setString(1, ref);
+        resultat = pStatement.executeQuery();
+
+        while (resultat.next()) 
+        {
+         article = new Article(resultat.getInt("ID_ARTICLE"), resultat.getInt("ID_COULEUR"), resultat.getInt("ID_TVA"), resultat.getString("ARTLIBELLE"), resultat.getString("ARTREF"), resultat.getFloat("ARTPRXHT"),resultat.getString("ARTPHOTO"));
+        }
+        return article ;
+    }
 }

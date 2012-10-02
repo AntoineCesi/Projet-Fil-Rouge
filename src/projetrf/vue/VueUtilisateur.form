@@ -61,6 +61,7 @@
                           <Component id="jTextFieldUtilisateurIdentifiant" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldUtilisateurPrenom" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldUtilisateurNom" max="32767" attributes="0"/>
+                          <Component id="jLabel2" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -72,7 +73,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelUtilisateurNom" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldUtilisateurNom" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -103,7 +106,7 @@
                   <Component id="jComboBoxUtilisateurVille" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldUtilisateurRecherche" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
               <Component id="jButtonUtilisateurValide" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -151,6 +154,9 @@
           <Color id="Curseur par d&#xe9;faut"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxFonctionItemStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBoxUtilisateurVille">
       <Properties>
@@ -160,8 +166,6 @@
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBoxUtilisateurVilleItemStateChanged"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxUtilisateurVilleActionPerformed"/>
-        <EventHandler event="hierarchyChanged" listener="java.awt.event.HierarchyListener" parameters="java.awt.event.HierarchyEvent" handler="jComboBoxUtilisateurVilleHierarchyChanged"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonUtilisateurValide">
@@ -170,7 +174,6 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonUtilisateurValideMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonUtilisateurValideActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -182,9 +185,16 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldUtilisateurRecherche">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldUtilisateurRechercheActionPerformed"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldUtilisateurRechercheKeyPressed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldUtilisateurRechercheKeyReleased"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="UTILISATEUR"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

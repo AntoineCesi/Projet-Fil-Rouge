@@ -51,6 +51,7 @@ public class VueUtilisateur extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldUtilisateurPassword = new javax.swing.JTextField();
         jTextFieldUtilisateurRecherche = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Utilisateur");
@@ -74,20 +75,15 @@ public class VueUtilisateur extends javax.swing.JFrame {
         jLabelUtilisateurVille.setText("Ville");
 
         jComboBoxFonction.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jComboBoxFonction.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxFonctionItemStateChanged(evt);
+            }
+        });
 
         jComboBoxUtilisateurVille.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBoxUtilisateurVilleItemStateChanged(evt);
-            }
-        });
-        jComboBoxUtilisateurVille.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxUtilisateurVilleActionPerformed(evt);
-            }
-        });
-        jComboBoxUtilisateurVille.addHierarchyListener(new java.awt.event.HierarchyListener() {
-            public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
-                jComboBoxUtilisateurVilleHierarchyChanged(evt);
             }
         });
 
@@ -97,24 +93,17 @@ public class VueUtilisateur extends javax.swing.JFrame {
                 jButtonUtilisateurValideMouseClicked(evt);
             }
         });
-        jButtonUtilisateurValide.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUtilisateurValideActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("Password");
 
-        jTextFieldUtilisateurRecherche.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUtilisateurRechercheActionPerformed(evt);
-            }
-        });
         jTextFieldUtilisateurRecherche.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldUtilisateurRechercheKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldUtilisateurRechercheKeyReleased(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("UTILISATEUR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,14 +135,17 @@ public class VueUtilisateur extends javax.swing.JFrame {
                             .addComponent(jTextFieldUtilisateurPassword)
                             .addComponent(jTextFieldUtilisateurIdentifiant, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldUtilisateurPrenom, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldUtilisateurNom))
+                            .addComponent(jTextFieldUtilisateurNom)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel2)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelUtilisateurNom)
                     .addComponent(jTextFieldUtilisateurNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,7 +170,7 @@ public class VueUtilisateur extends javax.swing.JFrame {
                     .addComponent(jLabelUtilisateurVille)
                     .addComponent(jComboBoxUtilisateurVille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldUtilisateurRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jButtonUtilisateurValide)
                 .addContainerGap())
         );
@@ -205,35 +197,6 @@ public class VueUtilisateur extends javax.swing.JFrame {
          
     }//GEN-LAST:event_jButtonUtilisateurValideMouseClicked
 
-    private void jButtonUtilisateurValideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUtilisateurValideActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonUtilisateurValideActionPerformed
-
-    private void jTextFieldUtilisateurRechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUtilisateurRechercheActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldUtilisateurRechercheActionPerformed
-
-    private void jTextFieldUtilisateurRechercheKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUtilisateurRechercheKeyPressed
-       
-     if (jTextFieldUtilisateurRecherche.getText().trim().length()>0)
-     {
-        List<projetrf.model.Ville> vv1 = null;
-        try {
-            vv1 = RequetesVille.selectVilleByName(jTextFieldUtilisateurRecherche.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(VueUtilisateur.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        /*
-         * System.out.println(vv1.toString());
-         */
-        jComboBoxUtilisateurVille.removeAllItems();
-        for (Ville ville : vv1) {
-            jComboBoxUtilisateurVille.addItem(ville);
-
-        }
-     }
-    }//GEN-LAST:event_jTextFieldUtilisateurRechercheKeyPressed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         //ouverture windows chargement combobox fonction
@@ -253,17 +216,31 @@ public class VueUtilisateur extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowOpened
 
-    private void jComboBoxUtilisateurVilleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUtilisateurVilleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxUtilisateurVilleActionPerformed
-
-    private void jComboBoxUtilisateurVilleHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_jComboBoxUtilisateurVilleHierarchyChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxUtilisateurVilleHierarchyChanged
-
     private void jComboBoxUtilisateurVilleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxUtilisateurVilleItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxUtilisateurVilleItemStateChanged
+
+    private void jTextFieldUtilisateurRechercheKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUtilisateurRechercheKeyReleased
+       
+          try {
+          
+            List<projetrf.model.Ville> vv1 = RequetesVille.rechercheVilleByCp(jTextFieldUtilisateurRecherche.getText());
+           
+            jComboBoxUtilisateurVille.removeAllItems();
+            for (Ville ville : vv1) {               
+                jComboBoxUtilisateurVille.addItem(ville);
+               
+            }
+         
+
+        } catch (SQLException ex) {
+            Logger.getLogger(VueVille.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jTextFieldUtilisateurRechercheKeyReleased
+
+    private void jComboBoxFonctionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxFonctionItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxFonctionItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -313,6 +290,7 @@ public class VueUtilisateur extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxFonction;
     private javax.swing.JComboBox jComboBoxUtilisateurVille;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelUtilisateurFonction;
     private javax.swing.JLabel jLabelUtilisateurIdentifiant;
     private javax.swing.JLabel jLabelUtilisateurNom;

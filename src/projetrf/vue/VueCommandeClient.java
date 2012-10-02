@@ -4,6 +4,27 @@
  */
 package projetrf.vue;
 
+
+import java.math.BigDecimal;
+import java.sql.Array;
+import java.sql.SQLException;
+import java.text.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import projetrf.controleur.Main2;
+import projetrf.data.RequetesArticle;
+import projetrf.data.RequetesCommercial;
+import projetrf.data.RequetesEntreprise;
+import projetrf.data.RequetesInterlocuteur;
+import projetrf.data.RequetesLigneCommandeClient;
+import projetrf.data.RequetesTva;
+import projetrf.model.*;
+
 /**
  *
  * @author Travail
@@ -13,8 +34,54 @@ public class VueCommandeClient extends javax.swing.JFrame {
     /**
      * Creates new form VueCommandeClient
      */
+    private  String datecmd;
+    private int id_entreprise;
+    private int id_commercial;
+    private int id_interlocuteur;
+    private DecimalFormat mondecimal;
+    private Float TOTALHT;
+    private Float TOTALTVA;
+    private Float TOTALTTC;
+    
+     private Float TOTALGHT;
+     private Float TOTALGTVA;
+     private Float TOTALGTTC;
+     private Float TOTALGREMISE ;
+     private String reference;
+    
+    private Article article;
+    private Article article1;
+    private Article article2;
+    private Article article3;
+    private Article article4;
+    private Article article5;
+    private Article article6;
+    private Article article7;
+    private Article article8;
+ 
+    private LigneCommandeClient factureligne1;
+    private LigneCommandeClient factureligne2;
+    private LigneCommandeClient factureligne3;
+    private LigneCommandeClient factureligne4;
+    private LigneCommandeClient factureligne5;
+    private LigneCommandeClient factureligne6;
+    private LigneCommandeClient factureligne7;
+    private LigneCommandeClient factureligne8;
+
+
+      
+    
     public VueCommandeClient() {
         initComponents();
+    }
+    
+    public VueCommandeClient(String datecmd,int id_entreprise,int id_interlocuteur,int id_commercial) {
+        initComponents();
+          
+        this.datecmd=datecmd;
+        this.id_entreprise=id_entreprise;
+        this.id_commercial=id_commercial;
+        this.id_interlocuteur=id_interlocuteur;
     }
 
     /**
@@ -31,11 +98,11 @@ public class VueCommandeClient extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldCommandeClientDate = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldCommandeClientCommercial = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldCommandeClientEntreprise = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -45,55 +112,78 @@ public class VueCommandeClient extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jTextFieldCmdCliLg1 = new javax.swing.JTextField();
-        jTextFieldCmdClTva1 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg1Prod1 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg1Tva1 = new javax.swing.JTextField();
         jTextFieldCmdCliQte1 = new javax.swing.JTextField();
         jTextFieldCmdCliPxHt1 = new javax.swing.JTextField();
-        jTextFieldCmdCliPxTtc1 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg1Totalht1 = new javax.swing.JTextField();
         jTextField10 = new javax.swing.JTextField();
-        jTextFieldCmdCliLg2 = new javax.swing.JTextField();
-        jTextFieldCmdClTva2 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg2Prod2 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg2Tva2 = new javax.swing.JTextField();
         jTextFieldCmdCliQte2 = new javax.swing.JTextField();
         jTextFieldCmdCliPxHt2 = new javax.swing.JTextField();
-        jTextFieldCmdCliPxTtc2 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg2Totalht2 = new javax.swing.JTextField();
         jTextField16 = new javax.swing.JTextField();
-        jTextFieldCmdCliLg3 = new javax.swing.JTextField();
-        javax.swing.JTextField jTextFieldCmdClTva3 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg3Prod3 = new javax.swing.JTextField();
         jTextFieldCmdCliQte3 = new javax.swing.JTextField();
         jTextFieldCmdCliPxHt3 = new javax.swing.JTextField();
-        jTextFieldCmdCliPxTtc3 = new javax.swing.JTextField();
-        jTextFieldCmdClTva4 = new javax.swing.JTextField();
-        jTextFieldCmdCliLg4 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg3Totalht3 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg4Tva4 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg4Prod4 = new javax.swing.JTextField();
         jTextField24 = new javax.swing.JTextField();
-        jTextFieldCmdCliPxTtc4 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg4Totalht4 = new javax.swing.JTextField();
         jTextFieldCmdCliQte4 = new javax.swing.JTextField();
         jTextFieldCmdCliPxHt4 = new javax.swing.JTextField();
         jTextField28 = new javax.swing.JTextField();
-        jTextFieldCmdCliLg5 = new javax.swing.JTextField();
-        jTextFieldCmdClTva5 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg5Prod5 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg5Tva5 = new javax.swing.JTextField();
         jTextFieldCmdCliQte5 = new javax.swing.JTextField();
         jTextFieldCmdCliPxHt5 = new javax.swing.JTextField();
-        jTextFieldCmdCliPxTtc5 = new javax.swing.JTextField();
-        jTextFieldCmdCliLg6 = new javax.swing.JTextField();
-        jTextFieldCmdClTva6 = new javax.swing.JTextField();
-        jTextFieldCmdCliPxTtc6 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg5Totalht5 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg6Prod6 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg6Tva6 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg6Totalht6 = new javax.swing.JTextField();
         jTextFieldCmdCliQte6 = new javax.swing.JTextField();
         jTextField38 = new javax.swing.JTextField();
         jTextFieldCmdCliPxHt6 = new javax.swing.JTextField();
-        jTextFieldCmdClTva7 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg7Tva7 = new javax.swing.JTextField();
         jTextFieldCmdCliQte7 = new javax.swing.JTextField();
         jTextField42 = new javax.swing.JTextField();
         jTextFieldCmdCliPxHt7 = new javax.swing.JTextField();
-        jTextFieldCmdCliLg7 = new javax.swing.JTextField();
-        jTextFieldCmdCliPxTtc7 = new javax.swing.JTextField();
-        jTextFieldCmdCliLg8 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg7Prod7 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg7Totalht7 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg8Prod8 = new javax.swing.JTextField();
         jTextFieldCmdCliQte8 = new javax.swing.JTextField();
-        jTextFieldCmdClTva8 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg8Tva8 = new javax.swing.JTextField();
         jTextFieldCmdCliPxHt8 = new javax.swing.JTextField();
         jTextField50 = new javax.swing.JTextField();
-        jTextField51 = new javax.swing.JTextField();
-        jButtonCommandeClient = new javax.swing.JButton();
+        jTextFieldCmdCliLg8Totalht8 = new javax.swing.JTextField();
+        jButtonCommandeClientValide = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        jTextFieldCommandeClentProduitRecherche = new javax.swing.JTextField();
+        jButton1CommandeClientRecherche = new javax.swing.JButton();
+        jTextFieldCmdCliLg3Tva3 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextFieldCmdCliLg1TotalTva1 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg2TotalTva2 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg3TotalTva3 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg4TotalTva4 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg5TotalTva5 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg6TotalTva6 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg7TotalTva7 = new javax.swing.JTextField();
+        jTextFieldCmdCliLg8TotalTva8 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jTextFieldCommandeTotalHT = new javax.swing.JTextField();
+        jTextFieldComdClientTotalTva = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jTextFieldcmdClientTotalTtc = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextFieldCommandeClientEntrepriseInterlocuteur = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jTextFieldCommandeClientNumeroRef = new javax.swing.JTextField();
 
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -112,6 +202,12 @@ public class VueCommandeClient extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Commande Client");
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Date Commande ");
 
@@ -142,46 +238,104 @@ public class VueCommandeClient extends javax.swing.JFrame {
         jLayeredPane1.add(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jTextField4.setText("1");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+
+        jTextFieldCmdCliQte1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldCmdCliQte1FocusLost(evt);
             }
         });
 
         jTextField10.setText("2");
 
+        jTextFieldCmdCliQte2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldCmdCliQte2FocusLost(evt);
+            }
+        });
+
         jTextField16.setText("3");
-        jTextField16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField16ActionPerformed(evt);
+
+        jTextFieldCmdCliQte3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldCmdCliQte3FocusLost(evt);
             }
         });
 
         jTextField24.setText("4");
-        jTextField24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField24ActionPerformed(evt);
+
+        jTextFieldCmdCliQte4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldCmdCliQte4FocusLost(evt);
             }
         });
 
         jTextField28.setText("5");
 
+        jTextFieldCmdCliQte5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldCmdCliQte5FocusLost(evt);
+            }
+        });
+
+        jTextFieldCmdCliQte6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldCmdCliQte6FocusLost(evt);
+            }
+        });
+
         jTextField38.setText("6");
 
+        jTextFieldCmdCliQte7.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldCmdCliQte7FocusLost(evt);
+            }
+        });
+
         jTextField42.setText("7");
-        jTextField42.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField42ActionPerformed(evt);
+
+        jTextFieldCmdCliQte8.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextFieldCmdCliQte8FocusLost(evt);
             }
         });
 
         jTextField50.setText("8");
 
-        jButtonCommandeClient.setText("Valider");
-        jButtonCommandeClient.setActionCommand("jTextFieldCmdCliPxTtc1");
+        jButtonCommandeClientValide.setText("Valider");
+        jButtonCommandeClientValide.setActionCommand("jTextFieldCmdCliPxTtc1");
+        jButtonCommandeClientValide.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCommandeClientValideMouseClicked(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText("Commande Client");
+
+        jButton1CommandeClientRecherche.setText("Recherche");
+        jButton1CommandeClientRecherche.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1CommandeClientRechercheMouseClicked(evt);
+            }
+        });
+
+        jLabel12.setText("Tva");
+        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 255, 255)));
+
+        jLabel14.setText("Saisie produit");
+
+        jLabel13.setText(" Total  HT:");
+
+        jLabel15.setText(" TVA:");
+
+        jLabel16.setText("TTC:");
+
+        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTextField1.setText("Les Totaux sont donnés pour information");
+
+        jLabel17.setText("Interlocuteur");
+
+        jLabel18.setText("Numéro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,242 +343,984 @@ public class VueCommandeClient extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCmdCliLg2, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonCommandeClientValide, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCmdCliLg3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCmdCliLg4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCmdCliLg5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCmdCliLg6))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCmdCliLg7))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextFieldCmdCliLg8)))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldCmdClTva2, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdClTva3, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdClTva4, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdClTva5, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdClTva6, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdClTva7, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdClTva8, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldCmdCliQte2, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliQte3, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliQte4, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliQte5, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliQte6, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliQte7, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliQte8, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldCmdCliPxHt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCmdCliPxHt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCmdCliPxHt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCmdCliPxHt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCmdCliPxHt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCmdCliPxHt7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCmdCliPxHt8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldCmdCliPxTtc2, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliPxTtc3, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliPxTtc4, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliPxTtc5, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliPxTtc6, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCmdCliPxTtc7, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(jTextField51, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextFieldCmdCliLg1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(25, 25, 25)
-                            .addComponent(jTextFieldCmdClTva1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextFieldCmdCliQte1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextFieldCmdCliPxHt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextFieldCmdCliPxTtc1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(420, 420, 420)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(103, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCommandeClient)
-                .addGap(154, 154, 154))
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextFieldCmdCliLg1Prod1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(25, 25, 25)
+                                        .addComponent(jTextFieldCmdCliLg1Tva1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextFieldCmdCliLg2Prod2))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextFieldCmdCliLg3Prod3))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextFieldCmdCliLg4Prod4))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextFieldCmdCliLg5Prod5))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextFieldCmdCliLg6Prod6))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextFieldCmdCliLg7Prod7))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jTextFieldCommandeTotalHT, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(86, 86, 86)
+                                                        .addComponent(jLabel15)
+                                                        .addGap(18, 18, 18))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jTextFieldCmdCliLg8Prod8, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                        .addGap(25, 25, 25)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldCmdCliLg2Tva2)
+                                            .addComponent(jTextFieldCmdCliLg4Tva4)
+                                            .addComponent(jTextFieldCmdCliLg5Tva5)
+                                            .addComponent(jTextFieldCmdCliLg6Tva6)
+                                            .addComponent(jTextFieldCmdCliLg7Tva7)
+                                            .addComponent(jTextFieldCmdCliLg8Tva8)
+                                            .addComponent(jTextFieldCmdCliLg3Tva3, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                                            .addComponent(jTextFieldComdClientTotalTva))))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(2, 2, 2)
+                                            .addComponent(jTextFieldCmdCliQte1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jTextFieldCmdCliPxHt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jTextFieldCmdCliLg1Totalht1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jTextFieldCommandeClientCommercial, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                                        .addComponent(jTextFieldCommandeClientEntrepriseInterlocuteur))))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldCmdCliQte2)
+                                            .addComponent(jTextFieldCmdCliQte3)
+                                            .addComponent(jTextFieldCmdCliQte4)
+                                            .addComponent(jTextFieldCmdCliQte5)
+                                            .addComponent(jTextFieldCmdCliQte6)
+                                            .addComponent(jTextFieldCmdCliQte7)
+                                            .addComponent(jTextFieldCmdCliQte8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextFieldCmdCliPxHt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldCmdCliPxHt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldCmdCliPxHt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldCmdCliPxHt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldCmdCliPxHt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldCmdCliPxHt7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldCmdCliPxHt8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldCmdCliLg2Totalht2)
+                                            .addComponent(jTextFieldCmdCliLg3Totalht3)
+                                            .addComponent(jTextFieldCmdCliLg4Totalht4)
+                                            .addComponent(jTextFieldCmdCliLg5Totalht5)
+                                            .addComponent(jTextFieldCmdCliLg6Totalht6)
+                                            .addComponent(jTextFieldCmdCliLg7Totalht7)
+                                            .addComponent(jTextFieldCmdCliLg8Totalht8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(37, 37, 37)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldCmdCliLg1TotalTva1)
+                                    .addComponent(jTextFieldCmdCliLg2TotalTva2)
+                                    .addComponent(jTextFieldCmdCliLg3TotalTva3)
+                                    .addComponent(jTextFieldCmdCliLg4TotalTva4)
+                                    .addComponent(jTextFieldCmdCliLg5TotalTva5)
+                                    .addComponent(jTextFieldCmdCliLg6TotalTva6)
+                                    .addComponent(jTextFieldCmdCliLg7TotalTva7)
+                                    .addComponent(jTextFieldCmdCliLg8TotalTva8)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldCommandeClientEntreprise)
+                                            .addComponent(jTextFieldCommandeClentProduitRecherche, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextFieldCommandeClientDate, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(54, 54, 54)
+                                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1CommandeClientRecherche, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldCommandeClientNumeroRef))
+                                .addGap(188, 188, 188)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(379, 379, 379)
+                                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(479, 596, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(494, 494, 494)
+                .addComponent(jLabel16)
+                .addGap(28, 28, 28)
+                .addComponent(jTextFieldcmdClientTotalTtc, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel9, jTextFieldCmdCliPxHt1, jTextFieldCmdCliPxHt2, jTextFieldCmdCliPxHt3, jTextFieldCmdCliPxHt4, jTextFieldCmdCliPxHt5, jTextFieldCmdCliPxHt6, jTextFieldCmdCliPxHt7, jTextFieldCmdCliPxHt8});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel4, jTextField10, jTextField16, jTextField24, jTextField28, jTextField38, jTextField4, jTextField42, jTextField50});
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel5, jTextFieldCmdCliLg1, jTextFieldCmdCliLg2, jTextFieldCmdCliLg3, jTextFieldCmdCliLg4});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel5, jTextFieldCmdCliLg1Prod1, jTextFieldCmdCliLg2Prod2, jTextFieldCmdCliLg3Prod3, jTextFieldCmdCliLg4Prod4});
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel7, jTextFieldCmdClTva1, jTextFieldCmdClTva2, jTextFieldCmdClTva3, jTextFieldCmdClTva4});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel7, jTextFieldCmdCliLg1Tva1, jTextFieldCmdCliLg2Tva2, jTextFieldCmdCliLg4Tva4});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jTextFieldCommandeClientEntrepriseInterlocuteur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jTextFieldCommandeClientCommercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGap(10, 10, 10))
+                            .addComponent(jLabel14)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCommandeClientDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18)
+                            .addComponent(jTextFieldCommandeClientNumeroRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextFieldCommandeClientEntreprise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextFieldCommandeClentProduitRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1CommandeClientRecherche)))))
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg1Prod1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg1Tva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg2Prod2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg2Tva2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldCmdCliLg3Prod3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldCmdCliLg3Tva3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg4Prod4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg4Tva4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg5Prod5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg5Tva5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg6Prod6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg6Tva6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg7Prod7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg7Tva7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg8Prod8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg8Tva8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel12))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCmdCliQte1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliPxHt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg1Totalht1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg1TotalTva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCmdCliQte2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliPxHt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg2Totalht2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg2TotalTva2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCmdCliQte3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliPxHt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg3Totalht3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg3TotalTva3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCmdCliQte4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliPxHt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg4Totalht4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg4TotalTva4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCmdCliQte5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliPxHt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg5Totalht5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg5TotalTva5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCmdCliQte6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliPxHt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg6Totalht6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg6TotalTva6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCmdCliQte7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliPxHt7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg7Totalht7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg7TotalTva7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldCmdCliQte8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliPxHt8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg8Totalht8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCmdCliLg8TotalTva8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                    .addComponent(jButtonCommandeClientValide)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel7)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel9)
-                        .addComponent(jLabel10))
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliLg1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdClTva1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliQte1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxHt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxTtc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliLg2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdClTva2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliQte2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxHt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxTtc2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliLg3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdClTva3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliQte3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxHt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxTtc3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliLg4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdClTva4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliQte4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxHt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxTtc4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliLg5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdClTva5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliQte5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxHt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxTtc5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliLg6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdClTva6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliQte6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxHt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxTtc6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliLg7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdClTva7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliQte7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxHt7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxTtc7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliLg8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdClTva8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliQte8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldCmdCliPxHt8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jButtonCommandeClient)
+                    .addComponent(jTextFieldCommandeTotalHT, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldComdClientTotalTva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16)
+                    .addComponent(jTextFieldcmdClientTotalTtc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       
+            TOTALHT = TOTALHT =0F;
+            TOTALTVA = TOTALTVA =0F;
+            TOTALTTC = TOTALTTC =0F;
+        
+        try {
+            //String datecmd,int id_entreprise,int id_commercial
+            Entreprise entreprise = RequetesEntreprise.SelectEntrepriseById(id_entreprise);
+            Commercial commercial = RequetesCommercial.selectById(id_commercial);
+            Interlocuteur interlocuteur = RequetesInterlocuteur.selectById(id_interlocuteur);
+            DateFormat datetraitement = new SimpleDateFormat("dd/MM/yyyy");
+            jTextFieldCommandeClientEntreprise.setText(entreprise.getNom().toUpperCase());
+            jTextFieldCommandeClientCommercial.setText(commercial.getNom().toUpperCase());
+            jTextFieldCommandeClientEntrepriseInterlocuteur.setText(interlocuteur.getNom().toUpperCase());
+           
+               
+            try {
+                Date datecommande = datetraitement.parse(datecmd);
+            } catch (ParseException ex) {
+                Logger.getLogger(VueCommandeClient.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jTextFieldCommandeClientDate.setText(datecmd);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(VueCommandeClient.class.getName()).log(Level.SEVERE, null, ex);
+            
+             JOptionPane.showMessageDialog(this, "Erreur traitement ouverture",  " Erreur ",  JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
-    private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField16ActionPerformed
+    private void jButton1CommandeClientRechercheMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1CommandeClientRechercheMouseClicked
+        try {
+            /*lance recherche produits*/
+            mondecimal = new DecimalFormat("#######.00");
+             Article article= new Article();
+             article = RequetesArticle.selectArticleByRef(jTextFieldCommandeClentProduitRecherche.getText());
+             
+             // TEST DE LA ZONE DISPONIBLE
+          
+            if (jTextFieldCmdCliLg1Prod1.getText().trim().equals("")) {
+                
+                jTextFieldCmdCliLg1Prod1.setText(article.getLibelle());
+                Tva tva1 = RequetesTva.selectTvaById(article.getId()); //taux tva
+                jTextFieldCmdCliLg1Tva1.setText(mondecimal.format(tva1.getTaux()));
+                jTextFieldCmdCliPxHt1.setText(mondecimal.format(article.getPrixht()));
+                  
+                article1= article;
+            }
+             else
+                  if (jTextFieldCmdCliLg2Prod2.getText().trim().equals("")) {
+                jTextFieldCmdCliLg2Prod2.setText(article.getLibelle());
+                Tva tva2 = RequetesTva.selectTvaById(article.getId()); //taux tva
+                jTextFieldCmdCliLg2Tva2.setText(mondecimal.format(tva2.getTaux()));
+                jTextFieldCmdCliPxHt2.setText(mondecimal.format(article.getPrixht()));
+                article2= article;
+            }
+             else
+                 if (jTextFieldCmdCliLg3Prod3.getText().trim().equals("")) {
+                jTextFieldCmdCliLg3Prod3.setText(article.getLibelle());
+                Tva tva3 = RequetesTva.selectTvaById(article.getId());
+                jTextFieldCmdCliLg3Tva3.setText(mondecimal.format(tva3.getTaux()));
+                jTextFieldCmdCliPxHt3.setText(mondecimal.format(article.getPrixht()));
+                article3= article;
+            }
+             else
+                  if (jTextFieldCmdCliLg4Prod4.getText().trim().equals("")) {
+                jTextFieldCmdCliLg4Prod4.setText(article.getLibelle());
+                Tva tva4 = RequetesTva.selectTvaById(article.getId());
+                jTextFieldCmdCliLg4Tva4.setText(mondecimal.format(tva4.getTaux()));
+                jTextFieldCmdCliPxHt4.setText(mondecimal.format(article.getPrixht()));
+                article4= article;
+            }
+             else
+                  if (jTextFieldCmdCliLg5Prod5.getText().trim().equals("")) {
+                jTextFieldCmdCliLg5Prod5.setText(article.getLibelle());
+                Tva tva5 = RequetesTva.selectTvaById(article.getId());
+                jTextFieldCmdCliLg5Tva5.setText(mondecimal.format(tva5.getTaux()));
+                jTextFieldCmdCliPxHt5.setText(mondecimal.format(article.getPrixht()));
+                article5= article;
+            }
+             else
+                  if (jTextFieldCmdCliLg6Prod6.getText().trim().equals("")) {
+                jTextFieldCmdCliLg6Prod6.setText(article.getLibelle());
+                Tva tva6 = RequetesTva.selectTvaById(article.getId());
+                jTextFieldCmdCliLg6Tva6.setText(mondecimal.format(tva6.getTaux()));
+                jTextFieldCmdCliPxHt6.setText(mondecimal.format(article.getPrixht()));
+                article6= article;
+            }
+             else
+                  if (jTextFieldCmdCliLg7Prod7.getText().trim().equals("")) {
+                jTextFieldCmdCliLg7Prod7.setText(article.getLibelle());
+                Tva tva7 = RequetesTva.selectTvaById(article.getId());
+                jTextFieldCmdCliLg7Tva7.setText(mondecimal.format(tva7.getTaux()));
+                jTextFieldCmdCliPxHt7.setText(mondecimal.format(article.getPrixht()));
+                article7= article;
+            }
+             else
+                  if (jTextFieldCmdCliLg8Prod8.getText().trim().equals("")) {
+                jTextFieldCmdCliLg8Prod8.setText(article.getLibelle());
+                Tva tva8 = RequetesTva.selectTvaById(article.getId());
+                jTextFieldCmdCliLg8Tva8.setText(mondecimal.format(tva8.getTaux()));
+                jTextFieldCmdCliPxHt8.setText(mondecimal.format(article.getPrixht()));
+                article8= article;
+            }
+            else
+                  {
+                      JOptionPane.showMessageDialog(this, "Fin de tableau atteint enregistrer votre commande",  " Erreur ",  JOptionPane.INFORMATION_MESSAGE);
+                  }
+             
+             
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(VueCommandeClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            
+        
+        jTextFieldCommandeTotalHT.setText(String.valueOf(TOTALHT));
+        
+        
+    }//GEN-LAST:event_jButton1CommandeClientRechercheMouseClicked
 
-    private void jTextField24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField24ActionPerformed
+    private void jTextFieldCmdCliQte1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCmdCliQte1FocusLost
+       
+        mondecimal = new DecimalFormat("#######.00");
 
-    private void jTextField42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField42ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField42ActionPerformed
+        // mise ajour qte + calcule
+        if (!(jTextFieldCmdCliQte1.getText().equals(""))) {
+
+             
+            int qte = Integer.parseInt(jTextFieldCmdCliQte1.getText().trim());
+            
+            if (qte !=0)
+            {
+            Float totalht1 = (qte * (Float.valueOf(jTextFieldCmdCliPxHt1.getText().replace(",", "."))));
+            jTextFieldCmdCliLg1Totalht1.setText(mondecimal.format(totalht1).replace(",", "."));
+
+            Float totaltva1 = (totalht1 * Float.valueOf(jTextFieldCmdCliLg1Tva1.getText().replace(",", "."))) / 100;
+
+            jTextFieldCmdCliLg1TotalTva1.setText(mondecimal.format(totaltva1).replace(",", "."));
+            
+            this.TOTALHT = this.TOTALHT + (totalht1);
+            this.TOTALTVA = this.TOTALTVA + (totaltva1);
+            this.TOTALTTC = this.TOTALTTC + (totalht1) + (totaltva1);
+            
+            jTextFieldCommandeTotalHT.setText(mondecimal.format(TOTALHT).replace(",", "."));
+            jTextFieldComdClientTotalTva.setText(mondecimal.format(TOTALTVA).replace(",", "."));
+            
+            //traitemnt pour affichage euro
+            BigDecimal TOTALGTTC = new BigDecimal(String.valueOf(TOTALTTC));
+            NumberFormat t1 = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+                               
+            jTextFieldcmdClientTotalTtc.setText(t1.format(TOTALGTTC));
+            }
+            else
+            {
+                jTextFieldCmdCliLg1Prod1.setText(" ");
+                jTextFieldCmdCliLg1TotalTva1.setText(" ");
+                jTextFieldCmdCliLg1Totalht1.setText(" ");
+                jTextFieldCmdCliLg1Tva1.setText(" ");
+                jTextFieldCmdCliQte1.setText("");
+                jTextFieldCmdCliPxHt1.setText("");
+                
+            }
+
+        }
+    }//GEN-LAST:event_jTextFieldCmdCliQte1FocusLost
+
+    private void jTextFieldCmdCliQte2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCmdCliQte2FocusLost
+        mondecimal = new DecimalFormat("#######.00");
+     
+        if (!(jTextFieldCmdCliQte2.getText().equals(""))) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte2.getText().trim());
+
+            Float totalht2 = (qte * (Float.valueOf(jTextFieldCmdCliPxHt2.getText().replace(",", "."))));
+            jTextFieldCmdCliLg2Totalht2.setText(mondecimal.format(totalht2).replace(",", "."));
+
+            Float totaltva2 = (totalht2 * Float.valueOf(jTextFieldCmdCliLg2Tva2.getText().replace(",", "."))) / 100;
+
+            jTextFieldCmdCliLg2TotalTva2.setText(mondecimal.format(totaltva2).replace(",", "."));
+            this.TOTALHT = this.TOTALHT + (totalht2);
+            this.TOTALTVA =this.TOTALTVA + (totaltva2);
+            this.TOTALTTC =this.TOTALTTC + (totalht2) + (totaltva2);
+              
+            jTextFieldCommandeTotalHT.setText(mondecimal.format(TOTALHT).replace(",", "."));
+            jTextFieldComdClientTotalTva.setText(mondecimal.format(TOTALTVA).replace(",", "."));
+            
+            //traitemnt pour affichage euro
+            BigDecimal TOTALGTTC = new BigDecimal(String.valueOf(TOTALTTC));
+            NumberFormat t1 = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+                               
+            jTextFieldcmdClientTotalTtc.setText(t1.format(TOTALGTTC));
+           
+        }
+    }//GEN-LAST:event_jTextFieldCmdCliQte2FocusLost
+
+    private void jTextFieldCmdCliQte3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCmdCliQte3FocusLost
+       
+        mondecimal = new DecimalFormat("#######.00");
+        if (!(jTextFieldCmdCliQte3.getText().equals(""))) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte3.getText().trim());
+
+            Float totalht3 = (qte * (Float.valueOf(jTextFieldCmdCliPxHt3.getText().replace(",", "."))));
+            jTextFieldCmdCliLg3Totalht3.setText(mondecimal.format(totalht3).replace(",", "."));
+
+            Float totaltva3 = (totalht3 * Float.valueOf(jTextFieldCmdCliLg3Tva3.getText().replace(",", "."))) / 100;
+
+            
+            jTextFieldCmdCliLg3TotalTva3.setText(mondecimal.format(totaltva3).replace(",", "."));
+            TOTALHT = TOTALHT + (totalht3);
+            TOTALTVA = TOTALTVA + (totaltva3);
+            TOTALTTC = TOTALTTC + (totalht3) + (totaltva3);
+              
+            jTextFieldCommandeTotalHT.setText(mondecimal.format(TOTALHT).replace(",", "."));
+            jTextFieldComdClientTotalTva.setText(mondecimal.format(TOTALTVA).replace(",", "."));
+            
+            //traitemnt pour affichage euro
+            BigDecimal TOTALGTTC = new BigDecimal(String.valueOf(TOTALTTC));
+            NumberFormat t1 = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+                               
+            jTextFieldcmdClientTotalTtc.setText(t1.format(TOTALGTTC));
+        }
+    }//GEN-LAST:event_jTextFieldCmdCliQte3FocusLost
+
+    private void jTextFieldCmdCliQte4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCmdCliQte4FocusLost
+      
+        mondecimal = new DecimalFormat("#######.00");
+
+        if (!(jTextFieldCmdCliQte4.getText().equals(""))) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte4.getText().trim());
+
+            Float totalht4 = (qte * (Float.valueOf(jTextFieldCmdCliPxHt4.getText().replace(",", "."))));
+            jTextFieldCmdCliLg4Totalht4.setText(mondecimal.format(totalht4).replace(",", "."));
+
+            Float totaltva4 = (totalht4 * Float.valueOf(jTextFieldCmdCliLg4Tva4.getText().replace(",", "."))) / 100;
+
+            jTextFieldCmdCliLg4TotalTva4.setText(mondecimal.format(totaltva4).replace(",", "."));
+
+            TOTALHT = TOTALHT + (totalht4);
+            TOTALTVA = TOTALTVA + (totaltva4);
+            TOTALTTC = TOTALTTC + (totalht4) + (totaltva4);
+            
+             
+            jTextFieldCommandeTotalHT.setText(mondecimal.format(TOTALHT).replace(",", "."));
+            jTextFieldComdClientTotalTva.setText(mondecimal.format(TOTALTVA).replace(",", "."));
+            
+            //traitemnt pour affichage euro
+            BigDecimal TOTALGTTC = new BigDecimal(String.valueOf(TOTALTTC));
+            NumberFormat t1 = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+                               
+            jTextFieldcmdClientTotalTtc.setText(t1.format(TOTALGTTC));
+
+        }
+    }//GEN-LAST:event_jTextFieldCmdCliQte4FocusLost
+
+    private void jTextFieldCmdCliQte5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCmdCliQte5FocusLost
+    
+        mondecimal = new DecimalFormat("#######.00");
+        if (!(jTextFieldCmdCliQte5.getText().equals(""))) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte5.getText().trim());
+
+            Float totalht5 = (qte * (Float.valueOf(jTextFieldCmdCliPxHt5.getText().replace(",", "."))));
+            jTextFieldCmdCliLg5Totalht5.setText(mondecimal.format(totalht5).replace(",", "."));
+
+            Float totaltva5 = (totalht5 * Float.valueOf(jTextFieldCmdCliLg5Tva5.getText().replace(",", "."))) / 100;
+
+            jTextFieldCmdCliLg5TotalTva5.setText(mondecimal.format(totaltva5).replace(",", "."));
+
+            TOTALHT = TOTALHT + (totalht5);
+            TOTALTVA = TOTALTVA + (totaltva5);
+            TOTALTTC = TOTALTTC + (totalht5) + (totaltva5);
+              
+            jTextFieldCommandeTotalHT.setText(mondecimal.format(TOTALHT).replace(",", "."));
+            jTextFieldComdClientTotalTva.setText(mondecimal.format(TOTALTVA).replace(",", "."));
+            
+            //traitemnt pour affichage euro
+            BigDecimal TOTALGTTC = new BigDecimal(String.valueOf(TOTALTTC));
+            NumberFormat t1 = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+                               
+            jTextFieldcmdClientTotalTtc.setText(t1.format(TOTALGTTC));
+        }
+    }//GEN-LAST:event_jTextFieldCmdCliQte5FocusLost
+
+    private void jTextFieldCmdCliQte6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCmdCliQte6FocusLost
+        
+        mondecimal = new DecimalFormat("#######.00");
+        if (!(jTextFieldCmdCliQte6.getText().equals(""))) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte6.getText().trim());
+
+            Float totalht6 = (qte * (Float.valueOf(jTextFieldCmdCliPxHt6.getText().replace(",", "."))));
+            jTextFieldCmdCliLg6Totalht6.setText(mondecimal.format(totalht6).replace(",", "."));
+
+            Float totaltva6 = (totalht6 * Float.valueOf(jTextFieldCmdCliLg6Tva6.getText().replace(",", "."))) / 100;
+
+            
+            jTextFieldCmdCliLg6TotalTva6.setText(mondecimal.format(totaltva6).replace(",", "."));
+
+            TOTALHT = TOTALHT + (totalht6);
+            TOTALTVA = TOTALTVA + (totaltva6);
+            TOTALTTC = TOTALTTC + (totalht6) + (totaltva6);
+            
+              
+            jTextFieldCommandeTotalHT.setText(mondecimal.format(TOTALHT).replace(",", "."));
+            jTextFieldComdClientTotalTva.setText(mondecimal.format(TOTALTVA).replace(",", "."));
+            
+            //traitemnt pour affichage euro
+            BigDecimal TOTALGTTC = new BigDecimal(String.valueOf(TOTALTTC));
+            NumberFormat t1 = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+                               
+            jTextFieldcmdClientTotalTtc.setText(t1.format(TOTALGTTC));
+        }
+    }//GEN-LAST:event_jTextFieldCmdCliQte6FocusLost
+
+    private void jTextFieldCmdCliQte7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCmdCliQte7FocusLost
+        
+        mondecimal = new DecimalFormat("#######.00");
+        if (!(jTextFieldCmdCliQte7.getText().equals(""))) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte7.getText().trim());
+
+            Float totalht7 = (qte * (Float.valueOf(jTextFieldCmdCliPxHt7.getText().replace(",", "."))));
+            jTextFieldCmdCliLg7Totalht7.setText(mondecimal.format(totalht7).replace(",", "."));
+
+            Float totaltva7 = (totalht7 * Float.valueOf(jTextFieldCmdCliLg7Tva7.getText().replace(",", "."))) / 100;
+
+           
+            jTextFieldCmdCliLg7TotalTva7.setText(mondecimal.format(totaltva7).replace(",", "."));
+
+            TOTALHT = TOTALHT + (totalht7);
+            TOTALTVA = TOTALTVA + (totaltva7);
+            TOTALTTC = TOTALTTC + (totalht7) + (totaltva7);
+            
+              
+            jTextFieldCommandeTotalHT.setText(mondecimal.format(TOTALHT).replace(",", "."));
+            jTextFieldComdClientTotalTva.setText(mondecimal.format(TOTALTVA).replace(",", "."));
+            
+            //traitemnt pour affichage euro
+            BigDecimal TOTALGTTC = new BigDecimal(String.valueOf(TOTALTTC));
+            NumberFormat t1 = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+                               
+            jTextFieldcmdClientTotalTtc.setText(t1.format(TOTALGTTC));
+        }
+    }//GEN-LAST:event_jTextFieldCmdCliQte7FocusLost
+
+    private void jTextFieldCmdCliQte8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCmdCliQte8FocusLost
+       
+        mondecimal = new DecimalFormat("#######.00");
+        if (!(jTextFieldCmdCliQte8.getText().equals(""))) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte8.getText().trim());
+
+            Float totalht8 = (qte * (Float.valueOf(jTextFieldCmdCliPxHt8.getText().replace(",", "."))));
+            jTextFieldCmdCliLg8Totalht8.setText(mondecimal.format(totalht8).replace(",", "."));
+
+            Float totaltva8 = (totalht8 * Float.valueOf(jTextFieldCmdCliLg8Tva8.getText().replace(",", "."))) / 100;
+
+            jTextFieldCmdCliLg8TotalTva8.setText(mondecimal.format(totaltva8).replace(",", "."));
+
+            TOTALHT = TOTALHT + (totalht8);
+            TOTALTVA = TOTALTVA + (totaltva8);
+            TOTALTTC = TOTALTTC + (totalht8) + (totaltva8);
+            
+              
+            jTextFieldCommandeTotalHT.setText(mondecimal.format(TOTALHT).replace(",", "."));
+            jTextFieldComdClientTotalTva.setText(mondecimal.format(TOTALTVA).replace(",", "."));
+            
+            //traitemnt pour affichage euro
+            BigDecimal TOTALGTTC = new BigDecimal(String.valueOf(TOTALTTC));
+            NumberFormat t1 = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+                               
+            jTextFieldcmdClientTotalTtc.setText(t1.format(TOTALGTTC));
+
+        }
+    }//GEN-LAST:event_jTextFieldCmdCliQte8FocusLost
+
+    private void jButtonCommandeClientValideMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCommandeClientValideMouseClicked
+       
+      
+        // validation de la commande recalcule de somme
+         mondecimal = new DecimalFormat("#######.00");
+        Float TOTALGHT = 0F;
+        Float TOTALGTVA = 0F;
+        Float TOTALGTTC = 0F;
+        Float TOTALGREMISE = 0F;
+        
+        
+        // faire le total pour entete facture
+        
+        CommandeClient Facture =new CommandeClient();
+                
+        if (article1 !=null ) {
+        
+            int qte = Integer.parseInt(jTextFieldCmdCliQte1.getText().trim());
+            Float totalht1=article1.getPrixht() * qte;
+            TOTALGHT= TOTALGHT + (totalht1 );
+            
+            Float totaltva1 = ((article1.getPrixht() * qte) * Float.valueOf(jTextFieldCmdCliLg1Tva1.getText().replace(",", "."))) / 100;
+            TOTALGTVA=TOTALGTVA + totaltva1;
+            TOTALGTTC=TOTALGTTC +(totalht1+totaltva1 );
+           
+            
+        } else if (article2 != null) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte2.getText().trim());
+            Float totalht2 = article2.getPrixht() * qte;
+            TOTALGHT = TOTALGHT + (totalht2);
+            Float totaltva2 = ((article2.getPrixht() * qte) * Float.valueOf(jTextFieldCmdCliLg2Tva2.getText().replace(",", "."))) / 100;
+            TOTALGTVA = TOTALGTVA + totaltva2;
+            TOTALGTTC = TOTALGTTC + (totalht2 + totaltva2);
+        } else if (article3 != null) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte3.getText().trim());
+            Float totalht3 = article3.getPrixht() * qte;
+            TOTALGHT = TOTALGHT + (totalht3);
+            Float totaltva3 = ((article3.getPrixht() * qte) * Float.valueOf(jTextFieldCmdCliLg3Tva3.getText().replace(",", "."))) / 100;
+            TOTALGTVA = TOTALGTVA + totaltva3;
+            TOTALGTTC = TOTALGTTC + (totalht3 + totaltva3);
+        }
+        else if (article4 != null) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte4.getText().trim());
+            Float totalht4 = article4.getPrixht() * qte;
+            TOTALGHT = TOTALGHT + (totalht4);
+            Float totaltva4 = ((article4.getPrixht() * qte) * Float.valueOf(jTextFieldCmdCliLg4Tva4.getText().replace(",", "."))) / 100;
+            TOTALGTVA = TOTALGTVA + totaltva4;
+            TOTALGTTC = TOTALGTTC + (totalht4 + totaltva4);
+        }
+        else if (article5 != null) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte5.getText().trim());
+            Float totalht5 = article5.getPrixht() * qte;
+            TOTALGHT = TOTALGHT + (totalht5);
+            Float totaltva5 = ((article5.getPrixht() * qte) * Float.valueOf(jTextFieldCmdCliLg5Tva5.getText().replace(",", "."))) / 100;
+            TOTALGTVA = TOTALGTVA + totaltva5;
+            TOTALGTTC = TOTALGTTC + (totalht5 + totaltva5);
+        }else if (article6 != null) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte6.getText().trim());
+            Float totalht6 = article6.getPrixht() * qte;
+            TOTALGHT = TOTALGHT + (totalht6);
+            Float totaltva6 = ((article6.getPrixht() * qte) * Float.valueOf(jTextFieldCmdCliLg6Tva6.getText().replace(",", "."))) / 100;
+            TOTALGTVA = TOTALGTVA + totaltva6;
+            TOTALGTTC = TOTALGTTC + (totalht6 + totaltva6);
+        }else if (article7 != null) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte7.getText().trim());
+            Float totalht7 = article7.getPrixht() * qte;
+            TOTALGHT = TOTALGHT + (totalht7);
+            Float totaltva7 = ((article7.getPrixht() * qte) * Float.valueOf(jTextFieldCmdCliLg7Tva7.getText().replace(",", "."))) / 100;
+            TOTALGTVA = TOTALGTVA + totaltva7;
+            TOTALGTTC = TOTALGTTC + (totalht7 + totaltva7);
+        }else if (article8 != null) {
+
+            int qte = Integer.parseInt(jTextFieldCmdCliQte8.getText().trim());
+            Float totalht8 = article8.getPrixht() * qte;
+            TOTALGHT = TOTALGHT + (totalht8);
+            Float totaltva8 = ((article8.getPrixht() * qte) * Float.valueOf(jTextFieldCmdCliLg8Tva8.getText().replace(",", "."))) / 100;
+            TOTALGTVA = TOTALGTVA + totaltva8;
+            TOTALGTTC = TOTALGTTC + (totalht8 + totaltva8);
+        }
+        
+        else {
+         
+             JOptionPane.showMessageDialog(this," il n'y a pas de ligne de saisie "," Erreur Importante ",  JOptionPane.ERROR_MESSAGE);
+        }
+      
+        String dd =(jTextFieldCommandeClientDate.getText());
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        Date datefact = null;
+        
+        try {
+            datefact = df.parse(dd);            
+        } catch (ParseException e) {
+            System.out.println(e);
+        } 
+        
+        
+        /*  test d'ecriture fihier commande client et ligne commande client */
+        
+     // ecriture dans fichier des commande client
+        String reference=jTextFieldCommandeClientNumeroRef.getText();  
+        
+        if( reference.length() >2)
+        
+        {
+        Main2 outil = new Main2() {};
+         int retourIdCmd=  outil.ecrireCommandeClient(id_entreprise, id_interlocuteur, datefact, reference, TOTALGHT, TOTALGTTC, TOTALGREMISE);
+        
+        System.out.println(retourIdCmd);// retour de l'id de la facture client
+        
+        // fin ecriture commande client
+        
+         ArrayList<LigneCommandeClient> fact = new ArrayList<LigneCommandeClient>();
+      
+        if (article1 != null) {
+
+            factureligne1 = new LigneCommandeClient();
+            factureligne1.setIdarticle(article1.getId());
+            int qte1 = Integer.parseInt(jTextFieldCmdCliQte1.getText().trim());
+            Float HT = article1.getPrixht() * qte1;
+            factureligne1.setQuantite(qte1);
+            factureligne1.setPrixht(HT);
+            Float TVA = (HT * Float.valueOf(jTextFieldCmdCliLg1Tva1.getText().replace(",", "."))) / 100;
+            factureligne1.setPrixttc(HT + TVA);
+            factureligne1.setIdcommande(retourIdCmd);
+            factureligne1.setRemise(0.00F);
+            fact.add(factureligne1);
+            
+
+        } 
+        if (article2 != null) {
+            factureligne2 = new LigneCommandeClient();
+            factureligne2.setIdarticle(article2.getId());
+            int qte2 = Integer.parseInt(jTextFieldCmdCliQte2.getText().trim());
+            Float HT = article2.getPrixht() * qte2;
+            factureligne2.setQuantite(qte2);
+            factureligne2.setPrixht(HT);
+            Float TVA = (HT * Float.valueOf(jTextFieldCmdCliLg2Tva2.getText().replace(",", "."))) / 100;
+            factureligne2.setPrixttc(HT + TVA);
+            factureligne2.setIdcommande(retourIdCmd);
+            factureligne2.setRemise(0.00F);
+            fact.add(factureligne2);
+           
+
+
+        } 
+        if (article3 != null) {
+            factureligne3 = new LigneCommandeClient();
+            factureligne3.setIdarticle(article3.getId());
+            int qte3 = Integer.parseInt(jTextFieldCmdCliQte3.getText().trim());
+            Float HT = article3.getPrixht() * qte3;
+            factureligne3.setQuantite(qte3);
+            factureligne3.setPrixht(HT);
+            Float TVA = (HT * Float.valueOf(jTextFieldCmdCliLg3Tva3.getText().replace(",", "."))) / 100;
+            factureligne3.setPrixttc(HT + TVA);
+            factureligne3.setIdcommande(retourIdCmd);
+            factureligne3.setRemise(0.00F);
+            fact.add(factureligne3);
+
+
+        } 
+        if (article4 != null) {
+            factureligne4 = new LigneCommandeClient();
+            factureligne4.setIdarticle(article4.getId());
+            int qte4 = Integer.parseInt(jTextFieldCmdCliQte4.getText().trim());
+            Float HT = article4.getPrixht() * qte4;
+            factureligne4.setQuantite(qte4);
+            factureligne4.setPrixht(HT);
+            Float TVA = (HT * Float.valueOf(jTextFieldCmdCliLg4Tva4.getText().replace(",", "."))) / 100;
+            factureligne4.setPrixttc(HT + TVA);
+            factureligne4.setIdcommande(retourIdCmd);
+            factureligne4.setRemise(0.00F);
+            fact.add(factureligne4);
+
+
+        } 
+        if (article5 != null) {
+            factureligne5 = new LigneCommandeClient();
+            factureligne5.setIdarticle(article5.getId());
+            int qte5 = Integer.parseInt(jTextFieldCmdCliQte5.getText().trim());
+            Float HT = article5.getPrixht() * qte5;
+            factureligne5.setQuantite(qte5);
+            factureligne5.setPrixht(HT);
+            Float TVA = (HT * Float.valueOf(jTextFieldCmdCliLg5Tva5.getText().replace(",", "."))) / 100;
+            factureligne5.setPrixttc(HT + TVA);
+            factureligne5.setIdcommande(retourIdCmd);
+            factureligne5.setRemise(0.00F);
+            fact.add(factureligne5);
+
+
+        } 
+        if (article6 != null) {
+            factureligne6 = new LigneCommandeClient();
+            factureligne6.setIdarticle(article6.getId());
+            int qte6 = Integer.parseInt(jTextFieldCmdCliQte6.getText().trim());
+            Float HT = article6.getPrixht() * qte6;
+            factureligne6.setQuantite(qte6);
+            factureligne6.setPrixht(HT);
+            Float TVA = (HT * Float.valueOf(jTextFieldCmdCliLg6Tva6.getText().replace(",", "."))) / 100;
+            factureligne6.setPrixttc(HT + TVA);
+            factureligne6.setIdcommande(retourIdCmd);
+            factureligne6.setRemise(0.00F);
+            fact.add(factureligne6);
+
+
+        } 
+        if (article7 != null) {
+            factureligne7 = new LigneCommandeClient();
+            factureligne7.setIdarticle(article7.getId());
+            int qte7 = Integer.parseInt(jTextFieldCmdCliQte7.getText().trim());
+            Float HT = article7.getPrixht() * qte7;
+            factureligne7.setQuantite(qte7);
+            factureligne7.setPrixht(HT);
+            Float TVA = (HT * Float.valueOf(jTextFieldCmdCliLg7Tva7.getText().replace(",", "."))) / 100;
+            factureligne7.setPrixttc(HT + TVA);
+            factureligne7.setIdcommande(retourIdCmd);
+            factureligne7.setRemise(0.00F);
+            fact.add(factureligne7);
+
+
+        } 
+        if (article8 != null) {
+            factureligne8 = new LigneCommandeClient();
+            factureligne8.setIdarticle(article8.getId());
+            int qte8 = Integer.parseInt(jTextFieldCmdCliQte8.getText().trim());
+            Float HT = article8.getPrixht() * qte8;
+            factureligne8.setQuantite(qte8);
+            factureligne8.setPrixht(HT);
+            Float TVA = (HT * Float.valueOf(jTextFieldCmdCliLg8Tva8.getText().replace(",", "."))) / 100;
+            factureligne8.setPrixttc(HT + TVA);
+            factureligne8.setIdcommande(retourIdCmd);
+            factureligne8.setRemise(0.00F);
+            fact.add(factureligne8);
+
+
+        }
+        
+    
+        for (LigneCommandeClient temp : fact) {
+            try {
+                 RequetesLigneCommandeClient.insertLigneCommandeClient(temp.getIdarticle(),temp.getIdcommande(),temp.getQuantite(),temp.getPrixht(),temp.getPrixttc(),temp.getRemise());
+                               
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(VueCommandeClient.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       
+        
+        }
+        else
+        {
+             System.out.println(" pas tous renseigner");
+        }
+        
+        System.out.println(TOTALGHT.toString());
+        System.out.println(TOTALGTTC.toString());
+        System.out.println(reference.toString());
+    }//GEN-LAST:event_jButtonCommandeClientValideMouseClicked
 
     /**
      * @param args the command line arguments
@@ -464,14 +1360,25 @@ public class VueCommandeClient extends javax.swing.JFrame {
 
             public void run() {
                 new VueCommandeClient().setVisible(true);
+                
             }
         });
     }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCommandeClient;
+    private javax.swing.JButton jButton1CommandeClientRecherche;
+    private javax.swing.JButton jButtonCommandeClientValide;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -487,45 +1394,52 @@ public class VueCommandeClient extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField38;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField42;
     private javax.swing.JTextField jTextField50;
-    private javax.swing.JTextField jTextField51;
-    private javax.swing.JTextField jTextFieldCmdClTva1;
-    private javax.swing.JTextField jTextFieldCmdClTva2;
-    private javax.swing.JTextField jTextFieldCmdClTva4;
-    private javax.swing.JTextField jTextFieldCmdClTva5;
-    private javax.swing.JTextField jTextFieldCmdClTva6;
-    private javax.swing.JTextField jTextFieldCmdClTva7;
-    private javax.swing.JTextField jTextFieldCmdClTva8;
-    private javax.swing.JTextField jTextFieldCmdCliLg1;
-    private javax.swing.JTextField jTextFieldCmdCliLg2;
-    private javax.swing.JTextField jTextFieldCmdCliLg3;
-    private javax.swing.JTextField jTextFieldCmdCliLg4;
-    private javax.swing.JTextField jTextFieldCmdCliLg5;
-    private javax.swing.JTextField jTextFieldCmdCliLg6;
-    private javax.swing.JTextField jTextFieldCmdCliLg7;
-    private javax.swing.JTextField jTextFieldCmdCliLg8;
+    private javax.swing.JTextField jTextFieldCmdCliLg1Prod1;
+    private javax.swing.JTextField jTextFieldCmdCliLg1TotalTva1;
+    private javax.swing.JTextField jTextFieldCmdCliLg1Totalht1;
+    private javax.swing.JTextField jTextFieldCmdCliLg1Tva1;
+    private javax.swing.JTextField jTextFieldCmdCliLg2Prod2;
+    private javax.swing.JTextField jTextFieldCmdCliLg2TotalTva2;
+    private javax.swing.JTextField jTextFieldCmdCliLg2Totalht2;
+    private javax.swing.JTextField jTextFieldCmdCliLg2Tva2;
+    private javax.swing.JTextField jTextFieldCmdCliLg3Prod3;
+    private javax.swing.JTextField jTextFieldCmdCliLg3TotalTva3;
+    private javax.swing.JTextField jTextFieldCmdCliLg3Totalht3;
+    private javax.swing.JTextField jTextFieldCmdCliLg3Tva3;
+    private javax.swing.JTextField jTextFieldCmdCliLg4Prod4;
+    private javax.swing.JTextField jTextFieldCmdCliLg4TotalTva4;
+    private javax.swing.JTextField jTextFieldCmdCliLg4Totalht4;
+    private javax.swing.JTextField jTextFieldCmdCliLg4Tva4;
+    private javax.swing.JTextField jTextFieldCmdCliLg5Prod5;
+    private javax.swing.JTextField jTextFieldCmdCliLg5TotalTva5;
+    private javax.swing.JTextField jTextFieldCmdCliLg5Totalht5;
+    private javax.swing.JTextField jTextFieldCmdCliLg5Tva5;
+    private javax.swing.JTextField jTextFieldCmdCliLg6Prod6;
+    private javax.swing.JTextField jTextFieldCmdCliLg6TotalTva6;
+    private javax.swing.JTextField jTextFieldCmdCliLg6Totalht6;
+    private javax.swing.JTextField jTextFieldCmdCliLg6Tva6;
+    private javax.swing.JTextField jTextFieldCmdCliLg7Prod7;
+    private javax.swing.JTextField jTextFieldCmdCliLg7TotalTva7;
+    private javax.swing.JTextField jTextFieldCmdCliLg7Totalht7;
+    private javax.swing.JTextField jTextFieldCmdCliLg7Tva7;
+    private javax.swing.JTextField jTextFieldCmdCliLg8Prod8;
+    private javax.swing.JTextField jTextFieldCmdCliLg8TotalTva8;
+    private javax.swing.JTextField jTextFieldCmdCliLg8Totalht8;
+    private javax.swing.JTextField jTextFieldCmdCliLg8Tva8;
     private javax.swing.JTextField jTextFieldCmdCliPxHt1;
     private javax.swing.JTextField jTextFieldCmdCliPxHt2;
     private javax.swing.JTextField jTextFieldCmdCliPxHt3;
-    javax.swing.JTextField jTextFieldCmdCliPxHt4;
+    private javax.swing.JTextField jTextFieldCmdCliPxHt4;
     private javax.swing.JTextField jTextFieldCmdCliPxHt5;
     private javax.swing.JTextField jTextFieldCmdCliPxHt6;
     private javax.swing.JTextField jTextFieldCmdCliPxHt7;
     private javax.swing.JTextField jTextFieldCmdCliPxHt8;
-    private javax.swing.JTextField jTextFieldCmdCliPxTtc1;
-    private javax.swing.JTextField jTextFieldCmdCliPxTtc2;
-    private javax.swing.JTextField jTextFieldCmdCliPxTtc3;
-    private javax.swing.JTextField jTextFieldCmdCliPxTtc4;
-    private javax.swing.JTextField jTextFieldCmdCliPxTtc5;
-    private javax.swing.JTextField jTextFieldCmdCliPxTtc6;
-    private javax.swing.JTextField jTextFieldCmdCliPxTtc7;
     private javax.swing.JTextField jTextFieldCmdCliQte1;
     private javax.swing.JTextField jTextFieldCmdCliQte2;
     private javax.swing.JTextField jTextFieldCmdCliQte3;
@@ -534,6 +1448,15 @@ public class VueCommandeClient extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCmdCliQte6;
     private javax.swing.JTextField jTextFieldCmdCliQte7;
     private javax.swing.JTextField jTextFieldCmdCliQte8;
+    private javax.swing.JTextField jTextFieldComdClientTotalTva;
+    private javax.swing.JTextField jTextFieldCommandeClentProduitRecherche;
+    private javax.swing.JTextField jTextFieldCommandeClientCommercial;
+    private javax.swing.JTextField jTextFieldCommandeClientDate;
+    private javax.swing.JTextField jTextFieldCommandeClientEntreprise;
+    private javax.swing.JTextField jTextFieldCommandeClientEntrepriseInterlocuteur;
+    private javax.swing.JTextField jTextFieldCommandeClientNumeroRef;
+    private javax.swing.JTextField jTextFieldCommandeTotalHT;
+    private javax.swing.JTextField jTextFieldcmdClientTotalTtc;
     private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
